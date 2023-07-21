@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
+   <children>
+      <Pane layoutX="-1.0" layoutY="-7.0" prefHeight="757.0" prefWidth="256.0" style="-fx-background-color: #000000;">
+         <children>
+            <VBox layoutY="132.0" prefHeight="375.0" prefWidth="254.0" style="-fx-background-color: #666466;">
+               <children>
+                  <Separator opacity="0.04" prefHeight="0.0" prefWidth="275.0" />
+                  <Button mnemonicParsing="false" onAction="#currentPatient" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="CURRENT PATIENT" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font></Button>
+                  <Separator opacity="0.0" prefHeight="0.0" prefWidth="275.0" />
+                  <Button layoutX="10.0" layoutY="98.0" mnemonicParsing="false" onAction="#monthlyIncome" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="MONTHLY INCOME" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font></Button>
+                  <Separator opacity="0.04" prefHeight="0.0" prefWidth="275.0" />
+                  <Button layoutX="10.0" layoutY="54.0" mnemonicParsing="false" onAction="#dailyIncome" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="DAILY INCOME" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font></Button>
+                  <Separator layoutX="10.0" layoutY="165.0" opacity="0.0" prefHeight="0.0" prefWidth="275.0" />
+                  <Button layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#employeesInformation" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="EMPLOYEE'S INFORMATION" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="19.0" />
+                     </font></Button>
+                  <Separator layoutX="10.0" layoutY="223.0" opacity="0.0" prefHeight="2.0" prefWidth="264.0" />
+                  <Button layoutX="10.0" layoutY="237.0" mnemonicParsing="false" onAction="#patientsInformation" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="PATIENTS INFORMATION" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="21.0" />
+                     </font></Button>
+                  <Separator opacity="0.0" prefHeight="0.0" prefWidth="275.0" />
+                  <Button mnemonicParsing="false" onAction="#paySalary" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="PAY SALARY" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font></Button>
+                  <Separator opacity="0.04" prefHeight="0.0" prefWidth="275.0" />
+                  <Button mnemonicParsing="false" onAction="#addConstants" prefHeight="57.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="ADD CONSTANTS" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#bankEntryAnalysis" prefHeight="57.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="BANK EXPENSE" textFill="#fbff00">
+                     <font>
+                        <Font name="Cambria Bold" size="26.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Button layoutX="19.0" layoutY="707.0" mnemonicParsing="false" onAction="#BackToLoginPage" prefHeight="31.0" prefWidth="112.0" styleClass="buttonClass" stylesheets="@../application.css" text="LOGOUT" textFill="#05dbff">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Button>
+            <Button fx:id="howManyCustomersToday" layoutX="20.0" layoutY="562.0" mnemonicParsing="false" onAction="#howManyCustomersAreToday" prefHeight="31.0" prefWidth="222.0" styleClass="howMany" stylesheets="@../application.css" text="HOW MANY CUSTOMERS TODAY ?" textFill="#fbff00">
+               <font>
+                  <Font name="System Bold Italic" size="7.0" />
+               </font>
+               <effect>
+                  <DropShadow height="26.86" radius="11.465" spread="0.14">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect></Button>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="contentArea" layoutX="252.0" prefHeight="750.0" prefWidth="1149.0" styleClass="anchorPane" stylesheets="@../application.css">
+         <children>
+            <Label layoutX="206.0" layoutY="43.0" prefHeight="92.0" prefWidth="778.0" styleClass="Labels" stylesheets="@../application.css" text="WELCOME TO SHALOM" textFill="#009955">
+               <font>
+                  <Font name="Cambria Bold Italic" size="74.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" spread="1.0" width="10.0" />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

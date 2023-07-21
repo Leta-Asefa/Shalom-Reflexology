@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" style="-fx-background-color: linear-gradient(to bottom, #1dbbdd, #93f9b9);" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="667.0" layoutX="354.0" layoutY="34.0" stroke="BLACK" strokeType="INSIDE" width="572.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.12219999730587006" green="0.9399999976158142" blue="0.35390999913215637" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.02631578966975212" green="0.31578946113586426" blue="0.29649123549461365" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+         <effect>
+            <DropShadow height="82.55" offsetX="-10.0" offsetY="-10.0" radius="37.845" spread="0.24" width="70.83" />
+         </effect>
+      </Rectangle>
+      <Label alignment="CENTER" layoutX="419.0" layoutY="299.0" prefHeight="44.0" prefWidth="115.0" text="USER_NAME" textFill="#ececee">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <Glow level="0.46" />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="419.0" layoutY="360.0" prefHeight="44.0" prefWidth="121.0" text="PASSWORD" textFill="#e5e7f8">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+         <effect>
+            <Glow level="0.35" />
+         </effect>
+      </Label>
+      <PasswordField fx:id="passwordTextField" layoutX="574.0" layoutY="370.0" prefHeight="25.0" prefWidth="229.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </PasswordField>
+      <TextField fx:id="userNameTextField" layoutX="574.0" layoutY="309.0" prefHeight="25.0" prefWidth="229.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </TextField>
+      <Button fx:id="adminButton" layoutX="421.0" layoutY="476.0" mnemonicParsing="false" onAction="#goToAdminHomePage" prefHeight="50.0" prefWidth="458.0" styleClass="buttonClass" stylesheets="@application.css" text="LOGIN   ( Admin )" visible="false">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label alignment="CENTER" layoutX="419.0" layoutY="86.0" prefHeight="79.0" prefWidth="446.0" style="-fx-background-color: transparent;" text="SHALOM REFLEXOLOGY">
+         <font>
+            <Font name="System Bold Italic" size="38.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="1.0" contrast="1.0" hue="1.0" saturation="1.0" />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.7440758293838863">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9300000071525574" green="0.23250000178813934" blue="0.23250000178813934" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9300000071525574" green="0.23250000178813934" blue="0.23250000178813934" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9777047038078308" green="0.9777047038078308" blue="0.9868420958518982" opacity="0.25999999046325684" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.00752987395645768">
+                     <color>
+                        <Color red="1.0" green="0.612500011920929" blue="0.07000000029802322" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.009576035357668935">
+                     <color>
+                        <Color red="1.0" green="0.612500011920929" blue="0.07000000029802322" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.8233917951583862" green="0.8421052694320679" blue="0.28070175647735596" opacity="0.25999999046325684" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="receptionButton" layoutX="419.0" layoutY="558.0" mnemonicParsing="false" onAction="#goToReceptionHomepage" prefHeight="50.0" prefWidth="458.0" styleClass="buttonClass" stylesheets="@application.css" text="     LOGIN   ( Reception)" visible="false">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="creatAccountLabel" alignment="CENTER" layoutX="469.0" layoutY="247.0" prefHeight="30.0" prefWidth="300.0" text="Create An Adminstrator Account" textFill="BLUE" underline="true" visible="false">
+         <effect>
+            <Glow level="0.46" />
+         </effect>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="creatAccountButton" layoutX="533.0" layoutY="426.0" mnemonicParsing="false" onAction="#creatAccount" prefHeight="31.0" prefWidth="258.0" styleClass="buttonClass" stylesheets="@application.css" text="CREATE AN ACCOUNT" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

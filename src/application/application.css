@@ -1,0 +1,145 @@
+.buttonClass{
+	
+	-fx-background-color:black;
+	-fx-border-radius: 10;
+	  -fx-background-radius: 10;
+	-fx-font-family: "cambria";
+	  -fx-text-fill: fbff00;
+	-fx-font-size:16;
+	-fx-font-weight:bold;
+	-fx-border-color: gold;
+	  -fx-border-insets: 2 2 2 2;
+	  -fx-border-width:2;
+}
+.buttonClass:pressed{
+	
+	-fx-background-insets: 9 9 9 9;
+}
+.buttonClass:hover{
+	
+	-fx-font-size:20;
+	-fx-background-color:#434343;
+	
+}
+
+.howMany{
+	
+	-fx-background-color:black;
+	-fx-border-radius: 10;
+	-fx-font-family: "cambria";
+	-fx-font-size:12;
+	-fx-font-weight:bold;
+	-fx-border-color: gold;
+}
+.howMany:hover{
+	-fx-font-size:16;
+	-fx-background-color:#434343;
+}
+
+.table-view{
+	
+	-fx-background-color:grey;
+}
+.table-view .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1dbbdd, #93f9b9);
+   
+}
+
+.table-view .column-header {
+    -fx-background-color: darkseagreen;
+}
+
+.table-view .table-cell{
+    -fx-border-color: darkgrey;
+}
+
+.table-row-cell :hover {
+    -fx-background-color: transparent;
+    -fx-text-background-color: grey;
+}
+
+
+.table-row-cell :odd{
+    -fx-background-color: lightcyan;
+    -fx-text-background-color:black;
+}
+.table-row-cell :even {
+    -fx-background-color: ivory;
+    -fx-text-background-color:black;
+}
+
+.Labels{
+	  -fx-text-fill: #0095ff;
+	   
+	
+}
+
+
+
+
+
+
+
+#reflexologyLabel{
+	  -fx-background-color: pink;
+	    -fx-background-radius: 70;	
+}
+#therapyLabel{
+	  -fx-background-color: limegreen;
+	    -fx-background-radius: 70;	
+}
+#massageLabel{
+	  -fx-background-color: lightskyblue;
+	    -fx-background-radius: 70;	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.root{
+	
+	
+	
+	/*  -fx-background-color:linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #000000 0.0%, #ffffff 100.0%);*/
+	 	-fx-background-color:ffffff   ;
+}
+
+.anchorPane{
+/*  -fx-background-color:linear-gradient(from 0.0% 0.0% to 100.0% 100.0%, #a1a1a1 0.0%, #ffffff 100.0%);*/	
+	-fx-background-color:ffffff;
+}
+
+

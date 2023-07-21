@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BankReception">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff4b" height="194.0" layoutX="119.0" layoutY="198.0" stroke="BLACK" strokeType="INSIDE" width="867.0" />
+      <Label layoutX="332.0" layoutY="214.0" prefHeight="54.0" prefWidth="360.0" text="REFERENCE NUMBER" textFill="#053dff">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="referenceTextField" layoutX="378.0" layoutY="283.0" prefHeight="25.0" prefWidth="267.0" />
+      <ComboBox fx:id="bankComboBox" layoutX="729.0" layoutY="283.0" prefWidth="150.0" />
+      <Button fx:id="enterButton" layoutX="471.0" layoutY="325.0" mnemonicParsing="false" onAction="#enter" styleClass="buttonClass" stylesheets="@../application.css" text="ENTER" />
+      <Label layoutX="735.0" layoutY="308.0" prefHeight="17.0" prefWidth="142.0" text="SELECT THE BANK HERE" textFill="#053dff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

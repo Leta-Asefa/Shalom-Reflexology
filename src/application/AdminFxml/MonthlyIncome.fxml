@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MonthlyIncomeController">
+   <children>
+      <DatePicker fx:id="startingDatePicker" layoutX="396.0" layoutY="27.0" prefHeight="25.0" prefWidth="151.0" />
+      <Label layoutX="228.0" layoutY="26.0" prefHeight="26.0" prefWidth="141.0" text="STARTING DATE" textFill="#0cff00">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="688.0" layoutY="134.0" prefHeight="26.0" prefWidth="89.0" text="Total Cash" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="219.0" prefHeight="26.0" prefWidth="121.0" textFill="#0cff00">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="graph" animated="false" layoutX="33.0" layoutY="390.0" prefHeight="338.0" prefWidth="561.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button layoutX="928.0" layoutY="27.0" mnemonicParsing="false" onAction="#show" text="SHOW" />
+      <Label layoutX="577.0" layoutY="27.0" prefHeight="26.0" prefWidth="141.0" text="ENDING     DATE" textFill="#0cff00">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="endingDatePicker" layoutX="744.0" layoutY="27.0" prefHeight="25.0" prefWidth="151.0" />
+      <Label fx:id="totalMB" alignment="CENTER" ellipsisString="" layoutX="706.0" layoutY="290.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="netIncome" alignment="CENTER" ellipsisString="" layoutX="934.0" layoutY="290.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalCash" alignment="CENTER" ellipsisString="" layoutX="706.0" layoutY="187.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="690.0" layoutY="238.0" prefHeight="26.0" prefWidth="174.0" text="Total Mobile Banking" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="937.0" layoutY="238.0" prefHeight="26.0" prefWidth="99.0" text="Net Income" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="929.0" layoutY="134.0" prefHeight="26.0" prefWidth="114.0" text="Total Income" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalIncome" alignment="CENTER" ellipsisString="" layoutX="942.0" layoutY="187.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1462ab29" height="246.0" layoutX="656.0" layoutY="103.0" stroke="#a1a1a1" strokeType="INSIDE" width="414.0" />
+      <TableView fx:id="table" layoutX="635.0" layoutY="390.0" prefHeight="338.0" prefWidth="488.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="116.0" text="Name" />
+          <TableColumn fx:id="amount" prefWidth="96.0" text="Amount" />
+            <TableColumn fx:id="reason" prefWidth="166.0" text="Reason" />
+            <TableColumn fx:id="date" prefWidth="107.0" text="Date" />
+        </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1462ab38" height="284.0" layoutX="124.0" layoutY="109.0" stroke="#a1a1a1" strokeType="INSIDE" width="379.0" />
+      <Label ellipsisString="" layoutX="399.0" layoutY="112.0" lineSpacing="10.0" prefHeight="17.0" prefWidth="57.0" text="Total" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="153.0" onMouseClicked="#clicked" prefHeight="26.0" prefWidth="229.0" text="FROM WAKING CUSTOMERS" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="201.0" prefHeight="26.0" prefWidth="106.0" text="FROM CARD" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="250.0" prefHeight="26.0" prefWidth="141.0" text="FROM PATIENTS" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="299.0" prefHeight="26.0" prefWidth="188.0" text="TOTAL WITHDRAWAL" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalReflexology" alignment="CENTER" ellipsisString="" layoutX="375.0" layoutY="144.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalWithdrawal" alignment="CENTER" ellipsisString="" layoutX="375.0" layoutY="290.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalPatient" alignment="CENTER" ellipsisString="" layoutX="375.0" layoutY="241.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalCard" alignment="CENTER" ellipsisString="" layoutX="375.0" layoutY="192.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="347.0" prefHeight="26.0" prefWidth="188.0" text="TOTAL SALARY" textFill="#0035ff">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalSalary" alignment="CENTER" ellipsisString="" layoutX="375.0" layoutY="338.0" lineSpacing="10.0" prefHeight="43.0" prefWidth="106.0" style="-fx-background-color: #e3e3e3;" text="0">
+         <font>
+            <Font name="System Bold Italic" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

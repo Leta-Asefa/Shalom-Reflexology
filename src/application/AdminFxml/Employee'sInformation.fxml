@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" styleClass="anchorPane" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmployeesInformationController">
+   <children>
+      <TableView fx:id="table" layoutX="125.0" layoutY="121.0" prefHeight="200.0" prefWidth="964.0" style="-fx-background-color: #e3e3e3;">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="69.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="120.0" text="NAME" />
+            <TableColumn fx:id="sex" minWidth="3.0" prefWidth="54.0" text="SEX" />
+            <TableColumn fx:id="phone" prefWidth="118.0" text="PHONE" />
+            <TableColumn fx:id="salary" prefWidth="121.0" text="FIXED_SALARY" />
+            <TableColumn fx:id="userName" prefWidth="118.0" text="USER_NAME" />
+            <TableColumn fx:id="password" minWidth="0.0" prefWidth="125.0" text="PASSWORD" />
+            <TableColumn fx:id="job" prefWidth="213.00006103515625" text="JOB_POSITION" />
+        </columns>
+         <effect>
+            <DropShadow />
+         </effect>
+      </TableView>
+      <Button layoutX="469.0" layoutY="69.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #ffffff;" text="SEARCH">
+         <effect>
+            <InnerShadow height="4.64" radius="2.125" width="5.86">
+               <color>
+                  <Color red="0.25950291752815247" green="0.9342105388641357" blue="0.6643275022506714" />
+               </color>
+            </InnerShadow>
+         </effect></Button>
+      <Button fx:id="addButton" layoutX="565.0" layoutY="69.0" mnemonicParsing="false" onAction="#add" style="-fx-background-color: #ffffff;" text="ADD NEW " textFill="#22ff00">
+         <effect>
+            <InnerShadow />
+         </effect></Button>
+      <TextField fx:id="searchTextField" layoutX="187.0" layoutY="69.0" prefHeight="25.0" prefWidth="264.0" promptText="Employee's Name">
+         <effect>
+            <InnerShadow>
+               <color>
+                  <Color red="0.023148147389292717" green="0.8046296238899231" blue="1.0" opacity="0.9399999976158142" />
+               </color>
+            </InnerShadow>
+         </effect></TextField>
+      <Separator layoutX="125.0" layoutY="337.0" prefHeight="32.0" prefWidth="827.0">
+         <effect>
+            <InnerShadow />
+         </effect></Separator>
+      <Label fx:id="idLabel" disable="true" layoutX="268.0" layoutY="363.0" styleClass="Labels" stylesheets="@../application.css" text="ID">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLabel" disable="true" layoutX="238.0" layoutY="402.0" prefHeight="30.0" prefWidth="60.0" styleClass="Labels" stylesheets="@../application.css" text="NAME">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="phoneLabel" disable="true" layoutX="231.0" layoutY="486.0" prefHeight="30.0" prefWidth="74.0" styleClass="Labels" stylesheets="@../application.css" text="PHONE">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="salaryLabel" disable="true" layoutX="161.0" layoutY="530.0" prefHeight="30.0" prefWidth="141.0" styleClass="Labels" stylesheets="@../application.css" text="FIXED_SALARY">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="jobLabel" disable="true" layoutX="161.0" layoutY="575.0" prefHeight="30.0" prefWidth="141.0" styleClass="Labels" stylesheets="@../application.css" text="JOB_POSITION">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="idTextField" disable="true" layoutX="313.0" layoutY="366.0" prefHeight="25.0" prefWidth="158.0" />
+      <TextField fx:id="salaryTextField" disable="true" layoutX="313.0" layoutY="533.0" prefHeight="25.0" prefWidth="158.0" />
+      <TextField fx:id="phoneTextField" disable="true" layoutX="313.0" layoutY="489.0" prefHeight="25.0" prefWidth="158.0" />
+      <TextField fx:id="nameTextField" disable="true" layoutX="313.0" layoutY="405.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label layoutX="713.0" layoutY="360.0" prefHeight="30.0" prefWidth="235.0" text="CREATE AN ACCOUNT ?" textFill="#00ffee">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="userNameLabel" disable="true" layoutX="592.0" layoutY="450.0" prefHeight="30.0" prefWidth="128.0" text="USER NAME" textFill="LIME">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordLabel" disable="true" layoutX="598.0" layoutY="494.0" prefHeight="30.0" prefWidth="128.0" text="PASSWORD" textFill="LIME">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userNameTextField" disable="true" layoutX="750.0" layoutY="453.0" prefHeight="25.0" prefWidth="198.0" />
+      <TextField fx:id="passwordTextField" disable="true" layoutX="750.0" layoutY="496.0" prefHeight="25.0" prefWidth="198.0" />
+      <Button fx:id="saveButton" disable="true" layoutX="501.0" layoutY="605.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="128.0" style="-fx-background-color: #000000;" text="SAVE" textFill="#00ff2e">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Button>
+      <RadioButton fx:id="yes" layoutX="720.0" layoutY="393.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="30.0" prefWidth="74.0" text="YES">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="createAccount" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="no" layoutX="872.0" layoutY="393.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="30.0" prefWidth="74.0" text="NO" toggleGroup="$createAccount">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
+      <Label fx:id="sexLabel" disable="true" layoutX="238.0" layoutY="444.0" prefHeight="30.0" prefWidth="60.0" styleClass="Labels" stylesheets="@../application.css" text="SEX">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="sexComboBox" disable="true" layoutX="313.0" layoutY="447.0" prefHeight="25.0" prefWidth="158.0" />
+      <ComboBox fx:id="jobComboBox" disable="true" layoutX="314.0" layoutY="578.0" prefHeight="25.0" prefWidth="158.0" />
+      <Button fx:id="deleteButton" layoutX="997.0" layoutY="69.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #ffffff;" text="DELETE" textFill="#ff000a">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" styleClass="anchorPanesClass" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CurrentPatientController">
+   <children>
+      <Button layoutX="903.0" layoutY="212.0" mnemonicParsing="false" onAction="#fulfillNewPatientsInfo" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #333333;" styleClass="buttonClass" stylesheets="@../application.css" text="FULFIL OTHER DATAS" textFill="#fbff00">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <DropShadow height="12.2" offsetX="5.0" offsetY="5.0" radius="7.0675" width="18.07" />
+         </effect></Button>
+      <TableView fx:id="table1" layoutX="14.0" layoutY="22.0" prefHeight="70.0" prefWidth="1090.0" stylesheets="@../application.css">
+         <columns>
+            <TableColumn fx:id="phone" prefWidth="235.33334350585938" styleClass="tableColumns" text="PHONE" />
+            <TableColumn fx:id="name" prefWidth="393.6666259765625" styleClass="tableColumns" text="NAME" />
+            <TableColumn fx:id="age" prefWidth="244.0" styleClass="tableColumns" text="AGE" />
+            <TableColumn fx:id="sex" minWidth="0.0" prefWidth="212.0" styleClass="tableColumns" text="SEX" />
+         </columns>
+         <effect>
+            <DropShadow height="38.59" radius="16.595" width="29.79" />
+         </effect>
+      </TableView>
+      <TableView fx:id="table2" fixedCellSize="0.0" layoutX="14.0" layoutY="112.0" prefHeight="89.0" prefWidth="1090.0" stylesheets="@../application.css">
+         <columns>
+            <TableColumn fx:id="first" prefWidth="72.6" styleClass="tableColumns" text="1st" />
+            <TableColumn fx:id="second" minWidth="0.0" prefWidth="72.6" styleClass="tableColumns" text="2nd" />
+            <TableColumn fx:id="third" minWidth="0.0" prefWidth="72.6" styleClass="tableColumns" text="3rd" />
+            <TableColumn fx:id="fourth" prefWidth="72.6" styleClass="tableColumns" text="4th" />
+            <TableColumn fx:id="fifth" prefWidth="72.6" styleClass="tableColumns" text="5th" />
+            <TableColumn fx:id="sixth" prefWidth="72.6" styleClass="tableColumns" text="6th" />
+            <TableColumn fx:id="seventh" prefWidth="72.6" styleClass="tableColumns" text="7th" />
+            <TableColumn fx:id="eighth" prefWidth="72.6" styleClass="tableColumns" text="8th" />
+            <TableColumn fx:id="ninth" prefWidth="72.6" styleClass="tableColumns" text="9th" />
+            <TableColumn fx:id="tenth" prefWidth="72.6" styleClass="tableColumns" text="10th" />
+            <TableColumn fx:id="eleventh" prefWidth="72.6" styleClass="tableColumns" text="11th" />
+            <TableColumn fx:id="twelvth" prefWidth="72.6" styleClass="tableColumns" text="12th" />
+            <TableColumn fx:id="thirteenth" prefWidth="72.6" styleClass="tableColumns" text="13th" />
+            <TableColumn fx:id="fourteenth" prefWidth="72.6" styleClass="tableColumns" text="14th" />
+            <TableColumn fx:id="fifteenth" prefWidth="64.0" styleClass="tableColumns" text="15th" />
+         </columns>
+         <effect>
+            <DropShadow height="29.79" radius="17.3275" spread="0.09" width="41.52" />
+         </effect>
+      </TableView>
+      <Label layoutX="42.0" layoutY="446.0" prefHeight="25.0" prefWidth="91.0" styleClass="Labels" stylesheets="@../application.css" text="ASSESMENTS">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="562.0" prefHeight="25.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="TREATMENTS">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="655.0" prefHeight="25.0" prefWidth="121.0" styleClass="Labels" stylesheets="@../application.css" text="FOCUSING AREAS">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="assesmentTextField" disable="true" layoutX="140.0" layoutY="386.0" prefHeight="110.0" prefWidth="382.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></TextArea>
+      <TextArea fx:id="treatmentsTextField" disable="true" layoutX="140.0" layoutY="505.0" prefHeight="110.0" prefWidth="382.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></TextArea>
+      <TextArea fx:id="focusingAreasTextField" disable="true" layoutX="140.0" layoutY="625.0" prefHeight="110.0" prefWidth="382.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect></TextArea>
+      <Button layoutX="14.0" layoutY="212.0" mnemonicParsing="false" onAction="#refresh" prefHeight="37.0" prefWidth="91.0" style="-fx-background-color: #333333;" styleClass="buttonClass" stylesheets="@../application.css" text="Refresh " textFill="#fbff00">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <DropShadow height="12.2" offsetX="5.0" offsetY="5.0" radius="7.0675" width="18.07" />
+         </effect>
+      </Button>
+      <Button layoutX="459.0" layoutY="212.0" mnemonicParsing="false" onAction="#inactivate" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #333333;" styleClass="buttonClass" stylesheets="@../application.css" text="Inactivate this Account" textFill="#fbff00">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <effect>
+            <DropShadow height="12.2" offsetX="5.0" offsetY="5.0" radius="7.0675" width="18.07" />
+         </effect>
+      </Button>
+      <TextArea fx:id="historyTextField" disable="true" layoutX="140.0" layoutY="267.0" prefHeight="110.0" prefWidth="382.0" wrapText="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </TextArea>
+      <Label layoutX="30.0" layoutY="322.0" prefHeight="25.0" prefWidth="91.0" styleClass="Labels" stylesheets="@../application.css" text="HISTORY">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="532.0" layoutY="267.0" prefHeight="304.0" prefWidth="589.0">
+        <columns>
+          <TableColumn fx:id="cardCash" prefWidth="74.0" text="Card (cash)" />
+          <TableColumn fx:id="cardMb" prefWidth="83.0" text="Card (mb)" />
+            <TableColumn fx:id="paymentCash" prefWidth="99.0" text="Payment (cash)" />
+            <TableColumn fx:id="paymentMb" prefWidth="86.0" text="Payment (mb)" />
+            <TableColumn fx:id="date" prefWidth="79.0" text="Date" />
+            <TableColumn fx:id="referenceNumber" prefWidth="163.0" text="Reference Number" />
+        </columns>
+      </TableView>
+      <Label layoutX="540.0" layoutY="593.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="532.0" layoutY="631.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="creditLabel" layoutX="630.0" layoutY="631.0" prefHeight="27.0" prefWidth="108.0" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLabel" layoutX="630.0" layoutY="593.0" prefHeight="27.0" prefWidth="108.0" textFill="#1eff00">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="543.0" layoutY="667.0" prefHeight="35.0" prefWidth="234.0" styleClass="Labels" stylesheets="@../application.css" text="Today's Treatment">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="treatmentLabel" layoutX="815.0" layoutY="667.0" prefHeight="35.0" prefWidth="302.0" styleClass="Labels" stylesheets="@../application.css">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

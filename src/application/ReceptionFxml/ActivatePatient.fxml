@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ActivatePatient">
+   <children>
+      <TableView fx:id="table" layoutX="430.0" layoutY="124.0" prefHeight="396.0" prefWidth="379.0">
+        <columns>
+          <TableColumn fx:id="phone" prefWidth="150.0" text="Phone" />
+          <TableColumn fx:id="name" minWidth="0.0" prefWidth="213.0" text="Name" />
+        </columns>
+      </TableView>
+      <Button fx:id="activateButton" layoutX="546.0" layoutY="533.0" mnemonicParsing="false" onAction="#activate" prefHeight="37.0" prefWidth="139.0" styleClass="buttonClass" stylesheets="@../application.css" text="Activate" />
+      <TextField fx:id="textField" layoutX="447.0" layoutY="54.0" prefHeight="25.0" prefWidth="166.0" />
+      <Button layoutX="647.0" layoutY="47.0" mnemonicParsing="false" onAction="#search" prefHeight="37.0" prefWidth="135.0" styleClass="buttonClass" stylesheets="@../application.css" text="Search" />
+      <ImageView fx:id="image" fitHeight="96.0" fitWidth="99.0" layoutX="569.0" layoutY="608.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../Images/images.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
