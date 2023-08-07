@@ -3848,7 +3848,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 			System.out.println(date);
 			
 			if(startingPoint==1) {
-				query=query+"update prescriptions set  secondp=?, third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getFirstp().equals("")) {
+					query=query+"update prescriptions set  secondp=?, third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1, getPrescriptionSubstring(person.getFirstp())+  getSubstring(person.getSecondp()) );
@@ -3869,10 +3870,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			} }
 			
 			else if(startingPoint==2) {
-				query=query+"update prescriptions set   third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
+				if(! person.getSecondp().equals("")) {
+					query=query+"update prescriptions set   third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring(person.getSecondp())+ getSubstring(person.getThird())  );	
@@ -3892,10 +3895,11 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				 counter=0;
-			}
+			}}
 			
 			else if(startingPoint==3) {
-				query=query+"update prescriptions set    fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getThird().equals("")) {
+					query=query+"update prescriptions set    fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring( person.getThird())+ getSubstring(person.getFourth())  );
@@ -3914,9 +3918,10 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==4) {
+				if(! person.getFourth().equals("")) {
 				query=query+"update prescriptions set     fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
@@ -3938,7 +3943,9 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 			}
 			
 			else if(startingPoint==5) {
-				query=query+"update prescriptions set      sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getFifth().equals("")) {
+					query=query+"update prescriptions set      sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
@@ -3955,10 +3962,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==6) {
-				query=query+"update prescriptions set       seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getSixth().equals("")) {
+					query=query+"update prescriptions set       seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
@@ -3974,9 +3983,11 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			else if(startingPoint==7) {
-				query=query+"update prescriptions set        eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getSeventh().equals("")) {
+					query=query+"update prescriptions set        eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
@@ -3991,10 +4002,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==8) {
-				query=query+"update prescriptions set         ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getEighth().equals("")) {
+					query=query+"update prescriptions set         ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
@@ -4008,10 +4021,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==9) {
-				query=query+"update prescriptions set          tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getNinth().equals("")) {
+					query=query+"update prescriptions set          tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
@@ -4025,10 +4040,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				statement.execute();
 				counter=0;
 			}
-			
+			}
 			
 			else if(startingPoint==10) {
-				query=query+"update prescriptions set          eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getTenth().equals("")) {
+					query=query+"update prescriptions set          eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
@@ -4040,10 +4057,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==11) {
-				query=query+"update prescriptions set           twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getEleventh().equals("")) {
+					query=query+"update prescriptions set           twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
@@ -4054,10 +4073,12 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
 			else if(startingPoint==12) {
-				query=query+"update prescriptions set            thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				if(! person.getTwelvth().equals("")) {
+					query=query+"update prescriptions set            thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
+				}
 				statement=myConn.prepareStatement(query);
 				
 				statement.setString(1,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
@@ -4067,30 +4088,35 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				
 				statement.execute();
 				counter=0;
-			}
+			}}
 			
-			else if(startingPoint==13) {
-				query=query+"update prescriptions set            fourteenth=? , fifteenth=? where phonefk=?";
-				statement=myConn.prepareStatement(query);
-				
-			statement.setString(1,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
-			statement.setString(2,  getPrescriptionSubstring(person.getFourteenth())  );
-			statement.setInt(3 , Integer.parseInt( person.getPhonefk()));
-				
-				statement.execute();
-				counter=0;
+		else if (startingPoint == 13) {
+			if (!person.getThirteenth().equals("")) {
+				query = query + "update prescriptions set            fourteenth=? , fifteenth=? where phonefk=?";
 			}
+			statement = myConn.prepareStatement(query);
+
+			statement.setString(1,getPrescriptionSubstring(person.getThirteenth()) + getSubstring(person.getFourteenth()));
+			statement.setString(2, getPrescriptionSubstring(person.getFourteenth()));
+			statement.setInt(3, Integer.parseInt(person.getPhonefk()));
+
+			statement.execute();
+			counter = 0;
+		}
+	
 			
-			else if(startingPoint==14) {
-				query=query+"update prescriptions set             fifteenth=? where phonefk=?";
-				statement=myConn.prepareStatement(query);
-				
-			statement.setString(1,  getPrescriptionSubstring(person.getFourteenth())  );
-			statement.setInt(2 , Integer.parseInt( person.getPhonefk()));
-				
-				statement.execute();
-				counter=0;
-			}
+		else if (startingPoint == 14) {
+			if (!person.getFourteenth().equals("")) {
+				query = query + "update prescriptions set             fifteenth=? where phonefk=?";
+
+					statement = myConn.prepareStatement(query);
+
+					statement.setString(1, getPrescriptionSubstring(person.getFourteenth()));
+					statement.setInt(2, Integer.parseInt(person.getPhonefk()));
+
+					statement.execute();
+					counter = 0;
+			}}
 			
 			
 			
