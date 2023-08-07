@@ -645,7 +645,7 @@ public class PatientsInformationController implements Initializable{
 		
 		
 		
-		table2.setEditable(true);
+		
 		
 		
 		
@@ -780,6 +780,8 @@ catch (Exception ex) {
 
 		listView.setDisable(false);
 		saveButton.setDisable(false);
+		
+		table2.setEditable(true);
 		
 		}
 		catch (Exception ex) {
