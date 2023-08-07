@@ -36,43 +36,20 @@
 	-fx-background-color:#434343;
 }
 
-.table-view{
-	
-	-fx-background-color:grey;
-}
-.table-view .column-header-background .filler {
-    -fx-background-color: transparent;
-}
-.table-view .corner {
-    -fx-background-color: transparent;
-}
-.table-view .column-header-background{
-    -fx-background-color: linear-gradient(to bottom, #1dbbdd, #93f9b9);
-   
-}
-
-.table-view .column-header {
-    -fx-background-color: darkseagreen;
-}
-
-.table-view .table-cell{
-    -fx-border-color: darkgrey;
-}
-
-.table-row-cell :hover {
-    -fx-background-color: transparent;
-    -fx-text-background-color: grey;
-}
 
 
-.table-row-cell :odd{
-    -fx-background-color: lightcyan;
-    -fx-text-background-color:black;
+.table-row-cell:selected {
+    -fx-background-color: grey; 
 }
-.table-row-cell :even {
-    -fx-background-color: ivory;
-    -fx-text-background-color:black;
+
+.table-row-cell:hover {
+    -fx-background-color: grey; /* Background color when the mouse is over a row (hover) */
 }
+
+.table-row-cell:selected .table-cell .text {
+    -fx-fill: #ffffff; /* Text color for selected row */
+}
+
 
 .Labels{
 	  -fx-text-fill: #0095ff;
