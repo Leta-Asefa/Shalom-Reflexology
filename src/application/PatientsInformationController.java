@@ -26,6 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Label;
 
 public class PatientsInformationController implements Initializable{
 
@@ -61,6 +62,8 @@ public class PatientsInformationController implements Initializable{
 	ObservableList<String> historyList;
 	@FXML TextArea history;
 	@FXML Button getHistory;
+	@FXML Label creditLabel;
+	@FXML Label totalLabel;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -238,7 +241,12 @@ public class PatientsInformationController implements Initializable{
 				if (table1.getSelectionModel().getSelectedItem().getAssesment()!=null) {
 					
 					assesment.setText(table1.getSelectionModel().getSelectedItem().getAssesment());
-					
+				
+					int phoneNumber=Integer.parseInt(table1.getSelectionModel().getSelectedItem().getPhone());
+					totalLabel.setText(String.valueOf( dao.getTotalPaymentDynamic(phoneNumber)));
+					int credit=dao.getCredit(phoneNumber);
+					creditLabel.setText(String.valueOf(credit ));
+				
 				}
 				
 				if (table1.getSelectionModel().getSelectedItem().getTreatment()!=null) {
@@ -258,8 +266,10 @@ public class PatientsInformationController implements Initializable{
 	
 				}
 				
-			}
 			
+			
+			
+			}
 			
 			
 		});
@@ -745,6 +755,11 @@ try {
 						treatment.setText(p.getTreatment());
 						focusingArea.setText(p.getFocusingArea());
 						history.setText(p.getHistory());
+						
+						int phoneNumber=Integer.parseInt(searchTextField.getText());
+						totalLabel.setText(String.valueOf( dao.getTotalPaymentDynamic(phoneNumber)));
+						int credit=dao.getCredit(phoneNumber);
+						creditLabel.setText(String.valueOf(credit ));
 						}else {
 							assesment.setText("");
 							treatment.setText("");
