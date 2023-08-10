@@ -154,6 +154,26 @@ public class FulfilNewPatientsInfoController implements Initializable {
 	
 	int phone;
 	Patient p;
+
+	@FXML Button week_2_Reset_Button9;
+
+	@FXML Button week_1_Reset_Button;
+
+	@FXML Button week_10_Reset_Button1;
+
+	@FXML Button week_5_Reset_Button2;
+
+	@FXML Button week_9_Reset_Button3;
+
+	@FXML Button week_4_Reset_Button4;
+
+	@FXML Button week_8_Reset_Button5;
+
+	@FXML Button week_7_Reset_Button6;
+
+	@FXML Button week_6_Reset_Button7;
+
+	@FXML Button week_3_Reset_Button8;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -668,6 +688,103 @@ public class FulfilNewPatientsInfoController implements Initializable {
 
 			}
     }
+
+
+
+    @FXML public void resetWeek1() {
+    	
+    	p1.setValue(null);
+    	p2.setValue(null);
+    	p3.setValue(null);
+    }
+
+
+	@FXML public void resetWeek2() {
+		p4.setValue(null);
+    	p5.setValue(null);
+    	p6.setValue(null);
+	}
+
+
+
+
+
+
+	@FXML public void resetWeek3() {
+		p7.setValue(null);
+    	p8.setValue(null);
+    	p9.setValue(null);
+	}
+
+
+	@FXML public void resetWeek4() {
+		p10.setValue(null);
+		p11.setValue(null);
+		p12.setValue(null);
+	}
+
+
+
+	@FXML public void resetWeek5() {
+		p13.setValue(null);
+    	p14.setValue(null);
+    	p15.setValue(null);
+	}
+
+
+	@FXML public void resetWeek6() {
+		p16.setValue(null);
+    	p17.setValue(null);
+    	p18.setValue(null);
+	}
+
+
+
+
+
+
+	@FXML public void resetWeek7() {
+		p19.setValue(null);
+    	p20.setValue(null);
+    	p21.setValue(null);
+	}
+
+
+
+
+
+
+	@FXML public void resetWeek8() {
+		p22.setValue(null);
+    	p23.setValue(null);
+    	p24.setValue(null);
+	}
+
+
+
+
+	@FXML public void resetWeek9() {
+		p25.setValue(null);
+    	p26.setValue(null);
+    	p27.setValue(null);
+	}
+
+
+
+
+
+	@FXML public void resetWeek10() {
+		p28.setValue(null);
+    	p29.setValue(null);
+    	p30.setValue(null);
+	}
+
+
+
+
+
+
+	
 	
 	
 
