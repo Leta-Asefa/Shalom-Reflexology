@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="contentArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" styleClass="anchorPanesClass" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CurrentPatientController">
    <children>
-      <Button layoutX="903.0" layoutY="212.0" mnemonicParsing="false" onAction="#fulfillNewPatientsInfo" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #333333;" styleClass="buttonClass" stylesheets="@../application.css" text="FULFIL OTHER DATAS" textFill="#fbff00">
+      <Button fx:id="fulFillButton" layoutX="903.0" layoutY="212.0" mnemonicParsing="false" onAction="#fulfillNewPatientsInfo" prefHeight="37.0" prefWidth="201.0" style="-fx-background-color: #333333;" styleClass="buttonClass" stylesheets="@../application.css" text="FULFIL OTHER DATAS" textFill="#fbff00">
          <font>
             <Font size="14.0" />
          </font>
