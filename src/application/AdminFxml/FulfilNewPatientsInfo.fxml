@@ -141,5 +141,55 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="week_1_Reset_Button" layoutX="187.0" layoutY="539.0" mnemonicParsing="false" onAction="#resetWeek1" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_10_Reset_Button1" layoutX="1101.0" layoutY="604.0" mnemonicParsing="false" onAction="#resetWeek10" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_5_Reset_Button2" layoutX="1101.0" layoutY="540.0" mnemonicParsing="false" onAction="#resetWeek5" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_9_Reset_Button3" layoutX="876.0" layoutY="604.0" mnemonicParsing="false" onAction="#resetWeek9" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_4_Reset_Button4" layoutX="876.0" layoutY="539.0" mnemonicParsing="false" onAction="#resetWeek4" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_8_Reset_Button5" layoutX="646.0" layoutY="604.0" mnemonicParsing="false" onAction="#resetWeek8" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_7_Reset_Button6" layoutX="418.0" layoutY="604.0" mnemonicParsing="false" onAction="#resetWeek7" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_6_Reset_Button7" layoutX="187.0" layoutY="604.0" mnemonicParsing="false" onAction="#resetWeek6" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_3_Reset_Button8" layoutX="646.0" layoutY="540.0" mnemonicParsing="false" onAction="#resetWeek3" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
+      <Button fx:id="week_2_Reset_Button9" layoutX="418.0" layoutY="540.0" mnemonicParsing="false" onAction="#resetWeek2" prefHeight="18.0" prefWidth="31.0" text="Reset">
+         <font>
+            <Font name="System Bold" size="8.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
