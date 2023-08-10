@@ -89,5 +89,25 @@
          </font>
       </TextArea>
       <Button fx:id="getHistory" disable="true" layoutX="597.0" layoutY="313.0" mnemonicParsing="false" onAction="#addHistory" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
+      <Label layoutX="28.0" layoutY="711.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="257.0" layoutY="711.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="creditLabel" layoutX="341.0" layoutY="711.0" prefHeight="27.0" prefWidth="108.0" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLabel" layoutX="118.0" layoutY="711.0" prefHeight="27.0" prefWidth="108.0" textFill="#1eff00">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
