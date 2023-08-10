@@ -22,6 +22,7 @@ public class Main extends Application {
 			stage.getIcons().add(icon);
 			stage.show();
 			stage.centerOnScreen();
+			stage.setFullScreen(true);
 			
 			
 		} 
