@@ -737,10 +737,30 @@ try {
 			table1.setItems(patientList);
 			table2.setItems(prescriptionList);
 			
+			if(searchTextField.getText().length()==9||searchTextField.getText().length()==10) {
+				
+				Patient p=dao.getPatientByPhone(Integer.parseInt(searchTextField.getText()));
+						if(p!=null) {
+						assesment.setText(p.getAssesment());
+						treatment.setText(p.getTreatment());
+						focusingArea.setText(p.getFocusingArea());
+						history.setText(p.getHistory());
+						}else {
+							assesment.setText("");
+							treatment.setText("");
+							focusingArea.setText("");
+							history.setText("");
+							new CallAlert(AlertType.INFORMATION,"","No Patient with this phone number ","");
+						}
+		
+			}
+			else {
+			
 			assesment.setText("");
 			treatment.setText("");
 			focusingArea.setText("");
 			history.setText("");
+			}
 
 		}
 		
@@ -750,6 +770,7 @@ try {
 			prescriptionList=dao.getAllPrescriptions();
 			table1.setItems(patientList);
 			table2.setItems(prescriptionList);
+			
 			
 			
 		}
