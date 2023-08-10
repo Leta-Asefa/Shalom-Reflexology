@@ -17,7 +17,7 @@
           <TableColumn fx:id="withdrawal" prefWidth="134.0" text="Withdrawal" />
             <TableColumn fx:id="mb" prefWidth="144.0" text="Mobile Banking" />
             <TableColumn fx:id="bank" prefWidth="144.0" text=" For Bank" />
-            <TableColumn fx:id="net" prefWidth="73.0" text="Net" />
+            <TableColumn fx:id="net" prefWidth="73.0" text="Checked ?" />
             <TableColumn fx:id="referenceNumber" prefWidth="296.0" text="Reference Number" />
             <TableColumn fx:id="date" prefWidth="112.0" text="Date" />
         </columns>
