@@ -59,8 +59,8 @@ public class BankAnalysis {
 		return net.get();
 	}
 
-	public void setNet(SimpleStringProperty net) {
-		this.net = net;
+	public void setNet(String string) {
+		this.net = new SimpleStringProperty( string);
 	}
 
 	public String getReferenceNumber() {
