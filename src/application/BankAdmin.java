@@ -1,5 +1,6 @@
 package application;
 
+
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -7,13 +8,16 @@ import java.util.ResourceBundle;
 import ClassDesignForDB.BankAnalysis;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 public class BankAdmin implements Initializable{
 
@@ -79,8 +83,41 @@ public class BankAdmin implements Initializable{
 		referenceNumber.setCellValueFactory(new PropertyValueFactory<BankAnalysis, String>("referenceNumber"));
 		date.setCellValueFactory(new PropertyValueFactory<BankAnalysis, String>("date"));
 
+		net.setCellFactory(TextFieldTableCell.forTableColumn());
+		net.setOnEditCommit(new EventHandler<CellEditEvent<BankAnalysis,String>>(){
+
+			@Override
+			public void handle(CellEditEvent<BankAnalysis, String> event) {
+			
+				if(	table.getSelectionModel().getSelectedItem()!=null) {
+					
+					if(event.getNewValue().equals("c") ||event.getNewValue().equals("C") ) {
+						
+						String date=table.getSelectionModel().getSelectedItem().getDate();
+						char status=event.getNewValue().charAt(0);
+						dao.checkBankEntry(status, date);
+						refreshTable();
+						
+					}else if(event.getNewValue().equals("")) {
+						String date=table.getSelectionModel().getSelectedItem().getDate();
+						char status=' ';
+						dao.checkBankEntry(status, date);
+						refreshTable();
+						
+					}else {
+						event.getRowValue().setNet(event.getOldValue());
+						
+					}
+					
+					}
+			
+			}
+			
+		});
 		
+		table.setEditable(true);
 		table.setItems(list);
+		
 		
 		datePicker1.setEditable(false);
 		datePicker2.setEditable(false);
@@ -97,6 +134,11 @@ public class BankAdmin implements Initializable{
 
 	
 	
+	void refreshTable()
+	{
+		list=dao.getBankAnalysis();
+		table.setItems(list);
+	}
 	@FXML
 	void intervalSearch(ActionEvent event) {
 		
