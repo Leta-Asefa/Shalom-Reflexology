@@ -24,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Button;
 
 public class CurrentPatientController implements Initializable {
 	@FXML
@@ -62,6 +63,7 @@ public class CurrentPatientController implements Initializable {
 	@FXML private Label creditLabel;
 	@FXML private Label totalLabel;
 	@FXML private Label treatmentLabel;
+	@FXML Button fulFillButton;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -265,6 +267,12 @@ public class CurrentPatientController implements Initializable {
 	int credit=dao.getCredit(phoneNumber);
 	
 	creditLabel.setText(String.valueOf(credit ));
+	
+	if(assesmentTextField.getText().equals("")) {
+		
+	}else {
+		fulFillButton.setDisable(true);
+	}
 	
 	}
 	
