@@ -32,10 +32,10 @@ import javafx.util.converter.LocalDateStringConverter;
 public class ShalomDAO {
 	
 	String url = "jdbc:mysql://localhost:3306/shalom";
-	// String url="jdbc:mysql://192.168.1.1:3306/shalom";
+	//String url="jdbc:mysql://192.168.1.1:3306/shalom";
 	
 	String userName = "root";
-	// String userName="Reception";
+	//String userName="Reception";
 	
 	String password="0991175590";
 	
@@ -240,7 +240,7 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 	}
 	
 
-	public void insertIntoBankAnalysis(int total,int withdrawal,int bank,int net,int mb, String referenceNumber,String date) {
+	public void insertIntoBankAnalysis(int total,int withdrawal,int bank,String net,int mb, String referenceNumber,String date) {
 		
 		try {
 			statement=myConn.prepareStatement("insert into bankentryanalysis values (null,?,?,?,?,?,?,?) ");
@@ -248,7 +248,7 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 			statement.setInt(2,withdrawal);
 			statement.setInt(3,mb);
 			statement.setInt(4,bank);
-			statement.setInt(5,net);
+			statement.setString(5,net);
 			statement.setString(6, referenceNumber);
 			statement.setString(7, date);
 			
