@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 
 public class BankReception implements Initializable{
 
@@ -21,6 +23,7 @@ public class BankReception implements Initializable{
 	@FXML Button enterButton;
 	private ShalomDAO dao;
 	private ObservableList<String> bankList;
+	@FXML DatePicker datePicker;
 	
 
 	@Override
@@ -70,17 +73,19 @@ public class BankReception implements Initializable{
 		
 		try {
 		
-		if(!referenceTextField.getText().equals("") && bankComboBox.getValue()!=null) {
+		if(!referenceTextField.getText().equals("") && bankComboBox.getValue()!=null && datePicker.getValue()!=null ) {
 			
-			String date=LocalDate.now().toString();
+			
+			
+			String date=datePicker.getValue().format( DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			
 			int total=dao.getDailyTotalIncome(date);
 			int mb=dao.getDailyTotalMB(date);
 			int withdrawal=dao.getDailyWithdrawal(date);
 			int bank=dao.getDailyTotalCash(date)-dao.getDailyWithdrawal(date);
-			int net=total - (bank+withdrawal+mb);
+			//int net=total - (bank+withdrawal+mb);
 			
-			dao.insertIntoBankAnalysis(total, withdrawal,bank ,net,mb ,referenceTextField.getText() +" - "+bankComboBox.getValue() , date);
+			dao.insertIntoBankAnalysis(total, withdrawal,bank ,"",mb ,referenceTextField.getText() +" - "+bankComboBox.getValue() , date);
 			
 			
 			enterButton.setDisable(true);
