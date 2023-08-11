@@ -31,11 +31,11 @@ import javafx.util.converter.LocalDateStringConverter;
 
 public class ShalomDAO {
 	
-	String url = "jdbc:mysql://localhost:3306/shalom";
-	//String url="jdbc:mysql://192.168.1.1:3306/shalom";
+	//String url = "jdbc:mysql://localhost:3306/shalom";
+	String url="jdbc:mysql://192.168.1.1:3306/shalom";
 	
-	String userName = "root";
-	//String userName="Reception";
+	//String userName = "root";
+	String userName="Reception";
 	
 	String password="0991175590";
 	
