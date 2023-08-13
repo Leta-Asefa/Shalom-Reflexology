@@ -268,11 +268,7 @@ public class CurrentPatientController implements Initializable {
 	
 	creditLabel.setText(String.valueOf(credit ));
 	
-	if(assesmentTextField.getText().equals("")) {
-		
-	}else {
-		fulFillButton.setDisable(true);
-	}
+	
 	
 	}
 	
@@ -293,15 +289,29 @@ public class CurrentPatientController implements Initializable {
 
 
 	@FXML public void refresh() {
-		try {
-		this.initialize(null, null);
-		}
-		catch (Exception ex) {
-
-			new CallAlert(AlertType.WARNING,"CurrentPatientController","refreshMethod",ex.getClass().getName());
-
-
+		phoneNumber=	dao.searchCurrentPatient();
+		p= dao.getPatientByPhone(phoneNumber);
+		if(p!=null)
+			show();
+		else
+		{
+			try {
+				Parent root=FXMLLoader.load(getClass().getResource("/application/AdminFxml/CurrentPatient.fxml"));
+				contentArea.getChildren().removeAll();
+				contentArea.getChildren().setAll(root);
+	    	
+	    	} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+			
+	catch (Exception ex) {
+
+	new CallAlert(AlertType.WARNING,"AdminController","currentPatienMethod",ex.getClass().getName());
+
+
+	}
+		}
 	}
 
 
