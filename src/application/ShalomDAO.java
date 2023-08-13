@@ -536,7 +536,23 @@ statement=myConn.prepareStatement("insert into patient values (?,?,?,?,?,?,?,?)"
 		
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
+			
+			
+			try {
+				// if you try to inactivate/delete the acount that already had been inactivated
+				statement=myConn.prepareStatement("delete from patient where phone =? ");
+				statement.setInt(1,phone);
+				statement.execute();
+			
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+			
+			
+			
 			e.printStackTrace();
 		}
 		
@@ -3100,7 +3116,54 @@ return p;
 
     }
 
+    public ObservableList<FullPrescriptions> getAllFullPrescriptionsAnyDay(){
+    	
+    	   
+        ObservableList<FullPrescriptions> list= FXCollections.observableArrayList();
+    	try {
+    		statement=myConn.prepareStatement("SELECT phone,FULLname,firstp,secondp, third, fourth, fifth ,sixth,seventh,eighth,ninth,tenth,eleventh,twelvth,thirteenth,fourteenth,fifteenth from "
+    				+ " (SELECT phone,FULLname,firstp,secondp, third, fourth, fifth ,sixth,seventh,eighth,ninth,tenth,eleventh,twelvth,thirteenth,fourteenth,fifteenth FROM  prescriptions INNER JOIN PATIENT WHERE prescriptions.PHONEFK=PATIENT.PHONE )sub");
+    		
+    		resultSet=statement.executeQuery();
+    		while(resultSet.next()) {
+    			list.add( new FullPrescriptions(
+    					String.valueOf(	resultSet.getInt("phone")),
+    					resultSet.getString("FULLname"),
+    					resultSet.getString("firstp"),
+    					resultSet.getString("secondp"),
+    					resultSet.getString("third"),
+    					resultSet.getString("fourth"),
+    					resultSet.getString("fifth"),
+    					resultSet.getString("sixth"),
+    					resultSet.getString("seventh"),
+    					resultSet.getString("eighth"),
+    					resultSet.getString("ninth"),
+    					resultSet.getString("tenth"),
+    					resultSet.getString("eleventh"),
+    					resultSet.getString("twelvth"),
+    					resultSet.getString("thirteenth"),
+    					resultSet.getString("fourteenth"),
+    					resultSet.getString("fifteenth")
+    					
+    					));
+    			
+    			
+    			
+    		}
+    	
+    	
+    	} catch (SQLException e) {
+    		
+    		e.printStackTrace();
+    	}
+    	
+    	
+    	return list;
 
+    }
+
+
+    
     public ObservableList<FullAttendance> getAllFullAttendance(){
     	
     	
@@ -3156,6 +3219,53 @@ return p;
         
     	
     	
+    	return attendanceList;
+
+    }
+    
+
+    public ObservableList<FullAttendance> getAllFullAttendanceForAnyDay(){
+    	
+    	
+        ObservableList<FullAttendance> attendanceList= FXCollections.observableArrayList();
+       
+        try {
+        	statement=myConn.prepareStatement("SELECT phone,FULLname,firsta,seconda, third, fourth, fifth ,sixth,seventh,eighth,ninth,tenth,eleventh,twelvth,thirteenth,fourteenth,fifteenth from (SELECT phone,FULLname,firsta,seconda, third, fourth, fifth ,sixth,seventh,eighth,ninth,tenth,eleventh,twelvth,thirteenth,fourteenth,fifteenth FROM  attendance INNER JOIN PATIENT WHERE attendance.PHONEFK=PATIENT.PHONE )sub");
+    		
+        		resultSet=statement.executeQuery();
+        		while(resultSet.next()) {
+        			attendanceList.add( new FullAttendance(
+        					resultSet.getInt("phone"),
+        					resultSet.getString("FULLname"),
+        					resultSet.getString("firsta"),
+        					resultSet.getString("seconda"),
+        					resultSet.getString("third"),
+        					resultSet.getString("fourth"),
+        					resultSet.getString("fifth"),
+        					resultSet.getString("sixth"),
+        					resultSet.getString("seventh"),
+        					resultSet.getString("eighth"),
+        					resultSet.getString("ninth"),
+        					resultSet.getString("tenth"),
+        					resultSet.getString("eleventh"),
+        					resultSet.getString("twelvth"),
+        					resultSet.getString("thirteenth"),
+        					resultSet.getString("fourteenth"),
+        					resultSet.getString("fifteenth")
+        					
+        					));
+        			
+        			
+        			
+        		}
+        		
+        		
+        	} catch (SQLException e) {
+        		
+        		e.printStackTrace();
+        	}
+      
+        
     	return attendanceList;
 
     }
