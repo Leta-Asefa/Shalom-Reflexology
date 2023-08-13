@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.control.DatePicker;
 
 public class ReflexologyController implements Initializable{
 	
@@ -49,6 +50,7 @@ private RadioButton isPatientButton;
 	@FXML private TextField referenceTextField;
 	@FXML private Label referenceLabel;
 	@FXML private ComboBox<String> bankComboBox;
+	@FXML DatePicker datePicker;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -63,6 +65,7 @@ private RadioButton isPatientButton;
 		typeList=dao.getReflexologyItems();
 		bankList=dao.getBanksName();
 	
+		
 		
 		massagerComboBox.setItems(massagerList);
 		typeComboBox.setItems(typeList);
@@ -145,9 +148,11 @@ private RadioButton isPatientButton;
 			if(  !(priceTextField.getText().equals("")) && !( massagerComboBox.getValue()==null) && !( typeComboBox.getValue()==null) )
 			{
 				int price=Integer.parseInt(priceTextField.getText());
-				LocalDate date= LocalDate.now();
-				String currentDate=date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
-				
+				String currentDate="";
+				if(datePicker.getValue()==null)
+				 currentDate=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+				else
+				 currentDate=datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 				
 					if(isPatientButton.isSelected()) {
 					
