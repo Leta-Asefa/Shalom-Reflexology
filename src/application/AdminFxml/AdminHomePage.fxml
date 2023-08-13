@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,7 +16,7 @@
    <children>
       <Pane layoutX="-1.0" layoutY="-7.0" prefHeight="757.0" prefWidth="256.0" style="-fx-background-color: #000000;">
          <children>
-            <VBox layoutY="132.0" prefHeight="375.0" prefWidth="254.0" style="-fx-background-color: #666466;">
+            <VBox layoutY="200.0" prefHeight="362.0" prefWidth="254.0" style="-fx-background-color: #666466;">
                <children>
                   <Separator opacity="0.04" prefHeight="0.0" prefWidth="275.0" />
                   <Button mnemonicParsing="false" onAction="#currentPatient" prefHeight="50.0" prefWidth="250.0" styleClass="buttonClass" stylesheets="@../application.css" text="CURRENT PATIENT" textFill="#fbff00">
@@ -63,7 +65,7 @@
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font></Button>
-            <Button fx:id="howManyCustomersToday" layoutX="20.0" layoutY="562.0" mnemonicParsing="false" onAction="#howManyCustomersAreToday" prefHeight="31.0" prefWidth="222.0" styleClass="howMany" stylesheets="@../application.css" text="HOW MANY CUSTOMERS TODAY ?" textFill="#fbff00">
+            <Button fx:id="howManyCustomersToday" layoutX="16.0" layoutY="622.0" mnemonicParsing="false" onAction="#howManyCustomersAreToday" prefHeight="31.0" prefWidth="222.0" styleClass="howMany" stylesheets="@../application.css" text="HOW MANY CUSTOMERS TODAY ?" textFill="#fbff00">
                <font>
                   <Font name="System Bold Italic" size="7.0" />
                </font>
@@ -74,6 +76,11 @@
                      </color>
                   </DropShadow>
                </effect></Button>
+            <ImageView fitHeight="137.0" fitWidth="194.0" layoutX="46.0" layoutY="32.0" opacity="0.81" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logo.PNG" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <AnchorPane fx:id="contentArea" layoutX="252.0" prefHeight="750.0" prefWidth="1149.0" styleClass="anchorPane" stylesheets="@../application.css">
