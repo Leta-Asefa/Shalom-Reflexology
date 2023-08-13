@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.CheckBox;
 
 public class EnterPatientsController implements Initializable {
 
@@ -41,6 +42,7 @@ public class EnterPatientsController implements Initializable {
 	private ObservableList<FullAttendance> attendanceList;
 	@FXML Button shiftButton;
 	@FXML Spinner<Integer> spinner;
+	@FXML CheckBox getCheckBox;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -61,6 +63,9 @@ public class EnterPatientsController implements Initializable {
 		
 		SpinnerValueFactory<Integer> factory=new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 14);
 		spinner.setValueFactory(factory);
+		
+		
+		
 		
 		}
 		catch (Exception ex) {
@@ -147,6 +152,13 @@ try {
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "firsta");
 			
+				}else {
+					event.getRowValue().setFirsta(event.getNewValue());//this line is the short notation of
+					//the above commented lines
+
+				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+				' ', "firsta");
+							
 				}
 			
 			
@@ -167,6 +179,12 @@ try {
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "seconda");
 			
+				}else {
+					event.getRowValue().setSeconda(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "seconda");
+				
 				}
 				
 				
@@ -188,6 +206,15 @@ try {
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "third");
 				}
+				else {
+					event.getRowValue().setThird(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "third");
+					
+				}
+				
+				
 				}
 			
 		});
@@ -206,6 +233,12 @@ try {
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "fourth");
 			
+				}else {
+					event.getRowValue().setFourth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "fourth");
+				
 				}
 				}
 			
@@ -226,6 +259,13 @@ try {
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "fifth");
 				}
+				else {
+					event.getRowValue().setFifth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "fifth");
+					
+				}
 				}
 			
 		});
@@ -242,7 +282,15 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "sixth");
-				}}
+				}
+				else{
+					event.getRowValue().setSixth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "sixth");
+					
+				}
+				}
 			
 		});
 		
@@ -257,7 +305,15 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "seventh");
-				}}
+				}else{
+					event.getRowValue().setSeventh(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "seventh");
+					
+				
+				}
+				}
 			
 		});
 		
@@ -273,7 +329,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "eighth");
-				}	}
+				}else {
+					event.getRowValue().setEighth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "eighth");
+					
+				}
+				}
 			
 		});
 		
@@ -289,7 +352,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "ninth");
-				}}
+				}else{
+					event.getRowValue().setNinth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "ninth");
+					
+				}
+				}
 			
 		});
 		
@@ -305,7 +375,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "tenth");
-				}}
+				}else {
+					event.getRowValue().setTenth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "tenth");
+					
+				}
+				}
 			
 		});
 		
@@ -321,7 +398,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "eleventh");
-				}	}
+				}else {
+					event.getRowValue().setEleventh(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "eleventh");
+					
+				}
+				}
 			
 		});
 		
@@ -336,7 +420,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "twelvth");
-				}	}
+				}else {
+					event.getRowValue().setTwelvth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "twelvth");
+					
+				}
+				}
 			
 		});
 		
@@ -352,7 +443,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "thirteenth");
-				}	}
+				}else {
+					event.getRowValue().setThirteenth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "thirteenth");
+					
+				}
+				}
 			
 		});
 		
@@ -367,7 +465,14 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "fourteenth");
-				}}
+				}else{
+					event.getRowValue().setFourteenth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "fourteenth");
+						
+				}
+				}
 			
 		});
 		
@@ -382,7 +487,15 @@ try {
 				
 				dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
 						event.getNewValue().charAt(0), "fifteenth");
-				}}
+				}else{
+					event.getRowValue().setFifteenth(event.getNewValue());
+					
+					dao.takeNormalAttendance(Integer.parseInt(event.getRowValue().getPhonefk()), 
+							' ', "fifteenth");
+					
+				
+				}
+				}
 			
 		});
 		
@@ -440,6 +553,30 @@ catch (Exception ex) {
 		attendanceTable.setItems(attendanceList);
 		
 		}
+		
+	}
+
+
+	@FXML public void get() {
+		
+		if(getCheckBox.isSelected()) {
+			
+			prescriptionList=dao.getAllFullPrescriptionsAnyDay();
+			attendanceList=dao.getAllFullAttendanceForAnyDay();
+			
+			prescriptionTable.setItems(prescriptionList);
+			attendanceTable.setItems(attendanceList);
+			
+		}else {
+			
+			prescriptionList=dao.getAllFullPrescriptions();
+			attendanceList=dao.getAllFullAttendance();
+			
+			prescriptionTable.setItems(prescriptionList);
+			attendanceTable.setItems(attendanceList);
+			
+		}
+		
 		
 	}
 	
