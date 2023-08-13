@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -64,6 +65,7 @@ public class PatientsInformationController implements Initializable{
 	@FXML Button getHistory;
 	@FXML Label creditLabel;
 	@FXML Label totalLabel;
+	@FXML Button deleteButton;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -77,6 +79,7 @@ public class PatientsInformationController implements Initializable{
 		
 		
 		listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		allList=dao.getAllListItemsForFullfilDatas();
 		listView.setItems(allList);
 		
 		table1.setItems(patientList);
@@ -232,37 +235,46 @@ public class PatientsInformationController implements Initializable{
 		fourteenth.setCellValueFactory(new PropertyValueFactory<Prescriptions,String>("fourteenth"));
 		fifteenth.setCellValueFactory(new PropertyValueFactory<Prescriptions,String>("fifteenth"));
 		
-		
+		table1.setEditable(true);
 		table1.setOnMouseClicked(new EventHandler<MouseEvent >  (){
 
 			@Override
 			public void handle(MouseEvent event) {
+				Patient p=table1.getSelectionModel().getSelectedItem();
 				
-				if (table1.getSelectionModel().getSelectedItem().getAssesment()!=null) {
-					
-					assesment.setText(table1.getSelectionModel().getSelectedItem().getAssesment());
-				
-					int phoneNumber=Integer.parseInt(table1.getSelectionModel().getSelectedItem().getPhone());
+				if(p!=null) {
+					int phoneNumber=Integer.parseInt(p.getPhone());
 					totalLabel.setText(String.valueOf( dao.getTotalPaymentDynamic(phoneNumber)));
 					int credit=dao.getCredit(phoneNumber);
 					creditLabel.setText(String.valueOf(credit ));
+					
+					prescriptionList=dao.searchPrescriptionsByPhone(phoneNumber);
+					table2.setItems(prescriptionList);
+					
+					
+				}
+				
+				
+				if (p.getAssesment()!=null) {
+					
+					assesment.setText(p.getAssesment());
 				
 				}
 				
-				if (table1.getSelectionModel().getSelectedItem().getTreatment()!=null) {
+				if (p.getTreatment()!=null) {
 					
-					treatment.setText(table1.getSelectionModel().getSelectedItem().getTreatment());
+					treatment.setText(p.getTreatment());
 					
 				}
 
-				if (table1.getSelectionModel().getSelectedItem().getFocusingArea()!=null) {
+				if (p.getFocusingArea()!=null) {
 	
-					focusingArea.setText(table1.getSelectionModel().getSelectedItem().getFocusingArea());
+					focusingArea.setText(p.getFocusingArea());
 	
 				}
-				if (table1.getSelectionModel().getSelectedItem().getHistory()!=null) {
+				if (p.getHistory()!=null) {
 					
-					history.setText(table1.getSelectionModel().getSelectedItem().getHistory());
+					history.setText(p.getHistory());
 	
 				}
 				
@@ -273,6 +285,8 @@ public class PatientsInformationController implements Initializable{
 			
 			
 		});
+		
+		phone.setCellFactory(TextFieldTableCell.forTableColumn());
 		
 		first.setCellFactory(TextFieldTableCell.forTableColumn());
 		first.setOnEditCommit(new EventHandler<CellEditEvent<Prescriptions,String>> (){
@@ -678,24 +692,6 @@ public class PatientsInformationController implements Initializable{
 		
 		try {
 		
-		assesmentList=dao.getAssesmentItems();
-		treatmentList=dao.getTreatmentItems();
-		focusingAreaList=dao.getFocusingAreaItems();
-		historyList = dao.getHistoryItems();
-		allList=FXCollections.observableArrayList();
-		for(String t:treatmentList) {
-			allList.add(t);
-		}
-		for(String t:assesmentList) {
-			allList.add(t);
-		}
-		for(String t:focusingAreaList) {
-			allList.add(t);
-		}
-		
-		
-		
-		
 		patientList=dao.getAllPatients();
 		prescriptionList=dao.getAllPrescriptions();
 		
@@ -816,6 +812,8 @@ catch (Exception ex) {
 
 		listView.setDisable(false);
 		saveButton.setDisable(false);
+		
+		deleteButton.setVisible(true);
 		
 		table2.setEditable(true);
 		
@@ -1027,8 +1025,33 @@ catch (Exception ex) {
 	}
 	
 	
-	
-	
+	@FXML
+	public void delete() {
+		Patient p=table1.getSelectionModel().getSelectedItem();
+		
+		if(p!=null) {
+		
+			Alert alert= new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Confirmation Box" );
+			alert.setContentText("Are you sure to inactivate  "+p.getFullName()+"'s  account ?");
+			
+			
+			if(alert.showAndWait().get()==ButtonType.OK) {
+			
+				int phone=Integer.parseInt( (p.getPhone()));
+				dao.deletePrescriptionAndAttendance(phone);
+				dao.addInactivePatient(phone, p.getFullName(), Integer.parseInt(p.getAge()), p.getSex().charAt(0),
+						p.getAssesment(), p.getTreatment(), p.getFocusingArea(), p.getHistory());
+				
+		
+			Alert alert1=new  Alert(AlertType.INFORMATION);
+			alert1.setContentText("Inactivated Successfully");
+			alert1.show();
+			refresh();
+			}
+	}
+		
+	}
 	
 	
 	
