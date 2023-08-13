@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReceptionController">
    <children>
@@ -59,6 +61,16 @@
          </children>
       </Pane>
       <Separator layoutX="256.0" orientation="VERTICAL" prefHeight="665.0" prefWidth="0.0" />
-      <AnchorPane fx:id="contentArea" layoutX="215.0" prefHeight="750.0" prefWidth="1146.0" />
+      <AnchorPane fx:id="contentArea" layoutX="215.0" prefHeight="750.0" prefWidth="1146.0">
+         <children>
+            <Label layoutX="173.0" layoutY="72.0" prefHeight="92.0" prefWidth="778.0" styleClass="Labels" stylesheets="@../application.css" text="WELCOME TO SHALOM" textFill="#009955">
+               <font>
+                  <Font name="Cambria Bold Italic" size="74.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" spread="1.0" width="10.0" />
+               </effect>
+            </Label>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
