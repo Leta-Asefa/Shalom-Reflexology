@@ -13,38 +13,38 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PatientsInformationController">
    <children>
-      <TableView fx:id="table1" layoutX="40.0" layoutY="81.0" prefHeight="81.0" prefWidth="1073.0" style="-fx-background-color: #e3e3e3;">
+      <TableView fx:id="table1" layoutX="40.0" layoutY="46.0" prefHeight="176.0" prefWidth="793.0" style="-fx-background-color: #e3e3e3;">
         <columns>
-          <TableColumn fx:id="phone" prefWidth="182.0" text="PHONE" />
-          <TableColumn fx:id="name" prefWidth="273.0" text="NAME" />
-            <TableColumn fx:id="age" prefWidth="287.0" text="AGE" />
-            <TableColumn fx:id="sex" minWidth="0.0" prefWidth="324.0" text="SEX" />
+          <TableColumn fx:id="phone" prefWidth="162.0" text="PHONE" />
+          <TableColumn fx:id="name" prefWidth="386.0" text="NAME" />
+            <TableColumn fx:id="age" minWidth="0.0" prefWidth="109.0" text="AGE" />
+            <TableColumn fx:id="sex" minWidth="0.0" prefWidth="134.0" text="SEX" />
         </columns>
       </TableView>
-      <TableView fx:id="table2" layoutX="40.0" layoutY="180.0" prefHeight="96.0" prefWidth="1073.0" style="-fx-background-color: #e3e3e3;">
+      <TableView fx:id="table2" layoutX="40.0" layoutY="228.0" prefHeight="62.0" prefWidth="1073.0" style="-fx-background-color: #e3e3e3;">
         <columns>
-          <TableColumn fx:id="first" prefWidth="70.3" text="1st" />
-          <TableColumn fx:id="second" prefWidth="70.3" text="2nd" />
-            <TableColumn fx:id="third" prefWidth="70.3" text="3rd" />
-            <TableColumn fx:id="fourth" prefWidth="70.3" text="4th" />
-            <TableColumn fx:id="fifth" prefWidth="70.3" text="5th" />
-            <TableColumn fx:id="sixth" prefWidth="70.3" text="6th" />
-            <TableColumn fx:id="seventh" prefWidth="70.3" text="7th" />
-            <TableColumn fx:id="eighth" prefWidth="70.3" text="8th" />
-            <TableColumn fx:id="ninth" prefWidth="70.3" text="9th" />
-            <TableColumn fx:id="tenth" prefWidth="70.3" text="10th" />
-            <TableColumn fx:id="eleventh" prefWidth="70.3" text="11th" />
-            <TableColumn fx:id="twelvth" prefWidth="70.3" text="12th" />
-            <TableColumn fx:id="thirteenth" prefWidth="70.3" text="13th" />
-            <TableColumn fx:id="fourteenth" prefWidth="70.3" text="14th" />
-            <TableColumn fx:id="fifteenth" prefWidth="70.3" text="15th" />
+          <TableColumn fx:id="first" prefWidth="120.0" text="1st" />
+          <TableColumn fx:id="second" prefWidth="120.0" text="2nd" />
+            <TableColumn fx:id="third" prefWidth="120.0" text="3rd" />
+            <TableColumn fx:id="fourth" prefWidth="120.0" text="4th" />
+            <TableColumn fx:id="fifth" prefWidth="120.0" text="5th" />
+            <TableColumn fx:id="sixth" prefWidth="120.0" text="6th" />
+            <TableColumn fx:id="seventh" prefWidth="120.0" text="7th" />
+            <TableColumn fx:id="eighth" prefWidth="120.0" text="8th" />
+            <TableColumn fx:id="ninth" prefWidth="120.0" text="9th" />
+            <TableColumn fx:id="tenth" prefWidth="120.0" text="10th" />
+            <TableColumn fx:id="eleventh" prefWidth="120.0" text="11th" />
+            <TableColumn fx:id="twelvth" prefWidth="120.0" text="12th" />
+            <TableColumn fx:id="thirteenth" prefWidth="120.0" text="13th" />
+            <TableColumn fx:id="fourteenth" prefWidth="120.0" text="14th" />
+            <TableColumn fx:id="fifteenth" prefWidth="120.0" text="15th" />
         </columns>
       </TableView>
-      <TextField fx:id="searchTextField" layoutX="143.0" layoutY="20.0" prefHeight="25.0" prefWidth="228.0" promptText="Phone Number Only">
+      <TextField fx:id="searchTextField" layoutX="143.0" layoutY="11.0" prefHeight="25.0" prefWidth="228.0" promptText="Phone Number Only">
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <Button layoutX="383.0" layoutY="20.0" mnemonicParsing="false" onAction="#search" prefHeight="31.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="search" />
+      <Button layoutX="385.0" layoutY="5.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="search" />
       <Label layoutX="81.0" layoutY="392.0" prefHeight="25.0" prefWidth="90.0" text="ASSESMENT" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
@@ -72,42 +72,47 @@
          <font>
             <Font size="20.0" />
          </font></TextArea>
-      <Button layoutX="501.0" layoutY="20.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="EDIT" />
+      <Button layoutX="502.0" layoutY="5.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="EDIT" />
       <Button fx:id="saveButton" disable="true" layoutX="516.0" layoutY="692.0" mnemonicParsing="false" onAction="#save" prefHeight="37.0" prefWidth="151.0" styleClass="buttonClass" stylesheets="@../application.css" text="SAVE" textFill="#ffee00" />
       <Button fx:id="getAssesment" disable="true" layoutX="597.0" layoutY="414.0" mnemonicParsing="false" onAction="#addAssesment" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
       <Button fx:id="getFocusingArea" disable="true" layoutX="597.0" layoutY="618.0" mnemonicParsing="false" onAction="#addFocusingArea" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
       <Button fx:id="getTreatment" disable="true" layoutX="597.0" layoutY="516.0" mnemonicParsing="false" onAction="#addTreatment" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
-      <ListView fx:id="listView" disable="true" layoutX="760.0" layoutY="292.0" prefHeight="435.0" prefWidth="344.0" />
+      <ListView fx:id="listView" disable="true" layoutX="760.0" layoutY="296.0" prefHeight="431.0" prefWidth="344.0" />
       <Label layoutX="96.0" layoutY="312.0" prefHeight="25.0" prefWidth="61.0" text="HISTORY" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <TextArea fx:id="history" disable="true" layoutX="229.0" layoutY="286.0" prefHeight="90.0" prefWidth="344.0" wrapText="true">
+      <TextArea fx:id="history" disable="true" layoutX="229.0" layoutY="296.0" prefHeight="80.0" prefWidth="344.0" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </TextArea>
       <Button fx:id="getHistory" disable="true" layoutX="597.0" layoutY="313.0" mnemonicParsing="false" onAction="#addHistory" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
-      <Label layoutX="28.0" layoutY="711.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
+      <Label layoutX="895.0" layoutY="62.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="257.0" layoutY="711.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
+      <Label layoutX="895.0" layoutY="107.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="creditLabel" layoutX="341.0" layoutY="711.0" prefHeight="27.0" prefWidth="108.0" textFill="RED">
+      <Label fx:id="creditLabel" layoutX="996.0" layoutY="107.0" prefHeight="27.0" prefWidth="108.0" textFill="RED">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="totalLabel" layoutX="118.0" layoutY="711.0" prefHeight="27.0" prefWidth="108.0" textFill="#1eff00">
+      <Label fx:id="totalLabel" layoutX="996.0" layoutY="62.0" prefHeight="27.0" prefWidth="108.0" textFill="#1eff00">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="deleteButton" layoutX="612.0" layoutY="7.0" mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" visible="false">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
