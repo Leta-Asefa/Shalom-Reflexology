@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -81,5 +82,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </RadioButton>
+      <DatePicker fx:id="datePicker" layoutX="551.0" layoutY="524.0" />
+      <Label alignment="CENTER" layoutX="451.0" layoutY="515.0" prefHeight="44.0" prefWidth="72.0" styleClass="Labels" stylesheets="@../application.css" text="DATE" textFill="#eeff00">
+         <font>
+            <Font name="Cambria Bold Italic" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
