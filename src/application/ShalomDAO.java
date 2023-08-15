@@ -27,9 +27,15 @@ import javafx.scene.control.Alert.AlertType;
 
 public class ShalomDAO {
 	
-	String url="jdbc:mysql://localhost:3306/shalom";
-	String userName="root";
+	String url = "jdbc:mysql://localhost:3306/shalom";
+	// String url="jdbc:mysql://192.168.1.1:3306/shalom";
+	
+	String userName = "root";
+	// String userName="Reception";
+	
 	String password="0991175590";
+	
+	
 	Connection myConn;
 	PreparedStatement statement;
 	ResultSet resultSet;
@@ -64,6 +70,7 @@ public class ShalomDAO {
 		
 		catch (SQLException e) {
 			
+		e.printStackTrace();
 			System.out.println("Check : ShalomDAO constructor");
 			System.out.println("     1. the database URL ");
 			System.out.println("     2. the database userName ");

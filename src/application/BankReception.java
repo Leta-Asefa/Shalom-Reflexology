@@ -31,6 +31,7 @@ public class BankReception implements Initializable{
 		dao= new ShalomDAO();
 		bankList=dao.getBanksName();
 		bankComboBox.setItems(bankList);
+		bankComboBox.setEditable(true);
 		
 		
 		referenceTextField.textProperty().addListener( new ChangeListener<String>() {

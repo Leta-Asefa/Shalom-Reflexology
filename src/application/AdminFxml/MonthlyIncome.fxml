@@ -95,7 +95,7 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="141.0" layoutY="153.0" onMouseClicked="#clicked" prefHeight="26.0" prefWidth="229.0" text="FROM WAKING CUSTOMERS" textFill="#0035ff">
+      <Label id="dailyLabel" layoutX="141.0" layoutY="153.0" onMouseClicked="#clicked" prefHeight="26.0" prefWidth="229.0" styleClass="dailyMonthlyLabel" stylesheets="@../application.css" text="FROM WAKING CUSTOMERS" textFill="#0035ff">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>

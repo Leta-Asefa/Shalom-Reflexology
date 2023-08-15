@@ -197,7 +197,7 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="anchorPane" stylesheets="@../application.css">
                <children>
-                  <Label layoutX="181.0" layoutY="202.0" prefHeight="25.0" prefWidth="78.0" text="Job">
+                  <Label layoutX="181.0" layoutY="202.0" prefHeight="25.0" prefWidth="78.0" text="Bank">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

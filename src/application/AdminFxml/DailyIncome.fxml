@@ -92,7 +92,7 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="fromRxLabel" layoutX="164.0" layoutY="138.0" onMouseClicked="#clicked" prefHeight="26.0" prefWidth="232.0" text="FROM WAKING CUSTOMERS" textFill="#003dff">
+      <Label id="dailyLabel" fx:id="fromRxLabel" layoutX="164.0" layoutY="138.0" onMouseClicked="#clicked" prefHeight="26.0" prefWidth="232.0" styleClass="dailyMonthlyLabel" stylesheets="@../application.css" text="FROM WAKING CUSTOMERS" textFill="#003dff">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>

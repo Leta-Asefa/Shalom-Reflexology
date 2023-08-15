@@ -44,6 +44,7 @@ public class WithdrawalController implements Initializable{
 		dao=new ShalomDAO();
 		list=dao.getAllEmployeeName();
 		comboBox.setItems(list);
+		comboBox.setEditable(true);
 		inputValidation();
 		
 		}catch (Exception ex) {

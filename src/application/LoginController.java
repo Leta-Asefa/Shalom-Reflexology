@@ -145,53 +145,65 @@ public class LoginController implements Initializable{
 
 	public void goToReceptionHomepage(ActionEvent e) {
 		
-		
+
+		try {
+			Stage stage=new Stage();
+			stage=(Stage)((Node) e.getSource()).getScene().getWindow();
+			
+			Parent root =FXMLLoader.load(getClass().getResource("/application/ReceptionFxml/ReceptionHomePage.fxml"));
+			Scene scene= new Scene(root);
+			
+			stage.setScene(scene);
+			stage.show();
+			
+			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		
 		
 		
 		
-		
-		if(!(passwordTextField.getText().equals("")) && !(userNameTextField.getText().equals(""))) {
-	    	
-		if(dao.IsThereThisAccount(userNameTextField.getText(), Integer.parseInt(passwordTextField.getText()), "Reception"))
-		{
-			
-			
-			try {
-				Stage stage=new Stage();
-				stage=(Stage)((Node) e.getSource()).getScene().getWindow();
-				
-				Parent root =FXMLLoader.load(getClass().getResource("/application/ReceptionFxml/ReceptionHomePage.fxml"));
-				Scene scene= new Scene(root);
-				
-				stage.setScene(scene);
-				stage.show();
-				
-				
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		//-------------------bring here the above try catch block---------
-		
-		}
-		
-		else {
-			new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are correct !");
-			
-		}
-		
-		}
-		
-		else {
-			new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are not empty !");
-			
-		}
+//		
+//		if(!(passwordTextField.getText().equals("")) && !(userNameTextField.getText().equals(""))) {
+//	    	
+//		if(dao.IsThereThisAccount(userNameTextField.getText(), Integer.parseInt(passwordTextField.getText()), "Reception"))
+//		{
+//			
+//			
+//		//-------------------bring here the above try catch block---------
+//		
+//		}
+//		
+//		else {
+//			new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are correct !");
+//			
+//		}
+//		
+//		}
+//		
+//		else {
+//			new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are not empty !");
+//			
+//		}
 		
 	}
 
 	public void goToAdminHomePage(ActionEvent e) {
+		try {
+			
+			Stage stage= new Stage();
+			stage= (Stage)((Node)e.getSource()).getScene().getWindow();
+			Parent root= FXMLLoader.load(getClass().getResource("/application/AdminFxml/AdminHomePage.fxml"));
+			Scene scene= new Scene(root);
+			stage.setScene(scene);
+			
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		
 
@@ -200,44 +212,32 @@ public class LoginController implements Initializable{
 		
 		
 		
-		
-		
-		if(!(passwordTextField.getText().equals("")) && !(userNameTextField.getText().equals(""))) {
-	    	
-			if(dao.IsThereThisAccount(userNameTextField.getText(), Integer.parseInt(passwordTextField.getText()), "Admin"))
-			{
-				
-				
-				try {
-					
-					Stage stage= new Stage();
-					stage= (Stage)((Node)e.getSource()).getScene().getWindow();
-					Parent root= FXMLLoader.load(getClass().getResource("/application/AdminFxml/AdminHomePage.fxml"));
-					Scene scene= new Scene(root);
-					stage.setScene(scene);
-					
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				
-		//-----------bring here the above try catch block to make logic correct
-			
-			
-			}
-			
-			
-			else {
-				new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are correct !");
-				
-			}
-			
-		}
-		else {
-    		new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are not empty !");
-
-		}
+//		
+//		
+//		if(!(passwordTextField.getText().equals("")) && !(userNameTextField.getText().equals(""))) {
+//	    	
+//			if(dao.IsThereThisAccount(userNameTextField.getText(), Integer.parseInt(passwordTextField.getText()), "Admin"))
+//			{
+//				
+//				
+//				
+//				
+//		//-----------bring here the above try catch block to make logic correct
+//			
+//			
+//			}
+//			
+//			
+//			else {
+//				new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are correct !");
+//				
+//			}
+//			
+//		}
+//		else {
+//    		new CallAlert(AlertType.WARNING,"Warning","","Make sure that the userName and the password are not empty !");
+//
+//		}
 	}
 
 	

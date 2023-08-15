@@ -32,6 +32,8 @@ private RadioButton cashButton,mbButton;
 
 @FXML
 private Button addButton;
+@FXML
+private RadioButton isPatientButton;
 @FXML private ImageView image;
 @FXML private Label label;
 
@@ -147,9 +149,14 @@ private Button addButton;
 				String currentDate=date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 				
 				
+					if(isPatientButton.isSelected()) {
 					
-					dao.insertIntoReflexology(massagerComboBox.getValue(),price,'C',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()) ,"");
-					
+						dao.insertIntoReflexology(massagerComboBox.getValue(),price,'C',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()) ,"");
+						dao.insertIntoReflexology("0",0-price,'C',currentDate ,typeComboBox.getValue() ,100000 ,"");
+						
+					}else {
+						dao.insertIntoReflexology(massagerComboBox.getValue(),price,'C',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()) ,"");
+	}
 					addButton.setDisable(true);
 					image.setVisible(true);
 					label.setVisible(true);
@@ -171,16 +178,23 @@ private Button addButton;
 			
 		} else if(mbButton.isSelected()) {
 
-			if(  !(priceTextField.getText().equals("")) && !( massagerComboBox.getValue()==null) && !( typeComboBox.getValue()==null && !(referenceTextField.getText().equals("")) &&   bankComboBox.getValue()!=null ) )
+			if( !(priceTextField.getText().equals("")) && !( massagerComboBox.getValue()==null) && !( typeComboBox.getValue()==null) && (!(referenceTextField.getText().equals("")) )    &&  (! (bankComboBox.getValue()==null))     )
 			{
 				int price=Integer.parseInt(priceTextField.getText());
 				LocalDate date= LocalDate.now();
 				String currentDate=date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 				
 					
+					if(isPatientButton.isSelected()) {	
 						
-				dao.insertIntoReflexology(massagerComboBox.getValue(),price,'M',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()),referenceTextField.getText()+" - "+bankComboBox.getValue());
+						dao.insertIntoReflexology(massagerComboBox.getValue(),price,'M',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()),referenceTextField.getText()+" - "+bankComboBox.getValue());
+						dao.insertIntoReflexology("",0-price,'M',currentDate ,typeComboBox.getValue() ,100000,referenceTextField.getText()+" - "+bankComboBox.getValue());
+
+					}
+					else {
 						
+						dao.insertIntoReflexology(massagerComboBox.getValue(),price,'M',currentDate ,typeComboBox.getValue() ,dao.getMassagerId(massagerComboBox.getValue()),referenceTextField.getText()+" - "+bankComboBox.getValue());
+					}
 						addButton.setDisable(true);
 						image.setVisible(true);
 						label.setVisible(true);

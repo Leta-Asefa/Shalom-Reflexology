@@ -81,6 +81,10 @@ public class BankAdmin implements Initializable{
 
 		
 		table.setItems(list);
+		
+		datePicker1.setEditable(false);
+		datePicker2.setEditable(false);
+		datePicker3.setEditable(false);
 		}
 		catch (Exception ex) {
 

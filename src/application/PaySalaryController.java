@@ -91,12 +91,15 @@ public class PaySalaryController implements Initializable {
 			@Override
 			public void handle(MouseEvent event) {
 				
+				if (table.getSelectionModel().getSelectedItem()!=null) {
+				
 				if (table.getSelectionModel().getSelectedItem().getTotalSalary()!=null) {
 					
 					textField.setText(table.getSelectionModel().getSelectedItem().getTotalSalary());
-					
+					comboBox.setValue(table.getSelectionModel().getSelectedItem().getFullName());				
 				}
 				
+				}
 				
 			}
 			
@@ -188,6 +191,7 @@ public class PaySalaryController implements Initializable {
 	
 	dao.insertIntoSalaryHistory(comboBox.getValue(),Integer.parseInt( textField.getText()), date1, date2);
 		
+	
 		
 	new CallAlert (AlertType.INFORMATION,"","","Paid Successfully !");
 	

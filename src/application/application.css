@@ -98,7 +98,9 @@
 	  -fx-background-color: lightskyblue;
 	    -fx-background-radius: 70;	
 }
-
+.dailyMonthlyLabel:hover{
+	-fx-background-color: lightskyblue;
+}
 
 
 
