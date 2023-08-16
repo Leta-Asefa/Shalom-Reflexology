@@ -192,6 +192,21 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 		
 	}
 	
+	public void updateTemporaryPrescription(int phone, String prescription) {
+
+		try {
+			statement = myConn.prepareStatement("update temporaryPrescription set prescription=? where phonefk=?");
+			statement.setString(1, prescription);
+			statement.setInt(2, phone);
+
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 
 	
 	
@@ -1787,7 +1802,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
 			temporaryPrescription=temporaryPrescription+".";
 			
 			
-			for(int i=0;i<120;i=i+4) {
+			for (int i = 0; i < 60; i = i + 4) {
 				
 				prescriptions.add(temporaryPrescription.substring(i,i+4));
 			}
@@ -2503,6 +2518,30 @@ public int getCreditFromTemporaryPrescription(int phonefk) {
     	return list;
     }
 
+	public ObservableList<Patient> searchPatientByPhone(int phone) {
+
+		ObservableList<Patient> list = FXCollections.observableArrayList();
+		try {
+			statement = myConn.prepareStatement("select * from patient where phone=?");
+			statement.setInt(1, phone);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				list.add(new Patient(resultSet.getInt("phone"), resultSet.getString("fullName"),
+						resultSet.getInt("age"), resultSet.getString("sex"), resultSet.getString("assesment"),
+						resultSet.getString("treatment"), resultSet.getString("focusingArea"),
+						resultSet.getString("patientHistory")
+
+				));
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 
     public ObservableList<Patient> searchInactivePatientsByPhone(int phone){
 

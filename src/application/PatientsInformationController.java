@@ -15,11 +15,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -279,8 +279,10 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "firstp", event.getRowValue().getFirstp());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
+
 				
 			}
 			
@@ -303,7 +305,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "secondp", event.getRowValue().getSecondp());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -326,7 +329,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "third", event.getRowValue().getThird());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -349,7 +353,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "fourth", event.getRowValue().getFourth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -372,7 +377,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "fifth", event.getRowValue().getFifth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -395,7 +401,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "sixth", event.getRowValue().getSixth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -418,7 +425,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "seventh", event.getRowValue().getSeventh());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -441,7 +449,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "eighth", event.getRowValue().getEighth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -465,7 +474,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "ninth", event.getRowValue().getNinth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -491,7 +501,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "tenth", event.getRowValue().getTenth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -516,7 +527,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "eleventh", event.getRowValue().getEleventh());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -542,7 +554,8 @@ public class PatientsInformationController implements Initializable{
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "twelvth", event.getRowValue().getTwelvth());
 			
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 				
 			}
 			
@@ -566,7 +579,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "thirteenth", event.getRowValue().getThirteenth());
-
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 			
 				
 			}
@@ -591,7 +605,8 @@ public class PatientsInformationController implements Initializable{
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "fourteenth", event.getRowValue().getFourteenth());
 
-			
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 				
 			}
 			
@@ -614,7 +629,8 @@ public class PatientsInformationController implements Initializable{
 																	//the above commented lines
 				
 				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "fifteenth", event.getRowValue().getFifteenth());
-			
+					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
+							getUpdatedTemporaryPrescription(event));
 				
 			}
 			
@@ -644,6 +660,8 @@ public class PatientsInformationController implements Initializable{
 		
 		
 	}
+
+
 
 	private void getAllLists() {
 		
@@ -869,7 +887,106 @@ catch (Exception ex) {
 
 			}
 	}
-	
+
+	protected String getUpdatedTemporaryPrescription(CellEditEvent<Prescriptions, String> event) {
+
+		Prescriptions person=event.getRowValue();
+		String temporaryPrescription = "";
+		
+		if (person.getFirstp().length() != 0) {
+			temporaryPrescription += person.getFirstp().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+		
+		if (person.getSecondp().length() != 0) {
+			temporaryPrescription += person.getSecondp().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+		
+		
+		if (person.getThird().length() != 0) {
+			temporaryPrescription += person.getThird().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+		
+		if (person.getFourth().length() != 0) {
+			temporaryPrescription += person.getFourth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getFifth().length() != 0) {
+			temporaryPrescription += person.getFifth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getSixth().length() != 0) {
+			temporaryPrescription += person.getSixth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getSeventh().length() != 0) {
+			temporaryPrescription += person.getSeventh().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getEighth().length() != 0) {
+			temporaryPrescription += person.getEighth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getNinth().length() != 0) {
+			temporaryPrescription += person.getNinth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getTenth().length() != 0) {
+			temporaryPrescription += person.getTenth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+		
+		if (person.getEleventh().length() != 0) {
+			temporaryPrescription += person.getEleventh().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getTwelvth().length() != 0) {
+			temporaryPrescription += person.getTwelvth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getThirteenth().length() != 0) {
+			temporaryPrescription += person.getThirteenth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getFourteenth().length() != 0) {
+			temporaryPrescription += person.getFourteenth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+
+		if (person.getFifteenth().length() != 0) {
+			temporaryPrescription += person.getFifteenth().substring(0, 4);
+		} else {
+			temporaryPrescription += "null";
+		}
+		
+		return temporaryPrescription;
+
+	}
 	
 	
 	
