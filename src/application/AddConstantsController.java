@@ -144,15 +144,12 @@ public class AddConstantsController implements Initializable {
 			public void handle(CellEditEvent<ComboBoxChoices, String> event) {
 				
 				
-				if(!(event.getNewValue().equals("")  )) {
-							
-					event.getRowValue().setFullName(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
-					
-					dao.updateComboboxChoicesFullName(event.getOldValue(), 'R', event.getNewValue());
-				
-					}
+				if( (! event.getNewValue().equals("") )  && (event.getNewValue().length()==4) ) {
+					dao.updateComboboxChoicesFullName(event.getRowValue().getFullName(), 'r',event.getNewValue());
+					event.getRowValue().setFullName(event.getNewValue());
+				}
 				else {
+					
 					event.getRowValue().setFullName(event.getOldValue());
 					refreshReflexology();
 					
@@ -177,10 +174,10 @@ public class AddConstantsController implements Initializable {
 				
 				if(!(event.getNewValue().equals(""))) {
 							
-					event.getRowValue().setPrice(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
-					
 					dao.updateComboboxChoicesPrice(event.getRowValue().getFullName(), 'R',Integer.parseInt(( event.getNewValue())));
+					event.getRowValue().setPrice(event.getNewValue());
+																		
+					
 				
 					}
 				
@@ -204,10 +201,10 @@ public class AddConstantsController implements Initializable {
 				
 				if(!(event.getNewValue().equals(""))) {
 							
-					event.getRowValue().setPrice(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
-					
+																		
 					dao.updateComboboxChoicesCommission(event.getRowValue().getFullName(), 'R',Integer.parseInt(( event.getNewValue())));
+					event.getRowValue().setPrice(event.getNewValue());
+					
 				
 					}
 				
@@ -237,10 +234,9 @@ public class AddConstantsController implements Initializable {
 				
 				if(!(event.getNewValue().equals("")) && event.getNewValue().length()==4 ) {
 							
-					event.getRowValue().setFullName(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
 					
 					dao.updateComboboxChoicesFullName(event.getRowValue().getFullName(), 'P', event.getNewValue());
+					event.getRowValue().setFullName(event.getNewValue());//this line is the short notation of
 				
 					}
 				else {
@@ -262,10 +258,9 @@ public class AddConstantsController implements Initializable {
 				
 				if(!(event.getNewValue().equals(""))) {
 							
-					event.getRowValue().setPrice(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
-					
 					dao.updateComboboxChoicesPrice(event.getRowValue().getFullName(), 'P',Integer.parseInt(( event.getNewValue())));
+					event.getRowValue().setPrice(event.getNewValue());
+					
 				
 					}
 				
@@ -289,10 +284,8 @@ public class AddConstantsController implements Initializable {
 				
 				if(!(event.getNewValue().equals(""))) {
 							
-					event.getRowValue().setPrice(event.getNewValue());//this line is the short notation of
-																		//the above commented lines
-					
 					dao.updateComboboxChoicesCommission(event.getRowValue().getFullName(), 'P',Integer.parseInt(( event.getNewValue())));
+					event.getRowValue().setPrice(event.getNewValue());//this line is the short notation of
 				
 					}
 				
