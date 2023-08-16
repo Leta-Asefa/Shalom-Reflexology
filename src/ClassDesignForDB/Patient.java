@@ -39,16 +39,16 @@ public class Patient {
 		return phone.get();
 	}
 
-	public void setPhone(SimpleStringProperty phone) {
-		this.phone = phone;
+	public void setPhone(String string) {
+		this.phone = new SimpleStringProperty(string);
 	}
 
 	public String getFullName() {
 		return fullName.get();
 	}
 
-	public void setFullName(SimpleStringProperty fullName) {
-		this.fullName = fullName;
+	public void setFullName(String string) {
+		this.fullName = new SimpleStringProperty(string);
 	}
 
 	public String getAge() {
@@ -63,8 +63,8 @@ public class Patient {
 		return sex.get();
 	}
 
-	public void setSex(SimpleStringProperty sex) {
-		this.sex = sex;
+	public void setSex(String string) {
+		this.sex = new SimpleStringProperty(string);
 	}
 
 	public String getAssesment() {
