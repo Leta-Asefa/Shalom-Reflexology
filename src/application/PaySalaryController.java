@@ -44,6 +44,7 @@ public class PaySalaryController implements Initializable {
 	@FXML TableColumn<PayRoll,String>  ma15;
 	@FXML TableColumn<PayRoll,String>  ma17;
 	@FXML TableColumn<PayRoll,String>  ma20;
+	@FXML TableColumn<PayRoll,String> ma25;
 	@FXML TableColumn <PayRoll,String> customers;
 	@FXML TableColumn <PayRoll,String> commission;
 	@FXML TableColumn <PayRoll,String> fixedSalary;
@@ -53,6 +54,7 @@ public class PaySalaryController implements Initializable {
 
 	@FXML ComboBox<String> comboBox;
 	ObservableList<String> employeesList;
+
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -76,6 +78,7 @@ public class PaySalaryController implements Initializable {
 		ma15.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("ma15"));
 		ma17.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("ma17"));
 		ma20.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("ma20"));
+		ma25.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("ma25"));
 		customers.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("customers"));
 		commission.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("commission"));
 		fixedSalary.setCellValueFactory(new PropertyValueFactory<PayRoll,String>("fixedSalary"));
