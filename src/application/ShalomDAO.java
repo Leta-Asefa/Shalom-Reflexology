@@ -31,11 +31,11 @@ import javafx.util.converter.LocalDateStringConverter;
 
 public class ShalomDAO {
 	
-	//String url = "jdbc:mysql://localhost:3306/shalom";
-	String url="jdbc:mysql://192.168.1.1:3306/shalom";
+	String url = "jdbc:mysql://localhost:3306/shalom";
+	//String url="jdbc:mysql://192.168.1.1:3306/shalom";
 	
-	//String userName = "root";
-	String userName="Reception";
+	String userName = "root";
+	//String userName="Reception";
 	
 	String password="0991175590";
 	
@@ -897,7 +897,7 @@ e.printStackTrace();
 					statement.setString(2,oldName);
 					statement.setString(3,String.valueOf(category) );
 
-					statement.execute();
+					statement.executeUpdate();
 
 					
 
@@ -1120,21 +1120,18 @@ e.printStackTrace();
 }
     
     
-    
-    
-
-    public int getDailyReflexologyCount(String date,String type) {
+    public int getDailyPatientCountFromReflexology(String date,String type) {
     	
-int income=0;
+    	int count=0;
     	
     	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (paymentdate=?) and (reflexologyType=?)");
+			statement=myConn.prepareStatement("select count(price) from reflexology where ((paymentdate=?) and (reflexologyType=?)) and (idfk=100000)");
 			statement.setString(1, date);
 			statement.setString(2, type);
 
 			resultSet=statement.executeQuery();
 			while(resultSet.next()) {
-				income=resultSet.getInt("count(price)");
+				count=resultSet.getInt("count(price)");
 			}
     	
     	
@@ -1143,7 +1140,34 @@ int income=0;
 			e.printStackTrace();
 		}
     
-    return income;
+    return count;
+    	
+    }
+
+    
+
+    public int getDailyReflexologyCount(String date,String type) {
+    	
+    	int count=0;
+    	
+    	try {
+			statement=myConn.prepareStatement("select count(price) from reflexology where ((paymentdate=?) and (reflexologyType=?))and (idfk!=100000)");
+			statement.setString(1, date);
+			statement.setString(2, type);
+
+			resultSet=statement.executeQuery();
+			while(resultSet.next()) {
+				count=resultSet.getInt("count(price)");
+			}
+    	
+    	
+    	} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	count= count-this.getDailyPatientCountFromReflexology(date, type);
+    return count;
     	
     }
 
@@ -2011,34 +2035,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     }
 	
 
-    public int getTotalPaidForCurrentPatient(int phonefk) {
-    	List<Integer> payment= new ArrayList<>();
-    	int total = 0;
-    	try {
-			statement=myConn.prepareStatement("select cardMb,cardCash,paymentMb,paymentCash from payments where phonefk=?");
-			statement.setInt(1, phonefk);
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				payment.add(resultSet.getInt("paymentMb"));
-				payment.add(resultSet.getInt("paymentCash"));
-			}
-    	
-			for (Integer Int:payment) {
-				if(Int==0)
-				{continue;}
-				
-				total+=Int;
-			}
-    	
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return total;
-    }
-	
+    
     
     public int getCredit(int phonefk) {
     	
@@ -2046,107 +2043,12 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     	return total;
     }
     
-public int getCreditFromTemporaryPrescription(int phonefk) {
-    	
-    	int total=this.getTotalPaymentFromTemporaryPrescription(phonefk) - this.getTotalPaid(phonefk);
-    	return total;
-    }
-    
 
-    public int getCreditForCurrentPatients(int phonefk) {
-    	
-    	int total=this.getTotalPayment(phonefk) - this.getTotalPaidForCurrentPatient(phonefk);
-    	return total;
-    }
-    
  
-    public int paySalary30Min(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-    		
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "30 MIN");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx30Commision;
-    	
-    	return total;
-    	
-    }
     
-    public int paySalary45Min(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "45 MIN");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx45Commision;
-    	return total;
-    	
-    }
     
-    public int paySalary60Min(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "60 MIN");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx60Commision;
-    	return total;
-    	
-    }
     
-    public int paySalary75Min(String startingDate,String endingDate,int id) {
+public int paySalary(String startingDate,String endingDate,int id,String type) {
     	
     	int total=0;
     	try {
@@ -2154,35 +2056,7 @@ public int getCreditFromTemporaryPrescription(int phonefk) {
 			statement.setInt(1, id);
 			statement.setString(2, startingDate);
 			statement.setString(3, endingDate);
-			statement.setString(4, "75 MIN");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx75Commision;
-    	return total;
-    	
-    }
-    
-    public int paySalary90Min(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "90 MIN");
+			statement.setString(4, type);
     	
 			resultSet=statement.executeQuery();
 			while(resultSet.next()) {
@@ -2202,147 +2076,7 @@ public int getCreditFromTemporaryPrescription(int phonefk) {
     	
     }
     
-    public int paySalaryMa10(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "Ma10");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx90Commision;
-    	return total;
-    	
-    }
-
-    public int paySalaryMa12(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "Ma12");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx90Commision;
-    	return total;
-    	
-    }
     
-    public int paySalaryMa15(String startingDate,String endingDate,int id) {
-
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "Ma15");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx90Commision;
-    	return total;
-    	
-    }
-
-    public int paySalaryMa17(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "Ma17");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx90Commision;
-    	return total;
-    	
-    }
-
-    public int paySalaryMa20(String startingDate,String endingDate,int id) {
-    	
-    	int total=0;
-    	try {
-			statement=myConn.prepareStatement("select count(price) from reflexology where (idfk=? )and ((paymentDate >=?) and (paymentDate <=?)) and (reflexologyType=?)");
-			statement.setInt(1, id);
-			statement.setString(2, startingDate);
-			statement.setString(3, endingDate);
-			statement.setString(4, "Ma20");
-    	
-			resultSet=statement.executeQuery();
-			while(resultSet.next()) {
-				
-				total=resultSet.getInt("count(price)");
-				
-			}
-			
-    	
-    	} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-    	//total+=rx90Commision;
-    	return total;
-    	
-    }
-       
     public int getCommission(String fullName){
     	
     			int commission=0;
@@ -3868,6 +3602,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i)) ),
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i)) ),
 	    			String.valueOf(
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))  )  ,
+	    			String.valueOf(
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))  ) ,
 
 String.valueOf(
 this.getMonthlyReflexologyCount(startingDate, endingDate, "30 MIN",id.get(i))+
@@ -3877,7 +3613,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))     ),
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))+
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))     ),
 
 
 
@@ -3889,7 +3626,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))*this
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))*this.getCommission("Ma12")+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))*this.getCommission("Ma15")+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))*this.getCommission("Ma17")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")  ) ,
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")+
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))*this.getCommission("Ma25")  ) ,
 
 String.valueOf(
 this.getFixedSalary(id.get(i)) ),
@@ -3903,7 +3641,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))*this
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))*this.getCommission("Ma12")+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))*this.getCommission("Ma15")+
 this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))*this.getCommission("Ma17")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")+  this.getFixedSalary(id.get(i))
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")+
+this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma25")+  this.getFixedSalary(id.get(i))
 
 	    	)		
 	    			)  );//end of new PayRoll();
