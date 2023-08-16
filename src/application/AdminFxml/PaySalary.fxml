@@ -27,15 +27,16 @@
       </Label>
       <TableView fx:id="table" layoutX="35.0" layoutY="136.0" prefHeight="405.0" prefWidth="1077.0">
         <columns>
-          <TableColumn fx:id="name" prefWidth="150.0" text="NAME" />
-          <TableColumn fx:id="rx30" prefWidth="63.0" text="30" />
-            <TableColumn fx:id="rx45" prefWidth="75.0" text="45" />
+          <TableColumn fx:id="name" prefWidth="134.0" text="NAME" />
+          <TableColumn fx:id="rx30" prefWidth="66.0" text="30" />
+            <TableColumn fx:id="rx45" prefWidth="88.0" text="45" />
             <TableColumn fx:id="rx60" prefWidth="75.0" text="60" />
             <TableColumn fx:id="ma10" prefWidth="75.0" text="Ma10" />
             <TableColumn fx:id="ma12" prefWidth="75.0" text="Ma12" />
             <TableColumn fx:id="ma15" prefWidth="75.0" text="Ma15" />
             <TableColumn fx:id="ma17" prefWidth="75.0" text="Ma17" />
             <TableColumn fx:id="ma20" prefWidth="75.0" text="Ma20" />
+            <TableColumn fx:id="ma25" prefWidth="75.0" text="Ma25" />
             <TableColumn fx:id="customers" prefWidth="75.0" text="Total Customers" />
             <TableColumn fx:id="commission" prefWidth="75.0" text="Total Commision" />
             <TableColumn fx:id="fixedSalary" prefWidth="75.0" text="Fixed Salary" />
