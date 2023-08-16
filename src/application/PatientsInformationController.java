@@ -286,7 +286,65 @@ public class PatientsInformationController implements Initializable{
 			
 		});
 		
+		
+		
 		phone.setCellFactory(TextFieldTableCell.forTableColumn());
+		phone.setOnEditCommit(new EventHandler<CellEditEvent<Patient,String>>(){
+
+			@Override
+			public void handle(CellEditEvent<Patient, String> event) {
+			if( (!event.getNewValue().equals("")) && (event.getNewValue().length()==9 || event.getNewValue().length()==10) ) {
+			
+				dao.updatePatientInts("phone",Integer.parseInt(event.getNewValue()), Integer.parseInt(event.getOldValue()));
+				event.getRowValue().setPhone(event.getNewValue());
+			}
+			
+		}
+			});
+		
+		
+		name.setCellFactory(TextFieldTableCell.forTableColumn());
+		name.setOnEditCommit(new EventHandler<CellEditEvent<Patient,String>>(){
+
+			@Override
+			public void handle(CellEditEvent<Patient, String> event) {
+				if( !event.getNewValue().equals("")){
+					dao.updatePatientStrings("fullName", event.getNewValue(), Integer.parseInt(event.getRowValue().getPhone()));
+					event.getRowValue().setFullName(event.getNewValue());
+				}
+			}
+			
+		});
+		
+		age.setCellFactory(TextFieldTableCell.forTableColumn());
+		age.setOnEditCommit(new EventHandler<CellEditEvent<Patient,String>>(){
+
+			@Override
+			public void handle(CellEditEvent<Patient, String> event) {
+			
+				if( event.getNewValue().length()==1 || event.getNewValue().length()==2 ){	
+			
+					dao.updatePatientInts("age", Integer.parseInt(event.getNewValue()) , Integer.parseInt(event.getRowValue().getPhone()));
+					}
+			}
+			
+		});
+		
+		
+		sex.setCellFactory(TextFieldTableCell.forTableColumn());
+		sex.setOnEditCommit(new EventHandler<CellEditEvent<Patient,String>>(){
+
+			@Override
+			public void handle(CellEditEvent<Patient, String> event) {
+			String value= event.getNewValue();
+				if(value.equals("m") || value.equals("M") || value.equals("f") || value.equals("F") ){
+					
+					dao.updatePatientStrings("sex", event.getNewValue(), Integer.parseInt(event.getRowValue().getPhone()));
+					event.getRowValue().setSex(event.getNewValue());
+				}
+			}
+			
+		});
 		
 		first.setCellFactory(TextFieldTableCell.forTableColumn());
 		first.setOnEditCommit(new EventHandler<CellEditEvent<Prescriptions,String>> (){
