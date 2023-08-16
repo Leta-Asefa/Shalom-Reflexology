@@ -4041,8 +4041,50 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
  
  
  
- 
- 
+	public void updatePatientStrings(String columnName,String newValue,int phone) {
+
+
+		try {
+			
+					statement=myConn.prepareStatement("update patient set "+columnName+"=? where phone=?");
+
+			
+					statement.setString(1, newValue);
+					statement.setInt(2,phone);
+
+					statement.executeUpdate();
+
+					
+
+
+			} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	}
+	
+	public void updatePatientInts(String columnName,int value,int phone) {
+
+
+		try {
+			
+	statement=myConn.prepareStatement("update patient set " + columnName +"=? where phone=?");
+
+			
+					statement.setInt(1, value);
+					statement.setInt(2,phone);
+
+					statement.executeUpdate();
+
+					
+
+
+			} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+	}
+	
  
  
  
