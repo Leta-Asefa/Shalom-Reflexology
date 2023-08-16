@@ -186,8 +186,11 @@ private RadioButton isPatientButton;
 			if( !(priceTextField.getText().equals("")) && !( massagerComboBox.getValue()==null) && !( typeComboBox.getValue()==null) && (!(referenceTextField.getText().equals("")) )    &&  (! (bankComboBox.getValue()==null))     )
 			{
 				int price=Integer.parseInt(priceTextField.getText());
-				LocalDate date= LocalDate.now();
-				String currentDate=date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+				String currentDate="";
+				if(datePicker.getValue()==null)
+				 currentDate=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+				else
+				 currentDate=datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 				
 					
 					if(isPatientButton.isSelected()) {	
