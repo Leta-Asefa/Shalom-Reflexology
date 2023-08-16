@@ -17,6 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.DatePicker;
 
 public class WithdrawalController implements Initializable{
 
@@ -34,6 +35,7 @@ public class WithdrawalController implements Initializable{
 	
 	private ShalomDAO dao;
 	private ObservableList<String> list;
+	@FXML DatePicker datePicker;
 	
 	
 	@Override
@@ -111,9 +113,15 @@ public class WithdrawalController implements Initializable{
 		
 		if(!(comboBox.getValue()==null) && !(amountTextField.getText().equals("")) && 
 				!(reasonTextArea.getText().equals(""))	) {
-		
+			String date="";
+			if(datePicker.getValue()==null)
+				 date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+				else
+				 date=datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+				
+			
 		dao.insertIntoWithdrawal( comboBox.getValue(), Integer.parseInt(amountTextField.getText()),
-				reasonTextArea.getText(), LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				reasonTextArea.getText(), date);
 		
 		withdrawButton.setDisable(true);
 		image.setVisible(true);
