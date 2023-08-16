@@ -13,6 +13,7 @@ public class PayRoll {
 	private SimpleStringProperty ma15 ; 
 	private SimpleStringProperty ma17 ;
 	private SimpleStringProperty ma20 ;
+	private SimpleStringProperty ma25 ;
 	private SimpleStringProperty customers ;
 	private SimpleStringProperty commission ;
 	private SimpleStringProperty fixedSalary ;
@@ -22,7 +23,7 @@ public class PayRoll {
 public PayRoll(){}
 	
 	public PayRoll(String fullName ,String rx30,String rx45,String rx60,String ma10,
-			String ma12,String ma15,String ma17 ,String ma20,String customers,String commission,String fixedSalary,String totalSalary ){
+			String ma12,String ma15,String ma17 ,String ma20,String ma25,String customers,String commission,String fixedSalary,String totalSalary ){
 		
 		this.fullName=new SimpleStringProperty(fullName);
 		this.rx30=new SimpleStringProperty(rx30);
@@ -33,6 +34,7 @@ public PayRoll(){}
 		this.ma15=new SimpleStringProperty(ma15);
 		this.ma17=new SimpleStringProperty(ma17);
 		this.ma20=new SimpleStringProperty(ma20);
+		this.setMa25(new SimpleStringProperty(ma25));
 		this.customers=new SimpleStringProperty(customers);
 		this.commission=new SimpleStringProperty(commission);
 		this.fixedSalary=new SimpleStringProperty(fixedSalary);
@@ -152,6 +154,14 @@ public String getFullName() {
 
 	public void setTotalSalary(SimpleStringProperty totalSalary) {
 		this.totalSalary = totalSalary;
+	}
+
+	public String getMa25() {
+		return ma25.get();
+	}
+
+	public void setMa25(SimpleStringProperty ma25) {
+		this.ma25 = ma25;
 	}
 
 	
