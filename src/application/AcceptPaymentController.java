@@ -79,6 +79,7 @@ public class AcceptPaymentController implements Initializable {
 	private String dayOfWeek=null;
 	@FXML private ComboBox<String> bankComboBox;
 	@FXML Label startingDateLabel;
+	@FXML DatePicker paymentDatePicker;
 	
 	
 	
@@ -193,7 +194,11 @@ public class AcceptPaymentController implements Initializable {
 				
 			phone=Integer.parseInt(searchTextField.getText());
 			int amount=Integer.parseInt(amountTextField.getText());
-			String date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()	;
+			String date="";
+			if(paymentDatePicker.getValue()==null)
+			 date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+			else
+			 date=paymentDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			
 				dao.acceptPayment(phone, 'C', amount,date,"");
 				
@@ -225,7 +230,11 @@ public class AcceptPaymentController implements Initializable {
 				
 			phone=Integer.parseInt(searchTextField.getText());
 			int amount=Integer.parseInt(amountTextField.getText());
-			String date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString()	;
+			String date="";
+			if(paymentDatePicker.getValue()==null)
+			 date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+			else
+			 date=paymentDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			
 			
 
