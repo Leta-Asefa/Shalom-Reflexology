@@ -732,7 +732,7 @@ public class AcceptPaymentController implements Initializable {
 
 		else if(dayOfWeek.equals("SUNDAY")) {
 			
-			new CallAlert(AlertType.WARNING,"","","Can't give appointment on Sunday ! ");
+			new CallAlert(AlertType.WARNING,"","","Can't give an appointment on Sunday ! ");
 
 		}
 		
