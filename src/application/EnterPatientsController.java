@@ -13,8 +13,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 
 public class EnterPatientsController implements Initializable {
 
@@ -34,6 +39,8 @@ public class EnterPatientsController implements Initializable {
 	private ShalomDAO dao;
 	private ObservableList<FullPrescriptions> prescriptionList;
 	private ObservableList<FullAttendance> attendanceList;
+	@FXML Button shiftButton;
+	@FXML Spinner<Integer> spinner;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -51,6 +58,9 @@ public class EnterPatientsController implements Initializable {
 		
 		prescriptionTable.setItems(prescriptionList);
 		attendanceTable.setItems(attendanceList);
+		
+		SpinnerValueFactory<Integer> factory=new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 14);
+		spinner.setValueFactory(factory);
 		
 		}
 		catch (Exception ex) {
@@ -392,13 +402,481 @@ try {
 		
 		attendanceTable.setEditable(true);
 		
+		prescriptionTable.setEditable(true);
+		
+
+		first.setCellFactory(TextFieldTableCell.forTableColumn());
+		first.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setFirstp(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "firstp", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		second.setCellFactory(TextFieldTableCell.forTableColumn());
+		second.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setSecondp(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "secondp", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+
+		
+		third.setCellFactory(TextFieldTableCell.forTableColumn());
+		third.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setThird(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "third", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		fourth.setCellFactory(TextFieldTableCell.forTableColumn());
+		fourth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setFourth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "fourth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+
+		fifth.setCellFactory(TextFieldTableCell.forTableColumn());
+		fifth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setFifth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "fifth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		seventh.setCellFactory(TextFieldTableCell.forTableColumn());
+		seventh.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setSeventh(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "seventh", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		
+		
+		
+		
+		sixth.setCellFactory(TextFieldTableCell.forTableColumn());
+		sixth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setSixth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "sixth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		eighth.setCellFactory(TextFieldTableCell.forTableColumn());
+		eighth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setEighth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "eighth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		
+		ninth.setCellFactory(TextFieldTableCell.forTableColumn());
+		ninth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setNinth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "ninth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		
+		tenth.setCellFactory(TextFieldTableCell.forTableColumn());
+		tenth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setTenth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "tenth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		eleventh.setCellFactory(TextFieldTableCell.forTableColumn());
+		eleventh.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setEleventh(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "eleventh", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		twelvth.setCellFactory(TextFieldTableCell.forTableColumn());
+		twelvth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setTwelvth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "twelvth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		thirteenth.setCellFactory(TextFieldTableCell.forTableColumn());
+		thirteenth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setThirteenth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "thirteenth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		fourteenth.setCellFactory(TextFieldTableCell.forTableColumn());
+		fourteenth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setFourteenth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "fourteenth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		fifteenth.setCellFactory(TextFieldTableCell.forTableColumn());
+		fifteenth.setOnEditCommit(new EventHandler<CellEditEvent<FullPrescriptions,String>> (){
+
+			@Override
+			public void handle(CellEditEvent<FullPrescriptions, String> event) {
+				String  oldValue =event.getOldValue();
+				String newValue=event.getNewValue();
+				
+				if(newValue.length()>=oldValue.length()) {
+				
+			if(newValue.charAt(0)==oldValue.charAt(0) && newValue.charAt(1)==oldValue.charAt(1) &&
+					newValue.charAt(2)==oldValue.charAt(2) && newValue.charAt(3)==oldValue.charAt(3) && 
+					newValue.charAt(4)==oldValue.charAt(4) ) {
+				
+				event.getRowValue().setFifteenth(newValue);
+				dao.updatePrescription(Integer.parseInt(event.getRowValue().getPhonefk()), "fifteenth", newValue);
+				
+			}
+			
+				}
+				else {
+				new CallAlert(AlertType.WARNING, "", "insert the date correctly after the comma", "Example :  Ma10,2023-04-03");
+			}
+			
+			}
+			
+		});
+		
+		
+		
+		
+		
 }
+
 catch (Exception ex) {
 
 	new CallAlert(AlertType.WARNING,"EnterPatientController","columnsPropertyMethod",ex.getClass().getName());
 
 
 	}
+	}
+
+
+	@FXML public void shift() {
+		
+		
+		
+		Alert alert= new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("");
+		alert.setHeaderText("Are you sure to shift the " + spinner.getValue() + " column ?");
+		alert.setContentText("Shifting the First column means the patient has missed the first appointment (This statment works for all columns )");
+		if( alert.showAndWait().get()==ButtonType.OK) {
+			
+		
+		dao.updateAbsentPrescriptions(prescriptionTable.getSelectionModel().getSelectedItem(),spinner.getValue());
+		
+		prescriptionList=dao.getAllFullPrescriptions();
+		attendanceList=dao.getAllFullAttendance();
+		
+		prescriptionTable.setItems(prescriptionList);
+		attendanceTable.setItems(attendanceList);
+		
+		}
+		
 	}
 	
 
