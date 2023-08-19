@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ import ClassDesignForDB.Withdrawal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.converter.LocalDateStringConverter;
 
 public class ShalomDAO {
 	
@@ -41,20 +44,20 @@ public class ShalomDAO {
 	PreparedStatement statement;
 	ResultSet resultSet;
 	
-	private int th10=1000;
-	private int th12=1200;
-	private int th15=1500;
-	private int th17=1700;
+	private final int th10=1000;
+	private final int th12=1200;
+	private final int th15=1500;
+	private final int th17=1700;
 
-	private int th20=2000;
-	private int th25=2500;
+	private final int th20=2000;
+	private final int th25=2500;
 	
-	private int ma10=1000;
-	private int ma12=1200;
-	private int ma15=1500;
-	private int ma17=1700;
-	private int ma20=2000;
-	private int ma25=2500;
+	private final int ma10=1000;
+	private final int ma12=1200;
+	private final int ma15=1500;
+	private final int ma17=1700;
+	private final int ma20=2000;
+	private final int ma25=2500;
 
 	
 	
@@ -3803,181 +3806,224 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 	    	
 	    }
 
+	LocalDate date=null;
+	int counter=0;
  
 	public void updateAbsentPrescriptions(FullPrescriptions person,int startingPoint) {
 		
 		try {
 		
 			String query="";
+			String lastPrescription="";
+			
+			//if (person.getFirstp().length()==0) 
+			if (person.getSecondp().length()==0 ||person.getSecondp().length()==1 )  lastPrescription=person.getFirstp().substring(5);
+			else if (person.getThird().length()==0 || person.getThird().length()==1)  lastPrescription=person.getSecondp().substring(5);
+			else if (person.getFourth().length()==0 || person.getFourth().length()==1)  lastPrescription=person.getThird().substring(5);
+			else if (person.getFifth().length()==0 || person.getFifth().length()==1)  lastPrescription=person.getFourth().substring(5);
+			else if (person.getSixth().length()==0 || person.getSixth().length()==1)  lastPrescription=person.getFifth().substring(5);
+			else if (person.getSeventh().length()==0 || person.getSeventh().length()==1)  lastPrescription=person.getSixth().substring(5);
+			else if (person.getEighth().length()==0 || person.getEighth().length()==1)  lastPrescription=person.getSeventh().substring(5);
+			else if (person.getNinth().length()==0 || person.getNinth().length()==1)  lastPrescription=person.getEighth().substring(5);
+			else if (person.getTenth().length()==0 || person.getTenth().length()==1)  lastPrescription=person.getNinth().substring(5);
+			else if (person.getEleventh().length()==0 || person.getEleventh().length()==1)  lastPrescription=person.getTenth().substring(5);
+			else if (person.getTwelvth().length()==0 || person.getTwelvth().length()==1)  lastPrescription=person.getEleventh().substring(5);
+			else if (person.getThirteenth().length()==0 || person.getThirteenth().length()==1)  lastPrescription=person.getTwelvth().substring(5);
+			else if (person.getFourteenth().length()==0 || person.getFourteenth().length()==1)  lastPrescription=person.getThird().substring(5);
+			else if (person.getFifteenth().length()==0 || person.getFifteenth().length()==1)  lastPrescription=person.getFourteenth().substring(5);
+			
+			String pattern="yyyy-MM-dd";
+			DateTimeFormatter formatter=DateTimeFormatter.ofPattern(pattern);
+			 date=LocalDate.parse(lastPrescription, formatter);
+			
+			if (date.getDayOfWeek().toString().equals("FRIDAY"))
+				date=date.plusDays(3);
+			else if (date.getDayOfWeek().toString().equals("SATURDAY"))
+				date=date.plusDays(3);
+			else if (date.getDayOfWeek().toString().equals("SUNDAY"))
+				date=date.plusDays(0);
+			else
+				date=date.plusDays(2);
+			
+			System.out.println(date);
 			
 			if(startingPoint==1) {
 				query=query+"update prescriptions set  secondp=?, third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1, getPrescriptionSubstring(person.getFirstp())+","+ getSubstring(person.getSecondp()) );
-				statement.setString(2,  getPrescriptionSubstring(person.getSecondp())+","+getSubstring(person.getThird())  );	
-				statement.setString(3,  getPrescriptionSubstring( person.getThird())+","+getSubstring(person.getFourth())  );
-				statement.setString(4, getPrescriptionSubstring( person.getFourth())+","+getSubstring(person.getFifth())   );
-				statement.setString(5,  getPrescriptionSubstring(person.getFifth())+","+getSubstring(person.getSixth())   );
-				statement.setString(6,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(7,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(8,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(9,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(10,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(11, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(12,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(13,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(14,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1, getPrescriptionSubstring(person.getFirstp())+  getSubstring(person.getSecondp()) );
+				statement.setString(2,  getPrescriptionSubstring(person.getSecondp())+ getSubstring(person.getThird())  );	
+				statement.setString(3,  getPrescriptionSubstring( person.getThird())+ getSubstring(person.getFourth())  );
+				statement.setString(4, getPrescriptionSubstring( person.getFourth())+ getSubstring(person.getFifth())   );
+				statement.setString(5,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
+				statement.setString(6,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(7,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(8,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(9,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(10,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(11, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(12,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(13,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(14,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(15 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==2) {
 				query=query+"update prescriptions set   third=?, fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring(person.getSecondp())+","+getSubstring(person.getThird())  );	
-				statement.setString(2,  getPrescriptionSubstring( person.getThird())+","+getSubstring(person.getFourth())  );
-				statement.setString(3, getPrescriptionSubstring( person.getFourth())+","+getSubstring(person.getFifth())   );
-				statement.setString(4,  getPrescriptionSubstring(person.getFifth())+","+getSubstring(person.getSixth())   );
-				statement.setString(5,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(6,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(7,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(8,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(9,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(10, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(11,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(12,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(13,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring(person.getSecondp())+ getSubstring(person.getThird())  );	
+				statement.setString(2,  getPrescriptionSubstring( person.getThird())+ getSubstring(person.getFourth())  );
+				statement.setString(3, getPrescriptionSubstring( person.getFourth())+ getSubstring(person.getFifth())   );
+				statement.setString(4,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
+				statement.setString(5,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(6,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(7,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(8,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(9,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(10, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(11,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(12,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(13,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(14 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				 counter=0;
 			}
 			
 			else if(startingPoint==3) {
 				query=query+"update prescriptions set    fourth=?, fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring( person.getThird())+","+getSubstring(person.getFourth())  );
-				statement.setString(2, getPrescriptionSubstring( person.getFourth())+","+getSubstring(person.getFifth())   );
-				statement.setString(3,  getPrescriptionSubstring(person.getFifth())+","+getSubstring(person.getSixth())   );
-				statement.setString(4,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(5,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(6,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(7,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(8,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(9, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(10,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(11,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(12,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring( person.getThird())+ getSubstring(person.getFourth())  );
+				statement.setString(2, getPrescriptionSubstring( person.getFourth())+ getSubstring(person.getFifth())   );
+				statement.setString(3,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
+				statement.setString(4,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(5,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(6,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(7,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(8,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(9, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(10,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(11,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(12,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(13 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==4) {
 				query=query+"update prescriptions set     fifth=?, sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1, getPrescriptionSubstring( person.getFourth())+","+getSubstring(person.getFifth())   );
-				statement.setString(2,  getPrescriptionSubstring(person.getFifth())+","+getSubstring(person.getSixth())   );
-				statement.setString(3,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(4,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(5,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(6,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(7,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(8, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(9,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(10,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(11,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1, getPrescriptionSubstring( person.getFourth())+ getSubstring(person.getFifth())   );
+				statement.setString(2,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
+				statement.setString(3,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(4,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(5,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(6,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(7,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(8, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(9,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(10,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(11,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(12 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==5) {
 				query=query+"update prescriptions set      sixth=?, seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring(person.getFifth())+","+getSubstring(person.getSixth())   );
-				statement.setString(2,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(3,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(4,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(5,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(6,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(7, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(8,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(9,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(10,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring(person.getFifth())+ getSubstring(person.getSixth())   );
+				statement.setString(2,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(3,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(4,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(5,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(6,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(7, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(8,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(9,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(10,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(11 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==6) {
 				query=query+"update prescriptions set       seventh=?, eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring(person.getSixth())+","+getSubstring(person.getSeventh())   );
-				statement.setString(2,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(3,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(4,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(5,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(6, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(7,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(8,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(9,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring(person.getSixth())+ getSubstring(person.getSeventh())   );
+				statement.setString(2,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(3,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(4,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(5,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(6, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(7,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(8,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(9,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(10 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			else if(startingPoint==7) {
 				query=query+"update prescriptions set        eighth=?, ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring(person.getSeventh())+","+getSubstring(person.getEighth())   );
-				statement.setString(2,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(3,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(4,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(5, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(6,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(7,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(8,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring(person.getSeventh())+ getSubstring(person.getEighth())   );
+				statement.setString(2,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(3,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(4,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(5, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(6,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(7,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(8,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(9 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==8) {
 				query=query+"update prescriptions set         ninth=?, tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring( person.getEighth())+","+getSubstring(person.getNinth())  );
-				statement.setString(2,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(3,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(4, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(5,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(6,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(7,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring( person.getEighth())+ getSubstring(person.getNinth())  );
+				statement.setString(2,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(3,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(4, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(5,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(6,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(7,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(8 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==9) {
 				query=query+"update prescriptions set          tenth=?, eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring( person.getNinth())+","+getSubstring(person.getTenth())  );
-				statement.setString(2,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(3, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(4,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(5,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(6,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring( person.getNinth())+ getSubstring(person.getTenth())  );
+				statement.setString(2,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(3, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(4,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(5,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(6,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(7 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			
@@ -3985,60 +4031,65 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 				query=query+"update prescriptions set          eleventh=?, twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring(person.getTenth())+","+getSubstring(person.getEleventh())  );
-				statement.setString(2, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(3,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(4,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(5,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring(person.getTenth())+ getSubstring(person.getEleventh())  );
+				statement.setString(2, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(3,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(4,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(5,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(6 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==11) {
 				query=query+"update prescriptions set           twelvth=?, thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1, getPrescriptionSubstring( person.getEleventh())+","+getSubstring(person.getTwelvth())   );
-				statement.setString(2,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(3,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(4,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1, getPrescriptionSubstring( person.getEleventh())+ getSubstring(person.getTwelvth())   );
+				statement.setString(2,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(3,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(4,  getPrescriptionSubstring(person.getFourteenth())    );
 				statement.setInt(5 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==12) {
 				query=query+"update prescriptions set            thirteenth=?, fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-				statement.setString(1,  getPrescriptionSubstring( person.getTwelvth())+","+getSubstring(person.getThirteenth())  );
-			statement.setString(2,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-				statement.setString(3,  getPrescriptionSubstring(person.getFourteenth())+","   );
+				statement.setString(1,  getPrescriptionSubstring( person.getTwelvth())+ getSubstring(person.getThirteenth())  );
+			statement.setString(2,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+				statement.setString(3,  getPrescriptionSubstring(person.getFourteenth()) );
 				statement.setInt(4 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==13) {
 				query=query+"update prescriptions set            fourteenth=? , fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-			statement.setString(1,  getPrescriptionSubstring( person.getThirteenth())+","+getSubstring(person.getFourteenth())  );
-			statement.setString(2,  getPrescriptionSubstring(person.getFourteenth())+","   );
+			statement.setString(1,  getPrescriptionSubstring( person.getThirteenth())+ getSubstring(person.getFourteenth())  );
+			statement.setString(2,  getPrescriptionSubstring(person.getFourteenth())  );
 			statement.setInt(3 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			else if(startingPoint==14) {
 				query=query+"update prescriptions set             fifteenth=? where phonefk=?";
 				statement=myConn.prepareStatement(query);
 				
-			statement.setString(1,  getPrescriptionSubstring(person.getFourteenth())+","   );
+			statement.setString(1,  getPrescriptionSubstring(person.getFourteenth())  );
 			statement.setInt(2 , Integer.parseInt( person.getPhonefk()));
 				
 				statement.execute();
+				counter=0;
 			}
 			
 			
@@ -4064,21 +4115,31 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 		catch (IndexOutOfBoundsException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 		
 		
 	}
 
-
+	
+	
 	private String getSubstring(String string) {
 		
-		if(string.length()!=0 && string.length()!=1)
-		return string.substring(5);
+		if(counter==0 && string.length()==0)
+			{counter++;
+			return ","+date.toString();
+			}
+		
+		if(string.length()==0 && counter!=0 )
+				return "";
+		if (string.length()!=0 ) {
+			return string.substring(4);
+		}
 		
 		return "";
 	}
  
 	private String getPrescriptionSubstring(String string) {
+		
 		
 		if(string.length()!=0 && string.length()!=1)
 		return string.substring(0,4);
