@@ -81,12 +81,12 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <ImageView fx:id="image" fitHeight="41.0" fitWidth="53.0" layoutX="815.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="image" fitHeight="41.0" fitWidth="53.0" layoutX="806.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/images.png" />
          </image>
       </ImageView>
-      <Label fx:id="label" layoutX="856.0" layoutY="299.0" prefHeight="32.0" prefWidth="160.0" text="Saved Successfully" textFill="#00ff0a" visible="false">
+      <Label fx:id="label" layoutX="847.0" layoutY="316.0" prefHeight="32.0" prefWidth="160.0" text="Saved Successfully" textFill="#00ff0a">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -195,7 +195,7 @@
       </Button>
       <CheckBox fx:id="checkBox" layoutX="351.0" layoutY="367.0" mnemonicParsing="false" onAction="#showPrescriptionBoxes" text="ENTER THE STARTING DATE" />
       <Line endX="9.0" endY="167.0" layoutX="661.0" layoutY="164.0" startX="9.0" startY="-147.0" />
-      <Line endX="900.0" endY="70.0" layoutX="213.0" layoutY="270.0" startX="-140.0" startY="70.0" />
+      <Line endX="900.0" endY="70.0" layoutX="213.0" layoutY="285.0" startX="-140.0" startY="70.0" />
       <ComboBox fx:id="bankComboBox" layoutX="1033.0" layoutY="184.0" prefHeight="25.0" prefWidth="111.0" visible="false" />
       <Label fx:id="startingDateLabel" layoutX="320.0" layoutY="396.0" prefHeight="32.0" prefWidth="201.0" style="-fx-background-color: #e3e3e3;" textFill="#0096ff" visible="false">
          <font>
