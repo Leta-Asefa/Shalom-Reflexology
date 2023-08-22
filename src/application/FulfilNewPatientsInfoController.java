@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -632,9 +633,13 @@ public class FulfilNewPatientsInfoController implements Initializable {
     		prescription+="null";
     	}
     	
-    	
+    	try {
     	dao.insertIntoTemporaryPrescription(phone, prescription,"");
-    	
+    	}
+    	catch (SQLIntegrityConstraintViolationException e){
+    		new CallAlert(AlertType.ERROR,"","Already Saved !","");
+    		return;
+    	}
     	prescription+=".";
     	List<String> p= new ArrayList<>();
     	
