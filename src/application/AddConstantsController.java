@@ -863,7 +863,7 @@ if(! ( historyField.getText().equals("") ) ){
 	@FXML public void addPrescription() {
 		try {
 		
-		if(! ( prescriptionTextField.getText().equals("") ) ){
+		if(! ( prescriptionTextField.getText().equals("") )  && prescriptionTextField.getText().length()==4 ){
 					
 					dao.addComboboxChoices(prescriptionTextField.getText(), 'P', 0, 0);
 				
@@ -871,6 +871,10 @@ if(! ( historyField.getText().equals("") ) ){
 					
 					prescriptionTextField.setText("");
 					
+				}else {
+	new CallAlert(AlertType.WARNING,"","The length should be 4","=> The first 2 letters should represent the prescription type\n"
+			+ "=> The last 2 letters should represent the price");
+
 				}
 				
 }catch (Exception e) {
