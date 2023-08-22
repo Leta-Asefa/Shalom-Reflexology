@@ -23,6 +23,7 @@ import ClassDesignForDB.Patient;
 import ClassDesignForDB.PayRoll;
 import ClassDesignForDB.Payments;
 import ClassDesignForDB.Prescriptions;
+import ClassDesignForDB.Reflexology;
 import ClassDesignForDB.Withdrawal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -179,9 +180,8 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 	
 	
 	
-	public void insertIntoTemporaryPrescription(int phone,String prescription,String bitCode) {
+	public void insertIntoTemporaryPrescription(int phone,String prescription,String bitCode) throws SQLException {
 		
-		try {
 			statement=myConn.prepareStatement("insert into temporaryPrescription values (null, ?,?,?)");
 			statement.setInt(1,phone);
 			statement.setString(2, prescription);
@@ -189,10 +189,7 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 			
 			statement.execute();
 			
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		
 	}
 	
@@ -1853,8 +1850,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
 			resultSet=statement.executeQuery();
 			while(resultSet.next()) {
 				temporaryPrescription=resultSet.getString("prescription");
-		
-			}
+		}
 			
 			
 			ObservableList<String> list= this.getPrescriptionItems();
@@ -1887,22 +1883,6 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
 				}
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-				
-				
-				
-				
-				
 			
     	
     	
@@ -4086,9 +4066,59 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 	}
 	
  
+	
+	
+public ObservableList<Reflexology> getReflexologyForTable(String date){
+
+    	
+    	ObservableList<Reflexology> list= FXCollections.observableArrayList();
+
+    	try {
+    		statement=myConn.prepareStatement("select id,massager,reflexologyType from reflexology   where paymentDate=? and idfk!=100000 ");
+    		statement.setString(1, date);
+
+    		resultSet=statement.executeQuery();
+    		
+    		while(resultSet.next()) {
+    			
+    			list.add( new Reflexology(resultSet.getString("id"),resultSet.getString("massager"),resultSet.getString("reflexologyType") ));
+    			
+    			
+    		}
+    	
+    	
+    	
+    	} catch (SQLException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+    	}
+    	
+    	return list;
+    	
+    }
+    
  
- 
- 
+
+public void deleteReflexologyHistory(int id) {
+
+	try {
+				statement=myConn.prepareStatement("delete from reflexology  where id=?");
+
+		
+				statement.setInt(1,id);
+				
+
+				statement.execute();
+				
+
+
+		} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+	}
+
+
+	}
  
  
  
