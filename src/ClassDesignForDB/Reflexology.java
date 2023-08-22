@@ -6,20 +6,16 @@ public class Reflexology {
 	
 	private SimpleStringProperty id ;
 	private SimpleStringProperty massager ;
-	private SimpleStringProperty price ;
-	private SimpleStringProperty paymentMethod ;
-	private SimpleStringProperty paymentDate ;
+	private SimpleStringProperty reflexologyType ;
 	
 	
 	Reflexology (){}
 	
-	Reflexology (String id,String massager,String price,String paymentMethod,String paymentDate){
+	public Reflexology (String id,String massager,String reflexologyType){
 		
 		this.id=new SimpleStringProperty(id);
 		this.massager=new SimpleStringProperty(massager);
-		this.price=new SimpleStringProperty(price);
-		this.paymentMethod=new SimpleStringProperty(paymentMethod);
-		this.paymentDate=new SimpleStringProperty(paymentDate);
+		this.reflexologyType=new SimpleStringProperty(reflexologyType);
 		
 	}
 
@@ -39,30 +35,16 @@ public class Reflexology {
 		this.massager = massager;
 	}
 
-	public String getPrice() {
-		return price.get();
+	public String getReflexologyType() {
+		return reflexologyType.get();
 	}
 
-	public void setPrice(SimpleStringProperty price) {
-		this.price = price;
+	public void setReflexologyType(SimpleStringProperty reflexologyType) {
+		this.reflexologyType = reflexologyType;
 	}
 
-	public String getPaymentMethod() {
-		return paymentMethod.get();
-	}
-
-	public void setPaymentMethod(SimpleStringProperty paymentMethod) {
-		this.paymentMethod = paymentMethod;
-	}
-
-	public String getPaymentDate() {
-		return paymentDate.get();
-	}
-
-	public void setPaymentDate(SimpleStringProperty paymentDate) {
-		this.paymentDate = paymentDate;
-	}
 	
+
 	
 	
 	
