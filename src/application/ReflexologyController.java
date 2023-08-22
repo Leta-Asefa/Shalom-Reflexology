@@ -353,6 +353,21 @@ public void refreshTable() {
 
 
 
+@FXML public void selectList() {
+	
+	if(isPatientButton.isSelected()) {
+		typeList=dao.getPrescriptionItems();
+		typeComboBox.setItems(typeList);
+		
+	}else {
+
+		typeList=dao.getReflexologyItems();
+		typeComboBox.setItems(typeList);
+	}
+}
+
+
+
 
 
 
