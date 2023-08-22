@@ -10,51 +10,51 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1146.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EnterPatientsController">
    <children>
-      <TableView fx:id="prescriptionTable" layoutX="85.0" layoutY="53.0" prefHeight="171.0" prefWidth="937.0">
+      <TableView fx:id="prescriptionTable" layoutX="47.0" layoutY="53.0" prefHeight="286.0" prefWidth="1087.0">
          <columns>
             <TableColumn fx:id="phonep" minWidth="22.0" prefWidth="100.0" text="Phone" />
-            <TableColumn fx:id="namep" prefWidth="110.0" text="Name" />
-            <TableColumn fx:id="first" text="1st" />
-            <TableColumn fx:id="second" text="2nd" />
-            <TableColumn fx:id="third" text="3rd" />
-            <TableColumn fx:id="fourth" text="4th" />
-            <TableColumn fx:id="fifth" text="5th" />
-            <TableColumn fx:id="sixth" text="6th" />
-            <TableColumn fx:id="seventh" text="7th" />
-            <TableColumn fx:id="eighth" text="8th" />
-            <TableColumn fx:id="ninth" text="9th" />
-            <TableColumn fx:id="tenth" text="10th" />
-            <TableColumn fx:id="eleventh" text="11th" />
-            <TableColumn fx:id="twelvth" text="12th" />
-            <TableColumn fx:id="thirteenth" text="13th" />
-            <TableColumn fx:id="fourteenth" text="14th" />
-            <TableColumn fx:id="fifteenth" text="15th" />
+            <TableColumn fx:id="namep" prefWidth="130.0" text="Name" />
+            <TableColumn fx:id="first" prefWidth="101.0" text="1st" />
+            <TableColumn fx:id="second" prefWidth="101.0" text="2nd" />
+            <TableColumn fx:id="third" prefWidth="101.0" text="3rd" />
+            <TableColumn fx:id="fourth" prefWidth="101.0" text="4th" />
+            <TableColumn fx:id="fifth" prefWidth="101.0" text="5th" />
+            <TableColumn fx:id="sixth" prefWidth="101.0" text="6th" />
+            <TableColumn fx:id="seventh" prefWidth="101.0" text="7th" />
+            <TableColumn fx:id="eighth" prefWidth="101.0" text="8th" />
+            <TableColumn fx:id="ninth" prefWidth="101.0" text="9th" />
+            <TableColumn fx:id="tenth" prefWidth="101.0" text="10th" />
+            <TableColumn fx:id="eleventh" prefWidth="101.0" text="11th" />
+            <TableColumn fx:id="twelvth" prefWidth="101.0" text="12th" />
+            <TableColumn fx:id="thirteenth" prefWidth="101.0" text="13th" />
+            <TableColumn fx:id="fourteenth" prefWidth="101.0" text="14th" />
+            <TableColumn fx:id="fifteenth" prefWidth="101.0" text="15th" />
          </columns>
       </TableView>
-      <TableView fx:id="attendanceTable" layoutX="62.0" layoutY="295.0" prefHeight="313.0" prefWidth="983.0">
+      <TableView fx:id="attendanceTable" layoutX="47.0" layoutY="345.0" prefHeight="360.0" prefWidth="1087.0">
          <columns>
             <TableColumn fx:id="phonea" prefWidth="100.0" text="Phone" />
             <TableColumn fx:id="namea" prefWidth="130.0" text="Name" />
-            <TableColumn fx:id="first1" prefWidth="50.0" text="1st" />
-            <TableColumn fx:id="second1" prefWidth="50.0" text="2nd" />
-            <TableColumn fx:id="third1" prefWidth="50.0" text="3rd" />
-            <TableColumn fx:id="fourth1" prefWidth="50.0" text="4th" />
-            <TableColumn fx:id="fifth1" prefWidth="50.0" text="5th" />
-            <TableColumn fx:id="sixth1" prefWidth="50.0" text="6th" />
-            <TableColumn fx:id="seventh1" prefWidth="50.0" text="7th" />
-            <TableColumn fx:id="eighth1" prefWidth="50.0" text="8th" />
-            <TableColumn fx:id="ninth1" prefWidth="50.0" text="9th" />
-            <TableColumn fx:id="tenth1" prefWidth="50.0" text="10th" />
-            <TableColumn fx:id="eleventh1" prefWidth="50.0" text="11th" />
-            <TableColumn fx:id="twelvth1" prefWidth="50.0" text="12th" />
-            <TableColumn fx:id="thirteenth1" prefWidth="50.0" text="13th" />
-            <TableColumn fx:id="fourteenth1" prefWidth="50.0" text="14th" />
-            <TableColumn fx:id="fifteenth1" prefWidth="50.0" text="15th" />
+            <TableColumn fx:id="first1" prefWidth="101.0" text="1st" />
+            <TableColumn fx:id="second1" prefWidth="101.0" text="2nd" />
+            <TableColumn fx:id="third1" prefWidth="101.0" text="3rd" />
+            <TableColumn fx:id="fourth1" prefWidth="101.0" text="4th" />
+            <TableColumn fx:id="fifth1" prefWidth="101.0" text="5th" />
+            <TableColumn fx:id="sixth1" prefWidth="101.0" text="6th" />
+            <TableColumn fx:id="seventh1" prefWidth="101.0" text="7th" />
+            <TableColumn fx:id="eighth1" prefWidth="101.0" text="8th" />
+            <TableColumn fx:id="ninth1" prefWidth="101.0" text="9th" />
+            <TableColumn fx:id="tenth1" prefWidth="101.0" text="10th" />
+            <TableColumn fx:id="eleventh1" prefWidth="101.0" text="11th" />
+            <TableColumn fx:id="twelvth1" prefWidth="101.0" text="12th" />
+            <TableColumn fx:id="thirteenth1" prefWidth="101.0" text="13th" />
+            <TableColumn fx:id="fourteenth1" prefWidth="101.0" text="14th" />
+            <TableColumn fx:id="fifteenth1" prefWidth="101.0" text="15th" />
          </columns>
       </TableView>
-      <Button fx:id="shiftButton" layoutX="376.0" layoutY="236.0" mnemonicParsing="false" onAction="#shift" prefHeight="7.0" prefWidth="40.0" text="Shift" />
-      <Spinner fx:id="spinner" layoutX="290.0" layoutY="236.0" prefHeight="4.0" prefWidth="68.0" />
-      <Label layoutX="85.0" layoutY="240.0" prefHeight="17.0" prefWidth="205.0" text="Enter the column number for shifting" />
+      <Button fx:id="shiftButton" layoutX="396.0" layoutY="19.0" mnemonicParsing="false" onAction="#shift" prefHeight="7.0" prefWidth="40.0" text="Shift" />
+      <Spinner fx:id="spinner" layoutX="310.0" layoutY="19.0" prefHeight="4.0" prefWidth="68.0" />
+      <Label layoutX="105.0" layoutY="23.0" prefHeight="17.0" prefWidth="205.0" text="Enter the column number for shifting" />
       <CheckBox fx:id="getCheckBox" layoutX="765.0" layoutY="23.0" mnemonicParsing="false" onAction="#get" text="Get All Patients Prescription And Attendance" />
    </children>
 </AnchorPane>
