@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 import ClassDesignForDB.Patient;
@@ -235,7 +236,6 @@ public class PatientsInformationController implements Initializable{
 		fourteenth.setCellValueFactory(new PropertyValueFactory<Prescriptions,String>("fourteenth"));
 		fifteenth.setCellValueFactory(new PropertyValueFactory<Prescriptions,String>("fifteenth"));
 		
-		table1.setEditable(true);
 		table1.setOnMouseClicked(new EventHandler<MouseEvent >  (){
 
 			@Override
@@ -874,7 +874,7 @@ catch (Exception ex) {
 		deleteButton.setVisible(true);
 		
 		table2.setEditable(true);
-		
+		table1.setEditable(true);
 		}
 		catch (Exception ex) {
 
@@ -1077,6 +1077,11 @@ catch (Exception ex) {
 		} else {
 			temporaryPrescription += "null";
 		}
+		
+		for (int i = 0; i < 15; i++) {
+			temporaryPrescription += "null";
+		}
+		
 		
 		return temporaryPrescription;
 
