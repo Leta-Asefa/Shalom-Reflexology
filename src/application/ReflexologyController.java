@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import ClassDesignForDB.Reflexology;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,10 +17,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.CheckBox;
+import javafx.scene.shape.Line;
 
 public class ReflexologyController implements Initializable{
 	
@@ -45,13 +51,22 @@ private RadioButton isPatientButton;
 	
 	private ObservableList<String> typeList;
 	private ObservableList<String> bankList;
-	
+	private ObservableList<Reflexology> reflexologyList;
 	private ShalomDAO dao;
 	@FXML private TextField referenceTextField;
 	@FXML private Label referenceLabel;
 	@FXML private ComboBox<String> bankComboBox;
 	@FXML DatePicker datePicker;
-	
+	@FXML TableView<Reflexology> table;
+	@FXML TableColumn<Reflexology,String> name;
+	@FXML TableColumn<Reflexology,String> type;
+	@FXML DatePicker listDatePicker;
+	@FXML CheckBox getCheckBox;
+	@FXML Label dateLabel;
+	@FXML Line line;
+	@FXML Button deleteButton;
+	LocalDate localDate;
+	String listDate;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -65,7 +80,13 @@ private RadioButton isPatientButton;
 		typeList=dao.getReflexologyItems();
 		bankList=dao.getBanksName();
 	
+		name.setCellValueFactory(new PropertyValueFactory<Reflexology,String>("massager"));
+		type.setCellValueFactory(new PropertyValueFactory<Reflexology,String>("reflexologyType"));
 		
+		
+		localDate= LocalDate.now();
+		listDate=localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		refreshTable(); // dafault loading for today
 		
 		massagerComboBox.setItems(massagerList);
 		typeComboBox.setItems(typeList);
@@ -215,6 +236,9 @@ private RadioButton isPatientButton;
 					
 					
 				} 
+		
+		
+			refreshTable();
 		}catch (Exception ex) {
 
 			new CallAlert(AlertType.WARNING,"RefleoxologyController","addMethod",ex.getClass().getName());
@@ -276,10 +300,56 @@ private RadioButton isPatientButton;
 			}
 		
 	}
+
+
+
+	@FXML public void searchList() {
+		
+		 localDate=listDatePicker.getValue();
+		 listDate=localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		 reflexologyList=dao.getReflexologyForTable(listDate);
+		 table.setItems(reflexologyList);
+	}
+
+
+
+	@FXML public void getList() {
+		
+		if(getCheckBox.isSelected()) {
+			dateLabel.setVisible(true);
+			table.setVisible(true);
+			listDatePicker.setVisible(true);
+			line.setVisible(true);
+			deleteButton.setVisible(true);
+
+		}else {
+			dateLabel.setVisible(false);
+			table.setVisible(false);
+			listDatePicker.setVisible(false);
+			line.setVisible(false);
+			deleteButton.setVisible(false);
+		}
+	}
+
+
+
+	@FXML public void delete() {
+		int id=Integer.parseInt(table.getSelectionModel().getSelectedItem().getId());
+		dao.deleteReflexologyHistory(id);
+		refreshTable();
+	}
 	
 
 
-
+public void refreshTable() {
+	if(listDatePicker.getValue()!=null) {
+	 localDate=listDatePicker.getValue();
+	 listDate=localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	}
+	
+		reflexologyList=dao.getReflexologyForTable(listDate);
+		table.setItems(reflexologyList);
+}
 
 
 
