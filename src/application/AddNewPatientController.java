@@ -127,7 +127,7 @@ public class AddNewPatientController implements Initializable {
 
 			@Override
 			public void changed(ObservableValue<? extends String> arg0, String oldValue, String newValue) {
-			if (newValue.matches("[a-zA-Z\s]{0,15}")) {
+			if (newValue.matches("[a-zA-Z\s]{0,39}")) {
 				nameTextField.setText(newValue);
 			} else {
 				nameTextField.setText(oldValue);
