@@ -331,9 +331,11 @@ public class CurrentPatientController implements Initializable {
 		
 		if(p!=null) {
 		dao.deletePrescriptionAndAttendance(phoneNumber);
+		dao.deleteTemporaryPrescription(phoneNumber);
 		dao.addInactivePatient(Integer.parseInt (p.getPhone()), p.getFullName(),Integer.parseInt (p.getAge()), p.getSex().charAt(0), p.getAssesment(), p.getTreatment(), p.getFocusingArea(),p.getHistory());
+		dao.insertIntoInactiveTemporaryPrescription(Integer.parseInt (p.getPhone()), dao.getTemporaryPrescription(Integer.parseInt (p.getPhone())), " ");
 		
-		Alert alert1=new  Alert(AlertType.INFORMATION);
+Alert alert1=new  Alert(AlertType.INFORMATION);
 		alert1.setContentText("Inactivated Successfully");
 		alert1.show();
 		}
