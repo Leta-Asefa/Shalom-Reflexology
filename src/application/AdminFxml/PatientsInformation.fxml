@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
@@ -44,18 +45,18 @@
          <effect>
             <InnerShadow />
          </effect></TextField>
-      <Button layoutX="385.0" layoutY="5.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="search" />
-      <Label layoutX="81.0" layoutY="392.0" prefHeight="25.0" prefWidth="90.0" text="ASSESMENT" textFill="#00ff2b">
+      <Button fx:id="searchButton" layoutX="385.0" layoutY="5.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="search" />
+      <Label fx:id="assesmentLabel" layoutX="81.0" layoutY="392.0" prefHeight="25.0" prefWidth="90.0" text="ASSESMENT" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="497.0" prefHeight="25.0" prefWidth="90.0" text="TREATMENTS" textFill="#00ff2b">
+      <Label fx:id="treatmentLabel" layoutX="66.0" layoutY="497.0" prefHeight="25.0" prefWidth="90.0" text="TREATMENTS" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="591.0" prefHeight="25.0" prefWidth="121.0" text="FOCUSING AREAS" textFill="#00ff2b">
+      <Label fx:id="focusingLabel" layoutX="36.0" layoutY="591.0" prefHeight="25.0" prefWidth="121.0" text="FOCUSING AREAS" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -72,13 +73,13 @@
          <font>
             <Font size="20.0" />
          </font></TextArea>
-      <Button layoutX="502.0" layoutY="5.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="EDIT" />
+      <Button fx:id="eidtButton" layoutX="502.0" layoutY="5.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="90.0" styleClass="buttonClass" stylesheets="@../application.css" text="EDIT" />
       <Button fx:id="saveButton" disable="true" layoutX="516.0" layoutY="692.0" mnemonicParsing="false" onAction="#save" prefHeight="37.0" prefWidth="151.0" styleClass="buttonClass" stylesheets="@../application.css" text="SAVE" textFill="#ffee00" />
       <Button fx:id="getAssesment" disable="true" layoutX="597.0" layoutY="414.0" mnemonicParsing="false" onAction="#addAssesment" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
       <Button fx:id="getFocusingArea" disable="true" layoutX="597.0" layoutY="618.0" mnemonicParsing="false" onAction="#addFocusingArea" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
       <Button fx:id="getTreatment" disable="true" layoutX="597.0" layoutY="516.0" mnemonicParsing="false" onAction="#addTreatment" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
       <ListView fx:id="listView" disable="true" layoutX="760.0" layoutY="296.0" prefHeight="431.0" prefWidth="344.0" />
-      <Label layoutX="96.0" layoutY="312.0" prefHeight="25.0" prefWidth="61.0" text="HISTORY" textFill="#00ff2b">
+      <Label fx:id="historyLabel" layoutX="96.0" layoutY="312.0" prefHeight="25.0" prefWidth="61.0" text="HISTORY" textFill="#00ff2b">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
@@ -89,12 +90,12 @@
          </font>
       </TextArea>
       <Button fx:id="getHistory" disable="true" layoutX="597.0" layoutY="313.0" mnemonicParsing="false" onAction="#addHistory" prefHeight="31.0" prefWidth="105.0" styleClass="buttonClass" stylesheets="@../application.css" text="Insert" textFill="#ffee00" />
-      <Label layoutX="895.0" layoutY="62.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
+      <Label fx:id="totalLabelLabel" layoutX="895.0" layoutY="62.0" prefHeight="27.0" prefWidth="90.0" styleClass="Labels" stylesheets="@../application.css" text="Total =">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="895.0" layoutY="107.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
+      <Label fx:id="creditLabelLabel" layoutX="895.0" layoutY="107.0" prefHeight="27.0" prefWidth="75.0" styleClass="Labels" stylesheets="@../application.css" text="Credit =">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -114,5 +115,6 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <CheckBox fx:id="checkBox" layoutX="992.0" layoutY="15.0" mnemonicParsing="false" onAction="#getInactivePatients" prefHeight="17.0" prefWidth="139.0" text="Get Inactive Patients" />
    </children>
 </AnchorPane>
