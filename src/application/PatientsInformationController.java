@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
@@ -29,6 +30,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.CheckBox;
 
 public class PatientsInformationController implements Initializable{
 
@@ -67,6 +69,15 @@ public class PatientsInformationController implements Initializable{
 	@FXML Label creditLabel;
 	@FXML Label totalLabel;
 	@FXML Button deleteButton;
+	@FXML Label assesmentLabel;
+	@FXML Label treatmentLabel;
+	@FXML Label focusingLabel;
+	@FXML Button eidtButton;
+	@FXML Label historyLabel;
+	@FXML CheckBox checkBox;
+	@FXML Label creditLabelLabel;
+	@FXML Label totalLabelLabel;
+	@FXML Button searchButton;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -242,6 +253,17 @@ public class PatientsInformationController implements Initializable{
 			public void handle(MouseEvent event) {
 				Patient p=table1.getSelectionModel().getSelectedItem();
 				
+			if(checkBox.isSelected()) {
+				
+				if(p!=null) {
+					int phoneNumber=Integer.parseInt(p.getPhone());
+					totalLabel.setText(String.valueOf( dao.getInactiveTotalPaymentDynamic(phoneNumber)));
+					
+					}
+				
+			
+			}else {
+				
 				if(p!=null) {
 					int phoneNumber=Integer.parseInt(p.getPhone());
 					totalLabel.setText(String.valueOf( dao.getTotalPaymentDynamic(phoneNumber)));
@@ -251,8 +273,10 @@ public class PatientsInformationController implements Initializable{
 					prescriptionList=dao.searchPrescriptionsByPhone(phoneNumber);
 					table2.setItems(prescriptionList);
 					
-					
-				}
+					}
+				
+				
+			}
 				
 				
 				if (p.getAssesment()!=null) {
@@ -1091,8 +1115,9 @@ catch (Exception ex) {
 	@FXML
 	public void delete() {
 		Patient p=table1.getSelectionModel().getSelectedItem();
-		
-		if(p!=null) {
+		String	temporaryPrescription=dao.getTemporaryPrescription(Integer.parseInt(p.getPhone()));
+			
+			if(p!=null) {
 		
 			Alert alert= new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Box" );
@@ -1103,16 +1128,72 @@ catch (Exception ex) {
 			
 				int phone=Integer.parseInt( (p.getPhone()));
 				dao.deletePrescriptionAndAttendance(phone);
+				dao.deleteTemporaryPrescription(phone);
 				dao.addInactivePatient(phone, p.getFullName(), Integer.parseInt(p.getAge()), p.getSex().charAt(0),
 						p.getAssesment(), p.getTreatment(), p.getFocusingArea(), p.getHistory());
-				
-		
+			try {
+				dao.insertIntoInactiveTemporaryPrescription(phone, temporaryPrescription, " ");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			Alert alert1=new  Alert(AlertType.INFORMATION);
 			alert1.setContentText("Inactivated Successfully");
 			alert1.show();
 			refresh();
+			creditLabel.setText("");
+			totalLabel.setText("");
+			history.setText("");
+			assesment.setText("");
+			treatment.setText("");
+			focusingArea.setText("");
 			}
 	}
+		
+	}
+
+	@FXML public void getInactivePatients() {
+		
+		if(checkBox.isSelected()) {
+			patientList=dao.getAllInactivePatients();
+			table1.setItems(patientList);
+			
+			table2.setVisible(false);
+			creditLabel.setVisible(false);
+			creditLabelLabel.setVisible(false);
+			
+			creditLabel.setText("");
+			totalLabel.setText("");
+			
+			getHistory.setVisible(false);
+			getTreatment.setVisible(false);
+			getFocusingArea.setVisible(false);
+			getAssesment.setVisible(false);
+			eidtButton.setVisible(false);
+			listView.setVisible(false);
+			searchButton.setVisible(false);
+			searchTextField.setVisible(false);
+		}else {
+			patientList=dao.getAllPatients();
+			table1.setItems(patientList);
+			
+			table2.setVisible(true);
+			creditLabel.setVisible(true);
+			creditLabelLabel.setVisible(true);
+			
+			creditLabel.setText("");
+			totalLabel.setText("");
+			
+			getHistory.setVisible(true);
+			getTreatment.setVisible(true);
+			getFocusingArea.setVisible(true);
+			getAssesment.setVisible(true);
+			eidtButton.setVisible(true);
+			listView.setVisible(true);
+			searchButton.setVisible(true);
+			searchTextField.setVisible(true);
+		}
 		
 	}
 	
