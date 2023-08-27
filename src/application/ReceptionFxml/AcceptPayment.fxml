@@ -81,12 +81,12 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <ImageView fx:id="image" fitHeight="41.0" fitWidth="53.0" layoutX="806.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image" fitHeight="41.0" fitWidth="53.0" layoutX="806.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../Images/images.png" />
          </image>
       </ImageView>
-      <Label fx:id="label" layoutX="847.0" layoutY="316.0" prefHeight="32.0" prefWidth="160.0" text="Saved Successfully" textFill="#00ff0a">
+      <Label fx:id="label" layoutX="847.0" layoutY="316.0" prefHeight="32.0" prefWidth="160.0" text="Saved Successfully" textFill="#00ff0a" visible="false">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
