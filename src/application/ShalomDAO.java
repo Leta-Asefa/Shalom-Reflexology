@@ -181,7 +181,7 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 	
 	
 	public void insertIntoTemporaryPrescription(int phone,String prescription,String bitCode) throws SQLException {
-		
+		try {
 			statement=myConn.prepareStatement("insert into temporaryPrescription values (null, ?,?,?)");
 			statement.setInt(1,phone);
 			statement.setString(2, prescription);
@@ -189,9 +189,28 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 			
 			statement.execute();
 			
-			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
 		
 	}
+	
+	public void insertIntoInactiveTemporaryPrescription(int phone,String prescription,String bitCode) throws SQLException {
+		try {
+		statement=myConn.prepareStatement("insert into inactivetemporaryPrescription values (null, ?,?,?)");
+		statement.setInt(1,phone);
+		statement.setString(2, prescription);
+		statement.setString(3, bitCode);
+		
+		statement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+		
+	
+}
 	
 	public void updateTemporaryPrescription(int phone, String prescription) {
 
@@ -201,6 +220,21 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 			statement.setInt(2, phone);
 
 			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void deleteTemporaryPrescription(int phone) {
+
+		try {
+			statement = myConn.prepareStatement("delete from temporaryPrescription  where phonefk=?");
+			statement.setInt(1, phone);
+
+			statement.execute();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -555,6 +589,7 @@ statement=myConn.prepareStatement("insert into patient values (?,?,?,?,?,?,?,?)"
 		
 		
 	}
+	
 	
 	public void activatePatient(int phone) {
 		
@@ -1907,6 +1942,73 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     }
     
     
+    public int getInactiveTotalPaymentDynamic(int phonefk)  {
+    	List<String> prescriptions = new ArrayList<>();
+    	String temporaryPrescription=null;
+    	int total=0;
+    	try {
+    		statement=myConn.prepareStatement("select prescription from inactivetemporaryprescription where phonefk=?");
+			statement.setInt(1, phonefk);
+			resultSet=statement.executeQuery();
+			while(resultSet.next()) {
+				temporaryPrescription=resultSet.getString("prescription");
+		}
+			
+			
+			ObservableList<String> list= this.getPrescriptionItems();
+			temporaryPrescription=temporaryPrescription+".";
+			
+			
+			for (int i = 0; i < 120; i = i + 4) {
+				
+				prescriptions.add(temporaryPrescription.substring(i,i+4));
+			}
+			
+			for(String p:prescriptions) {
+				if(p.isEmpty()) {
+					continue;
+				}
+			
+				
+				for(int i=0;i<list.size();i++) {
+				
+				if(p.equals(list.get(i))) {
+					
+					total=total+this.getPrice(list.get(i), 'P');
+					
+				}
+				else {
+					
+				}
+				
+				
+				}
+			}
+			
+			
+    	
+    	
+    	
+    	}
+    	catch (StringIndexOutOfBoundsException siobe){
+    		//this exception is going to be thrown if the p.sub(0,4) is out of bound
+    		//for example let say prescriptions after tenth are null ( no prescription)
+    		//during this time this kind of exceptions will be thrown 
+    		//but if all (15) are not null(15 days prescriptions are exist  ) , it won't 
+    		//throw exception
+    		
+    		siobe.printStackTrace();
+    	}
+    	catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+    	return total;
+    }
+    
+    
     public int getTotalPaymentFromTemporaryPrescription(int phonefk)  {
     	
     	String prescription = null;
@@ -2023,7 +2125,8 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     	return total;
     }
     
-
+  
+    
  
     
     
