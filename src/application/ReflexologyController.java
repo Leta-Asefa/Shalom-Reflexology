@@ -257,8 +257,10 @@ private RadioButton isPatientButton;
 	@FXML public void getPrice() {
 		
 		try {
-		
-		priceTextField.setText(String.valueOf( dao.getPrice(typeComboBox.getValue(), 'R')));
+		if(isPatientButton.isSelected())
+			priceTextField.setText(String.valueOf( dao.getPrice(typeComboBox.getValue(), 'P')));
+		else
+			priceTextField.setText(String.valueOf( dao.getPrice(typeComboBox.getValue(), 'R')));
 		
 		
 		}catch (Exception ex) {
