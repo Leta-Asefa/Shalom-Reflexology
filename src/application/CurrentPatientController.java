@@ -160,7 +160,7 @@ public class CurrentPatientController implements Initializable {
 		
 			patientList = dao.searchPatientByPhone(phoneNumber);
 	paymentList=dao.getCurrentPatientPaymentHistory(phoneNumber);
-	prescriptionsList=dao.searchPrescriptionsByPhone(phoneNumber);
+	prescriptionsList=dao.searchPrescriptionsByPhoneExact(phoneNumber);
 	
 	
 	for(int i=0;i<prescriptionsList.size();i++) {

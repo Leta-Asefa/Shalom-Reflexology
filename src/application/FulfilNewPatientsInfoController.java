@@ -643,27 +643,12 @@ public class FulfilNewPatientsInfoController implements Initializable {
     	prescription+=".";
     	List<String> p= new ArrayList<>();
     	
-    	for(int i=0;i<30;i=i+4) {
-    		
-    		if(p.size()<15) {
-    			
-    			if(prescription.substring(i,i+4)!="null") {
-    				
-    				p.add(prescription.substring(i,i+4));
-    			}
-    			
-    		}
-    		
+    	for(int i=0;i<120;i=i+4) {
+    			p.add(prescription.substring(i,i+4));
     		
     	}
     	
-    	
-    	int length=p.size();
-    	for(int i=length;i<15;i++)
-    	{
-    		p.add("null");
-    	}
-    	
+   
     	
     	
     	dao.insertIntoPrescriptions(phone,p.get(0), p.get(1), p.get(2), p.get(3), p.get(4), p.get(5), p.get(6), p.get(7), p.get(8), p.get(9), p.get(10), p.get(11), p.get(12), p.get(13), p.get(14) );
@@ -687,7 +672,7 @@ public class FulfilNewPatientsInfoController implements Initializable {
     	
     	}
 		catch (Exception ex) {
-
+ex.printStackTrace();
 			new CallAlert(AlertType.WARNING,"FullfilNewPatientController","saveMethod",ex.getClass().getName());
 
 
@@ -695,6 +680,8 @@ public class FulfilNewPatientsInfoController implements Initializable {
     }
 
 
+
+   
 
     @FXML public void resetWeek1() {
     	

@@ -270,7 +270,7 @@ public class PatientsInformationController implements Initializable{
 					int credit=dao.getCredit(phoneNumber);
 					creditLabel.setText(String.valueOf(credit ));
 					
-					prescriptionList=dao.searchPrescriptionsByPhone(phoneNumber);
+					prescriptionList=dao.searchPrescriptionsByPhoneExact(phoneNumber);
 					table2.setItems(prescriptionList);
 					
 					}
@@ -384,9 +384,8 @@ public class PatientsInformationController implements Initializable{
 				event.getRowValue().setFirstp(event.getNewValue());//this line is the short notation of
 																	//the above commented lines
 				
-				dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "firstp", event.getRowValue().getFirstp());
-					dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),
-							getUpdatedTemporaryPrescription(event));
+	dao.updatePrescription( Integer.parseInt((event.getRowValue().getPhonefk())), "firstp", event.getRowValue().getFirstp());
+	dao.updateTemporaryPrescription(Integer.parseInt((event.getRowValue().getPhonefk())),getUpdatedTemporaryPrescription(event));
 			
 
 				
@@ -819,7 +818,7 @@ try {
 			prescriptionList.clear();
 			
 			patientList=dao.searchPatientsByPhone(Integer.parseInt(searchTextField.getText()));
-			prescriptionList=dao.searchPrescriptionsByPhone(Integer.parseInt(searchTextField.getText()));
+			prescriptionList=dao.searchPrescriptionsByPhoneExact(Integer.parseInt(searchTextField.getText()));
 			
 			
 			table1.setItems(patientList);
@@ -1011,101 +1010,109 @@ catch (Exception ex) {
 		Prescriptions person=event.getRowValue();
 		String temporaryPrescription = "";
 		
-		if (person.getFirstp().length() != 0) {
+		if (  !person.getFirstp().equals("null")  && person.getFirstp().length()!=0 ) {
 			temporaryPrescription += person.getFirstp().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 		
-		if (person.getSecondp().length() != 0) {
+		if (!person.getSecondp().equals("null") && person.getSecondp().length()!=0) {
 			temporaryPrescription += person.getSecondp().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 		
 		
-		if (person.getThird().length() != 0) {
+		if (!person.getThird().equals("null") && person.getThird().length()!=0) {
 			temporaryPrescription += person.getThird().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 		
-		if (person.getFourth().length() != 0) {
+		if (!person.getFourth().equals("null") && person.getFourth().length()!=0) {
 			temporaryPrescription += person.getFourth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getFifth().length() != 0) {
+		if (!person.getFifth().equals("null") && person.getFifth().length()!=0) {
 			temporaryPrescription += person.getFifth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getSixth().length() != 0) {
+		if (!person.getSixth().equals("null") && person.getSixth().length()!=0) {
 			temporaryPrescription += person.getSixth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getSeventh().length() != 0) {
+		if (!person.getSeventh().equals("null") && person.getSeventh().length()!=0) {
 			temporaryPrescription += person.getSeventh().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getEighth().length() != 0) {
+		if (!person.getEighth().equals("null") && person.getEighth().length()!=0) {
 			temporaryPrescription += person.getEighth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getNinth().length() != 0) {
+		if (!person.getNinth().equals("null") && person.getNinth().length()!=0) {
 			temporaryPrescription += person.getNinth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getTenth().length() != 0) {
+		if (!person.getTenth().equals("null") && person.getTenth().length()!=0) {
 			temporaryPrescription += person.getTenth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 		
-		if (person.getEleventh().length() != 0) {
+		if (!person.getEleventh().equals("null") && person.getEleventh().length()!=0) {
 			temporaryPrescription += person.getEleventh().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getTwelvth().length() != 0) {
+		if (!person.getTwelvth().equals("null") && person.getTwelvth().length()!=0) {
 			temporaryPrescription += person.getTwelvth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getThirteenth().length() != 0) {
+		if (!person.getThirteenth().equals("null") && person.getThirteenth().length()!=0) {
 			temporaryPrescription += person.getThirteenth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getFourteenth().length() != 0) {
+		if (!person.getFourteenth().equals("null") && person.getThirteenth().length()!=0) {
 			temporaryPrescription += person.getFourteenth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 
-		if (person.getFifteenth().length() != 0) {
+		if (!person.getFifteenth().equals("null") && person.getFifteenth().length()!=0) {
 			temporaryPrescription += person.getFifteenth().substring(0, 4);
 		} else {
 			temporaryPrescription += "null";
 		}
 		
-		for (int i = 0; i < 15; i++) {
-			temporaryPrescription += "null";
-		}
+		if(person.getFirstp().length()>5) {
 		
+			for (int i = 0; i < 15; i++) {
+				temporaryPrescription += "null";
+			}
+		}
+		else {
+			String leftTemporaryPrescription=dao.getTemporaryPrescription(Integer.parseInt(person.getPhonefk()));
+			temporaryPrescription+=leftTemporaryPrescription.substring(60);
+			
+				
+		}
 		
 		return temporaryPrescription;
 

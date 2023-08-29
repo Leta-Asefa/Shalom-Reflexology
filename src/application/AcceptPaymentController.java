@@ -195,12 +195,15 @@ public class AcceptPaymentController implements Initializable {
 			phone=Integer.parseInt(searchTextField.getText());
 			int amount=Integer.parseInt(amountTextField.getText());
 			String date="";
-			if(paymentDatePicker.getValue()==null)
+			if(paymentDatePicker.getValue()==null )
 			 date=LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			else
 			 date=paymentDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			
-				dao.acceptPayment(phone, 'C', amount,date,"");
+				if( dao.getCredit(phone) > 0)
+					dao.acceptPayment(phone, 'C', amount,date,"");
+				else
+					new CallAlert(AlertType.WARNING,"","","Already the credit is zero ! ");
 				
 				
 				int credit=dao.getCredit(phone);
@@ -237,9 +240,11 @@ public class AcceptPaymentController implements Initializable {
 			 date=paymentDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
 			
 			
-
+			if( dao.getCredit(phone) > 0)
 					dao.acceptPayment(phone, 'M', amount,date,referenceTextField.getText()+" - "+bankComboBox.getValue());
-				
+			else
+					new CallAlert(AlertType.WARNING,"","","Already the credit is zero ! ");
+					
 				
 				
 				
