@@ -49,14 +49,14 @@
       <ComboBox fx:id="p2" layoutX="77.0" layoutY="565.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p7" layoutX="467.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p8" layoutX="538.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p14" layoutX="1065.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p14" layoutX="995.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p13" layoutX="923.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p12" layoutX="839.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p11" layoutX="768.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p10" layoutX="697.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p9" layoutX="609.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <TextField fx:id="nameTextField" disable="true" layoutX="193.0" layoutY="35.0" prefHeight="25.0" prefWidth="175.0" />
-      <ComboBox fx:id="p15" layoutX="994.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p15" layoutX="1066.0" layoutY="564.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p16" layoutX="6.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p21" layoutX="379.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
       <ComboBox fx:id="p20" layoutX="308.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
