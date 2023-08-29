@@ -1892,7 +1892,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
 			temporaryPrescription=temporaryPrescription+".";
 			
 			
-			for (int i = 0; i < 60; i = i + 4) {
+			for (int i = 0; i < 120; i = i + 4) {
 				
 				prescriptions.add(temporaryPrescription.substring(i,i+4));
 			}
@@ -2726,7 +2726,7 @@ return p;
     
 	
 	
-    public ObservableList<Prescriptions> searchPrescriptionsByPhone(int phone){
+    public ObservableList<Prescriptions> searchPrescriptionsByPhoneLike(int phone){
     	
     
    
@@ -2772,6 +2772,54 @@ return p;
 
 }
 
+
+    public ObservableList<Prescriptions> searchPrescriptionsByPhoneExact(int phone){
+    	
+    
+   
+    ObservableList<Prescriptions> list= FXCollections.observableArrayList();
+	try {
+		statement=myConn.prepareStatement("select * from prescriptions where phonefk=?");
+		statement.setInt(1, phone);
+		resultSet=statement.executeQuery();
+		while(resultSet.next()) {
+			list.add( new Prescriptions(
+					String.valueOf(	resultSet.getInt("id")),
+					String.valueOf(	resultSet.getInt("phonefk")),
+					resultSet.getString("firstp"),
+					resultSet.getString("secondp"),
+					resultSet.getString("third"),
+					resultSet.getString("fourth"),
+					resultSet.getString("fifth"),
+					resultSet.getString("sixth"),
+					resultSet.getString("seventh"),
+					resultSet.getString("eighth"),
+					resultSet.getString("ninth"),
+					resultSet.getString("tenth"),
+					resultSet.getString("eleventh"),
+					resultSet.getString("twelvth"),
+					resultSet.getString("thirteenth"),
+					resultSet.getString("fourteenth"),
+					resultSet.getString("fifteenth")
+					
+					));
+			
+			
+			
+		}
+	
+	
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+	
+	
+	return list;
+
+}
+    
+    
     public ObservableList<Attendance> searchAttendanceByPhone(int phone){
     	
         
