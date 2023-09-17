@@ -179,6 +179,44 @@ statement=myConn.prepareStatement("insert into prescriptions values (null,?,?,?,
 	}
 	
 	
+
+	public void insertIntoInactivePrescriptions(int phonefk,Prescriptions p) {
+		
+		
+		//the reason why i use firsta and seconda is since they are keywords in MySQL,therefore
+		//they can't be column name.
+		try {
+statement=myConn.prepareStatement("insert into inactiveprescriptions values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			
+		statement.setInt(1, phonefk);
+		statement.setString(2, p.getFirstp());	
+		statement.setString(3, p.getSecondp());
+		statement.setString(4,p.getThird() );
+		statement.setString(5,p.getFourth() );
+		statement.setString(6,p.getFifth() );
+		statement.setString(7,p.getSixth() );
+		statement.setString(8, p.getSeventh());
+		statement.setString(9, p.getEighth());
+		statement.setString(10,p.getNinth() );
+		statement.setString(11,p.getTenth() );
+		statement.setString(12, p.getEleventh());
+		statement.setString(13, p.getTwelvth());
+		statement.setString(14,p.getThirteenth() );
+		statement.setString(15,p.getFourteenth() );
+		statement.setString(16,p.getFifteenth() );	
+		
+		statement.execute();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	
 	
 	public void insertIntoTemporaryPrescription(int phone,String prescription,String bitCode) throws SQLException {
 		try {
@@ -1942,6 +1980,8 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     }
     
     
+    
+    
     public int getInactiveTotalPaymentDynamic(int phonefk)  {
     	List<String> prescriptions = new ArrayList<>();
     	String temporaryPrescription=null;
@@ -2126,7 +2166,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     }
     
   
-    
+ 
  
     
     
@@ -2780,6 +2820,57 @@ return p;
     ObservableList<Prescriptions> list= FXCollections.observableArrayList();
 	try {
 		statement=myConn.prepareStatement("select * from prescriptions where phonefk=?");
+		statement.setInt(1, phone);
+		resultSet=statement.executeQuery();
+		while(resultSet.next()) {
+			list.add( new Prescriptions(
+					String.valueOf(	resultSet.getInt("id")),
+					String.valueOf(	resultSet.getInt("phonefk")),
+					resultSet.getString("firstp"),
+					resultSet.getString("secondp"),
+					resultSet.getString("third"),
+					resultSet.getString("fourth"),
+					resultSet.getString("fifth"),
+					resultSet.getString("sixth"),
+					resultSet.getString("seventh"),
+					resultSet.getString("eighth"),
+					resultSet.getString("ninth"),
+					resultSet.getString("tenth"),
+					resultSet.getString("eleventh"),
+					resultSet.getString("twelvth"),
+					resultSet.getString("thirteenth"),
+					resultSet.getString("fourteenth"),
+					resultSet.getString("fifteenth")
+					
+					));
+			
+			
+			
+		}
+	
+	
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+	
+	
+	return list;
+
+}
+
+    
+    
+    
+    
+
+    public ObservableList<Prescriptions> searchInactivePrescriptionsByPhoneExact(int phone){
+    	
+    
+   
+    ObservableList<Prescriptions> list= FXCollections.observableArrayList();
+	try {
+		statement=myConn.prepareStatement("select * from inactiveprescriptions where phonefk=?");
 		statement.setInt(1, phone);
 		resultSet=statement.executeQuery();
 		while(resultSet.next()) {
@@ -4272,6 +4363,24 @@ public void deleteReflexologyHistory(int id) {
 	}
  
  
+ public String getInactiveCredit(int phone) {
+	 
+
+		try {
+			statement=myConn.prepareStatement("select bitCode from inactivetemporaryprescription where phonefk=?");
+			statement.setInt(1, phone);
+					
+			resultSet=statement.executeQuery();
+			resultSet.next();
+			String credit=resultSet.getString("bitCode");
+			return credit;
+
+			} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		return "not found";
+ }
  
  
  
