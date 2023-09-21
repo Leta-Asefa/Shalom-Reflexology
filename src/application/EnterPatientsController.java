@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import ClassDesignForDB.FullAttendance;
 import ClassDesignForDB.FullPrescriptions;
+import ClassDesignForDB.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -16,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Spinner;
@@ -510,6 +512,23 @@ try {
 				}
 			
 		});
+		
+		
+		prescriptionTable.setOnMouseClicked(new EventHandler<MouseEvent >  (){
+
+			@Override
+			public void handle(MouseEvent event) {
+				FullPrescriptions p=prescriptionTable.getSelectionModel().getSelectedItem();
+				
+				if(p!=null) {
+					String phoneNumber=p.getPhonefk();
+					for(FullAttendance row:attendanceTable.getItems()) {
+						if(phoneNumber.equals(row.getPhonefk())) {
+							attendanceTable.getSelectionModel().select(row);
+						}
+					}
+			}
+		}});
 		
 		
 		
