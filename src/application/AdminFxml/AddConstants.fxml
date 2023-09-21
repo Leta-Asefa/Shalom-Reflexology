@@ -60,6 +60,106 @@
                   </TableView>
                   <TextField fx:id="prescriptionTextField" layoutX="297.0" layoutY="478.0" />
                   <Button layoutX="469.0" layoutY="478.0" mnemonicParsing="false" onAction="#addPrescription" prefHeight="27.0" prefWidth="56.0" style="-fx-background-color: #00ff00;" text="Add" textFill="WHITE" />
+                  <Label layoutX="35.0" layoutY="28.0" prefHeight="20.0" prefWidth="132.0" text="rx45   &lt;-----&gt;  Rx45">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="48.0" prefHeight="23.0" prefWidth="132.0" text="rx60   &lt;-----&gt;  Rx60">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="71.0" prefHeight="23.0" prefWidth="132.0" text="30m1 &lt;-----&gt;  30M1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="232.0" prefHeight="23.0" prefWidth="132.0" text="60m2 &lt;-----&gt;  60M2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="209.0" prefHeight="23.0" prefWidth="132.0" text="60m1 &lt;-----&gt;  60M1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="186.0" prefHeight="23.0" prefWidth="132.0" text="45m3 &lt;-----&gt;  45M3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="163.0" prefHeight="23.0" prefWidth="132.0" text="45m2 &lt;-----&gt;  45M2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="140.0" prefHeight="23.0" prefWidth="132.0" text="45m1 &lt;-----&gt;  45M1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="117.0" prefHeight="23.0" prefWidth="132.0" text="30m3 &lt;-----&gt;  30M3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="94.0" prefHeight="23.0" prefWidth="132.0" text="30m2 &lt;-----&gt;  30M2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="253.0" prefHeight="23.0" prefWidth="132.0" text="60m3 &lt;-----&gt;  60M3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="276.0" prefHeight="23.0" prefWidth="132.0" text="Tmi1  &lt;-----&gt;  TMi1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="299.0" prefHeight="23.0" prefWidth="132.0" text="Tmi2  &lt;-----&gt;  TMi2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="322.0" prefHeight="23.0" prefWidth="132.0" text="Tmi3  &lt;-----&gt;  TMi3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="345.0" prefHeight="23.0" prefWidth="143.0" text="Tmo1  &lt;-----&gt;  TMo1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="366.0" prefHeight="23.0" prefWidth="143.0" text="Tmo2  &lt;-----&gt;  TMo2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="389.0" prefHeight="23.0" prefWidth="143.0" text="Tmo3  &lt;-----&gt;  TMo3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="412.0" prefHeight="23.0" prefWidth="143.0" text="Tmj1  &lt;-----&gt;  TMj1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="435.0" prefHeight="23.0" prefWidth="143.0" text="Tmj2  &lt;-----&gt;  TMj2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="35.0" layoutY="456.0" prefHeight="23.0" prefWidth="143.0" text="Tmj3  &lt;-----&gt;  TMj3">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </content>
