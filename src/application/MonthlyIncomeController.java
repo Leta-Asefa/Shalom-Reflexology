@@ -160,51 +160,51 @@ public class MonthlyIncomeController implements Initializable{
 	}@FXML public void clicked() {
 		
 
-		if(!(startingDatePicker.getValue()==null)  &&  !(endingDatePicker.getValue()==null)) {
-			
-		try {
-			
-			
-		
-		int from30=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "30 MIN");
-		int from45=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "45 MIN");
-		int from60=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "60 MIN");
-
-		int fromMa10=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma10");
-		int fromMa12=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma12");
-		int fromMa15=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma15");
-		int fromMa17=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma17");
-		int fromMa20=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma20");
-
-		int total=from30+from45+from60+fromMa10+fromMa12+fromMa15+fromMa17+fromMa20;
-
-alert.setHeaderText("From 30 MIN "+from30+" customer(s)\n"+
-				"From 45 MIN "+from45+" customer(s)\n" +
-				"From 60 MIN "+from60+" customer(s)\n"+
-				"From Ma10   "+fromMa10+" customer(s)\n" +
-				"From Ma12   "+fromMa12+" customer(s)\n" +
-				"From Ma15   "+fromMa15+" customer(s)\n" +
-				"From Ma17   "+fromMa17+" customer(s)\n" +
-				"From Ma20   "+fromMa20+" customer(s)\n" +
-				"\n\nTotal =    "+total+" customer(s)\n"
-				);
-		
-		alert.show();
-		
-		
-		
-		}
-		catch (Exception ex) {
-
-			new CallAlert(AlertType.WARNING,"DailyIncomeController","enteredMethod",ex.getClass().getName());
-
-
-			}
-		
-		
-		
-		
-	}
+//		if(!(startingDatePicker.getValue()==null)  &&  !(endingDatePicker.getValue()==null)) {
+//			
+//		try {
+//			
+//			
+//		
+//		int from30=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "30 MIN");
+//		int from45=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "45 MIN");
+//		int from60=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "60 MIN");
+//
+//		int fromMa10=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma10");
+//		int fromMa12=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma12");
+//		int fromMa15=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma15");
+//		int fromMa17=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma17");
+//		int fromMa20=dao.getMonthlyReflexologyCount(startingDatePicker.getValue().toString(),endingDatePicker.getValue().toString(), "Ma20");
+//
+//		int total=from30+from45+from60+fromMa10+fromMa12+fromMa15+fromMa17+fromMa20;
+//
+//alert.setHeaderText("From 30 MIN "+from30+" customer(s)\n"+
+//				"From 45 MIN "+from45+" customer(s)\n" +
+//				"From 60 MIN "+from60+" customer(s)\n"+
+//				"From Ma10   "+fromMa10+" customer(s)\n" +
+//				"From Ma12   "+fromMa12+" customer(s)\n" +
+//				"From Ma15   "+fromMa15+" customer(s)\n" +
+//				"From Ma17   "+fromMa17+" customer(s)\n" +
+//				"From Ma20   "+fromMa20+" customer(s)\n" +
+//				"\n\nTotal =    "+total+" customer(s)\n"
+//				);
+//		
+//		alert.show();
+//		
+//		
+//		
+//		}
+//		catch (Exception ex) {
+//
+//			new CallAlert(AlertType.WARNING,"DailyIncomeController","enteredMethod",ex.getClass().getName());
+//
+//
+//			}
+//		
+//		
+//		
+//		
+//	}
 
 	
 	
