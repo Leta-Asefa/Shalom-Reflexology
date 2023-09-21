@@ -168,6 +168,7 @@ private RadioButton isPatientButton;
 
 			if(  !(priceTextField.getText().equals("")) && !( massagerComboBox.getValue()==null) && !( typeComboBox.getValue()==null) )
 			{
+				
 				int price=Integer.parseInt(priceTextField.getText());
 				String currentDate="";
 				if(datePicker.getValue()==null)
@@ -370,8 +371,7 @@ public void refreshTable() {
 
 
 
-
-
+ 
 
 
 
