@@ -258,8 +258,12 @@ public class PatientsInformationController implements Initializable{
 				if(p!=null) {
 					int phoneNumber=Integer.parseInt(p.getPhone());
 					totalLabel.setText(String.valueOf( dao.getInactiveTotalPaymentDynamic(phoneNumber)));
-					
-					}
+					creditLabel.setText(dao.getInactiveCredit(phoneNumber));
+				
+					prescriptionList=dao.searchInactivePrescriptionsByPhoneExact(phoneNumber);
+					table2.setItems(prescriptionList);
+				
+				}
 				
 			
 			}else {
@@ -1123,8 +1127,9 @@ catch (Exception ex) {
 	public void delete() {
 		Patient p=table1.getSelectionModel().getSelectedItem();
 		String	temporaryPrescription=dao.getTemporaryPrescription(Integer.parseInt(p.getPhone()));
+		ObservableList<Prescriptions> prescription= dao.searchPrescriptionsByPhoneExact( Integer.parseInt( table1.getSelectionModel().getSelectedItem().getPhone()));	
 			
-			if(p!=null) {
+		if(p!=null) {
 		
 			Alert alert= new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Confirmation Box" );
@@ -1134,16 +1139,22 @@ catch (Exception ex) {
 			if(alert.showAndWait().get()==ButtonType.OK) {
 			
 				int phone=Integer.parseInt( (p.getPhone()));
-				dao.deletePrescriptionAndAttendance(phone);
-				dao.deleteTemporaryPrescription(phone);
-				dao.addInactivePatient(phone, p.getFullName(), Integer.parseInt(p.getAge()), p.getSex().charAt(0),
-						p.getAssesment(), p.getTreatment(), p.getFocusingArea(), p.getHistory());
-			try {
-				dao.insertIntoInactiveTemporaryPrescription(phone, temporaryPrescription, " ");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				try {
+					String credit=String.valueOf(dao.getCredit(phone));
+					dao.deletePrescriptionAndAttendance(phone);
+					dao.deleteTemporaryPrescription(phone);
+				
+					dao.addInactivePatient(phone, p.getFullName(), Integer.parseInt(p.getAge()), p.getSex().charAt(0),
+							p.getAssesment(), p.getTreatment(), p.getFocusingArea(), p.getHistory());
+					
+					dao.insertIntoInactivePrescriptions(phone, prescription.get(0) );
+					dao.insertIntoInactiveTemporaryPrescription(phone, temporaryPrescription, credit);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
 			
 			Alert alert1=new  Alert(AlertType.INFORMATION);
 			alert1.setContentText("Inactivated Successfully");
@@ -1166,9 +1177,6 @@ catch (Exception ex) {
 			patientList=dao.getAllInactivePatients();
 			table1.setItems(patientList);
 			
-			table2.setVisible(false);
-			creditLabel.setVisible(false);
-			creditLabelLabel.setVisible(false);
 			
 			creditLabel.setText("");
 			totalLabel.setText("");
@@ -1178,6 +1186,7 @@ catch (Exception ex) {
 			getFocusingArea.setVisible(false);
 			getAssesment.setVisible(false);
 			eidtButton.setVisible(false);
+			deleteButton.setVisible(false);
 			listView.setVisible(false);
 			searchButton.setVisible(false);
 			searchTextField.setVisible(false);
@@ -1185,9 +1194,6 @@ catch (Exception ex) {
 			patientList=dao.getAllPatients();
 			table1.setItems(patientList);
 			
-			table2.setVisible(true);
-			creditLabel.setVisible(true);
-			creditLabelLabel.setVisible(true);
 			
 			creditLabel.setText("");
 			totalLabel.setText("");
