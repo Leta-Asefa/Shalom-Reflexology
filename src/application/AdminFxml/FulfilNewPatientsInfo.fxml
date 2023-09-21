@@ -41,37 +41,37 @@
             <Font name="Cambria Bold Italic" size="22.0" />
          </font>
       </Label>
-      <ComboBox fx:id="p1" layoutX="6.0" layoutY="565.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p6" layoutX="379.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p5" layoutX="308.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p4" layoutX="237.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p3" layoutX="148.0" layoutY="565.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p2" layoutX="77.0" layoutY="565.0" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p7" layoutX="467.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p8" layoutX="538.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p14" layoutX="995.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p13" layoutX="923.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p12" layoutX="839.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p11" layoutX="768.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p10" layoutX="697.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p9" layoutX="609.0" layoutY="565.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p1" layoutX="3.0" layoutY="565.0" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p6" layoutX="375.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p5" layoutX="300.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p4" layoutX="225.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p3" layoutX="146.0" layoutY="565.0" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p2" layoutX="78.0" layoutY="565.0" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p7" layoutX="454.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p8" layoutX="529.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p14" layoutX="987.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p13" layoutX="912.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p12" layoutX="833.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p11" layoutX="758.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p10" layoutX="683.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p9" layoutX="604.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
       <TextField fx:id="nameTextField" disable="true" layoutX="193.0" layoutY="35.0" prefHeight="25.0" prefWidth="175.0" />
-      <ComboBox fx:id="p15" layoutX="1066.0" layoutY="564.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p16" layoutX="6.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p21" layoutX="379.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p20" layoutX="308.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p19" layoutX="237.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p18" layoutX="148.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p17" layoutX="77.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p22" layoutX="467.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p23" layoutX="538.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p30" layoutX="1066.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p28" layoutX="924.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p27" layoutX="841.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p26" layoutX="770.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p25" layoutX="698.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p24" layoutX="609.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
-      <ComboBox fx:id="p29" layoutX="995.0" layoutY="628.0" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p15" layoutX="1062.0" layoutY="565.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p16" layoutX="3.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p21" layoutX="376.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p20" layoutX="301.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p19" layoutX="226.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p18" layoutX="146.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p17" layoutX="77.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p22" layoutX="455.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p23" layoutX="530.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p30" layoutX="1063.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p28" layoutX="913.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p27" layoutX="834.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p26" layoutX="759.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p25" layoutX="684.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p24" layoutX="605.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
+      <ComboBox fx:id="p29" layoutX="988.0" layoutY="628.0" prefHeight="20.0" prefWidth="75.0" style="-fx-background-color: #90e9ff;" />
       <TextArea fx:id="historyTextArea" layoutX="192.0" layoutY="93.0" prefHeight="92.0" prefWidth="360.0" wrapText="true" />
       <Label layoutX="30.0" layoutY="125.0" prefHeight="27.0" prefWidth="122.0" text="HISTORY" textFill="#0081ff">
          <font>
