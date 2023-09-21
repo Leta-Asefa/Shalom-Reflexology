@@ -872,8 +872,7 @@ if(! ( historyField.getText().equals("") ) ){
 					prescriptionTextField.setText("");
 					
 				}else {
-	new CallAlert(AlertType.WARNING,"","The length should be 4","=> The first 2 letters should represent the prescription type\n"
-			+ "=> The last 2 letters should represent the price");
+	new CallAlert(AlertType.WARNING,"","The length should be 4","");
 
 				}
 				
