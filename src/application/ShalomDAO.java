@@ -32,11 +32,11 @@ import javafx.util.converter.LocalDateStringConverter;
 
 public class ShalomDAO {
 	
-	String url = "jdbc:mysql://localhost:3306/shalom";
-	//String url="jdbc:mysql://192.168.1.1:3306/shalom";
+	//String url = "jdbc:mysql://localhost:3306/shalom";
+	String url="jdbc:mysql://192.168.1.1:3306/shalom";
 	
-	String userName = "root";
-	//String userName="Reception";
+	//String userName = "root";
+	String userName="Reception";
 	
 	String password="0991175590";
 	
@@ -1702,7 +1702,7 @@ int income=0;
 	
     public int howManyTherapies(String date) {
     	
-    	String string="th%"+date;
+    	String string="t%"+date;
     	int customers=0;
     	try {
 statement=myConn.prepareStatement("select count(*) from prescriptions where (firstp like ?)or(secondp like ?)or(third like ?)or (fourth like ?)or(fifth like ?)or(sixth like ?)or(seventh like ?)or(eighth like ?)or(ninth like ?)or(tenth like ?)or(eleventh like ?)or(twelvth like ?)or (thirteenth like ?)or(fourteenth like ?)or(fifteenth like ?)");
@@ -1738,7 +1738,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     public int howManyMassages(String date) {
     	
 
-    	String string="ma%"+date;
+    	String string="__m%"+date;
     	int customers=0;
     	try {
 statement=myConn.prepareStatement("select count(*) from prescriptions where (firstp like ?)or(secondp like ?)or(third like ?)or (fourth like ?)or(fifth like ?)or(sixth like ?)or(seventh like ?)or(eighth like ?)or(ninth like ?)or(tenth like ?)or(eleventh like ?)or(twelvth like ?)or (thirteenth like ?)or(fourteenth like ?)or(fifteenth like ?)");
@@ -1918,7 +1918,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
     	String temporaryPrescription=null;
     	int total=0;
     	try {
-    		statement=myConn.prepareStatement("select prescription from temporaryprescription where phonefk=?");
+    		statement=myConn.prepareStatement("select  prescription from temporaryprescription where phonefk=?");
 			statement.setInt(1, phonefk);
 			resultSet=statement.executeQuery();
 			while(resultSet.next()) {
@@ -1927,6 +1927,7 @@ statement=myConn.prepareStatement("select count(*) from prescriptions where (fir
 			
 			
 			ObservableList<String> list= this.getPrescriptionItems();
+			
 			temporaryPrescription=temporaryPrescription+".";
 			
 			
@@ -2224,13 +2225,37 @@ public int paySalary(String startingDate,String endingDate,int id,String type) {
     	return commission;
     	
     }
-    
+
+    public int getPatientCommission(String fullName){
+    	
+		int commission=0;
+try {
+	statement=myConn.prepareStatement("select commission from comboboxchoices where (fullName=?) and (category ='P') ");
+	statement.setString(1, fullName);
+	resultSet=statement.executeQuery();
+	
+	while(resultSet.next()) {
+		
+		commission=resultSet.getInt("commission");
+			
+	}
+
+
+
+} catch (SQLException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+
+return commission;
+
+}
     
     public int getPrice(String name, char category) {
     
     int price=0;
 	try {
-		statement=myConn.prepareStatement("  select price from comboboxchoices where (fullName=?) &&  (category=?)");
+		statement=myConn.prepareStatement("  select price from comboboxchoices where  ( fullName=?) &&  ( category=?)");
 		statement.setString(1, name);
 		statement.setString(2, String.valueOf(category));
 	
@@ -3805,66 +3830,127 @@ int salary = 0;
 	    				}
 	    		
 	    for (int i = 0; i < id.size(); i++) {
+	    	
+	    	String name=this.getEmployeeNameById(id.get(i));
+	    	
+	    	int Rx45count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "Rx45",id.get(i)) ;
+	    	int Rx60count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "Rx60",id.get(i)) ;
+	    	int m130count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30m1",id.get(i)) ;
+	    	int m230count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30m2",id.get(i)) ;
+	    	int m330count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30m3",id.get(i)) ;
+	    	int m145count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45m1",id.get(i)) ;
+	    	int m245count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45m2",id.get(i)) ;
+	    	int m345count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45m3",id.get(i)) ;
+	    	int m160count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60m1",id.get(i)) ;
+	    	int m260count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60m2",id.get(i)) ;
+	    	int m360count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60m3",id.get(i)) ;
+	    	
+	    	int Rx45commision=  this.getCommission("Rx45");
+	    	int Rx60commision=  this.getCommission("Rx60");
+	    	int m130commision=  this.getCommission("30m1");
+	    	int m230commision=  this.getCommission("30m2");
+	    	int m330commision=  this.getCommission("30m3");
+	    	int m145commision=  this.getCommission("45m1");
+	    	int m245commision=  this.getCommission("45m2");
+	    	int m345commision=  this.getCommission("45m3");
+	    	int m160commision=  this.getCommission("60m1");
+	    	int m260commision=  this.getCommission("60m2");
+	    	int m360commision=  this.getCommission("60m3");
+	    	
+	    	int rx45count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "rx45",id.get(i));
+	    	System.out.println(name + " = "+ rx45count);
+	    	int rx60count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "rx60",id.get(i));
+	    	int M130count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30M1",id.get(i));
+	    	int M230count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30M2",id.get(i));
+	    	int M330count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "30M3",id.get(i));
+	    	int M145count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45M1",id.get(i));
+	    	int M245count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45M2",id.get(i));
+	    	int M345count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "45M3",id.get(i));
+	    	int M160count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60M1",id.get(i));
+	    	int M260count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60M2",id.get(i));
+	    	int M360count=  this.getMonthlyReflexologyCount(startingDate, endingDate, "60M3",id.get(i));
+		    
+	    	int rx45commision=  this.getPatientCommission("rx45");
+	    	int rx60commision=  this.getPatientCommission("rx60");
+	    	int M130commision=  this.getPatientCommission("30M1");
+	    	int M230commision=  this.getPatientCommission("30M2");
+	    	int M330commision=  this.getPatientCommission("30M3");
+	    	int M145commision=  this.getPatientCommission("45M1");
+	    	int M245commision=  this.getPatientCommission("45M2");
+	    	int M345commision=  this.getPatientCommission("45M3");
+	    	int M160commision=  this.getPatientCommission("60M1");
+	    	int M260commision=  this.getPatientCommission("60M2");
+	    	int M360commision=  this.getPatientCommission("60M3");
+	    
+	    	
 			
 	    list.add(	new PayRoll( 
-	    			this.getEmployeeNameById(id.get(i)),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "30 MIN",id.get(i))),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "45 MIN",id.get(i))),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "60 MIN",id.get(i))),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i)) ),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i)) ),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i)) ),
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))  )  ,
-	    			String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))  ) ,
-
-String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "30 MIN",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "45 MIN",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "60 MIN",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))     ),
+	    			name,
+	    			
+	    		String.valueOf(	Rx45count + rx45count )  , String.valueOf( Rx60count + rx60count), String.valueOf( 
+	    			m130count + M130count   ), String.valueOf( m230count + M230count   ), String.valueOf( m330count + M330count), String.valueOf( 
+	    			m145count + M145count   ), String.valueOf( m245count + M245count   ), String.valueOf( m345count + M345count), String.valueOf( 
+	    			m160count + M160count   ), String.valueOf( m260count + M260count   ), String.valueOf( m360count + M360count), String.valueOf( 
+	    			Rx45count + rx45count   +Rx60count + rx60count +
+	    			m130count + M130count   +m230count + M230count   +m330count + M330count+
+	    			m145count + M145count   +m245count + M245count   +m345count + M345count+
+	    			m160count + M160count   +m260count + M260count   +m360count + M360count
+	    			
+	    			), 
 
 
-
-String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "30 MIN",id.get(i))*this.getCommission("30 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "45 MIN",id.get(i))*this.getCommission("45 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "60 MIN",id.get(i))*this.getCommission("60 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))*this.getCommission("Ma10")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))*this.getCommission("Ma12")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))*this.getCommission("Ma15")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))*this.getCommission("Ma17")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma25",id.get(i))*this.getCommission("Ma25")  ) ,
-
-String.valueOf(
-this.getFixedSalary(id.get(i)) ),
-
-
-String.valueOf(
-this.getMonthlyReflexologyCount(startingDate, endingDate, "30 MIN",id.get(i))*this.getCommission("30 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "45 MIN",id.get(i))*this.getCommission("45 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "60 MIN",id.get(i))*this.getCommission("60 MIN")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma10",id.get(i))*this.getCommission("Ma10")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma12",id.get(i))*this.getCommission("Ma12")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma15",id.get(i))*this.getCommission("Ma15")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma17",id.get(i))*this.getCommission("Ma17")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma20")+
-this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this.getCommission("Ma25")+  this.getFixedSalary(id.get(i))
+				
+				String.valueOf(
+				Rx45count  *   Rx45commision  +
+				Rx60count  *   Rx60commision  +
+				m130count  *   m130commision  +
+				m230count  *   m230commision  +
+				m330count  *   m330commision  +
+				m145count  *   m145commision  +
+				m245count  *   m245commision  +
+				m345count  *   m345commision  +
+				m160count  *   m160commision  +
+				m260count  *   m260commision  +
+				m360count  *   m360commision  + 
+				rx45count  *   rx45commision  +
+				rx60count  *   rx60commision  +
+				M130count  *   M130commision  +
+				M230count  *   M230commision  +
+				M330count  *   M330commision  +
+				M145count  *   M145commision  +
+				M245count  *   M245commision  +
+				M345count  *   M345commision  +
+				M160count  *   M160commision  +
+				M260count  *   M260commision  +
+				M360count  *   M360commision     ) ,
+				
+				String.valueOf(
+				this.getFixedSalary(id.get(i)) ),
+				
+				
+				String.valueOf(
+				Rx45count* Rx45commision +
+				Rx60count * Rx60commision+
+				m130count* m130commision+
+				m230count* m230commision+
+				m330count* m330commision+
+				m145count* m145commision+
+				m245count* m245commision+
+				m345count* m345commision+
+				m160count* m160commision+
+				m260count* m260commision+
+				m260count* m360commision+ 
+				rx45count* rx45commision+
+				rx60count* rx60commision+
+				m130count* M130commision+
+				M230count* M230commision+
+				M330count* M330commision+
+				M145count* M145commision+
+				M245count* M245commision+
+				M345count* M345commision+
+				M345count* M160commision+
+				M260count* M260commision+
+				M360count* M360commision    + this.getFixedSalary(id.get(i))
 
 	    	)		
 	    			)  );//end of new PayRoll();
@@ -3891,6 +3977,8 @@ this.getMonthlyReflexologyCount(startingDate, endingDate, "Ma20",id.get(i))*this
 	    	return list;
 	    	
 	    }
+	
+	//global Variable for clarity
 
 	LocalDate date=null;
 	int counter=0;
