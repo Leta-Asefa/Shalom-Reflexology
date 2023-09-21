@@ -5,15 +5,17 @@ import javafx.beans.property.SimpleStringProperty;
 public class PayRoll {
 	
 	private SimpleStringProperty fullName ; 
-	private SimpleStringProperty rx30 ; 
 	private SimpleStringProperty rx45 ; 
 	private SimpleStringProperty rx60 ; 
-	private SimpleStringProperty ma10 ; 
-	private SimpleStringProperty ma12 ; 
-	private SimpleStringProperty ma15 ; 
-	private SimpleStringProperty ma17 ;
-	private SimpleStringProperty ma20 ;
-	private SimpleStringProperty ma25 ;
+	private SimpleStringProperty m130 ; 
+	private SimpleStringProperty m230 ; 
+	private SimpleStringProperty m330 ; 
+	private SimpleStringProperty m145 ;
+	private SimpleStringProperty m245 ;
+	private SimpleStringProperty m345 ;
+	private SimpleStringProperty m160 ;
+	private SimpleStringProperty m260 ;
+	private SimpleStringProperty m360 ;
 	private SimpleStringProperty customers ;
 	private SimpleStringProperty commission ;
 	private SimpleStringProperty fixedSalary ;
@@ -22,19 +24,21 @@ public class PayRoll {
 
 public PayRoll(){}
 	
-	public PayRoll(String fullName ,String rx30,String rx45,String rx60,String ma10,
-			String ma12,String ma15,String ma17 ,String ma20,String ma25,String customers,String commission,String fixedSalary,String totalSalary ){
+	public PayRoll(String fullName ,String rx45,String rx60,String m130,
+			String m230,String m330,String m145 ,String m245,String m345,String m160,String m260,String m360,String customers,String commission,String fixedSalary,String totalSalary ){
 		
 		this.fullName=new SimpleStringProperty(fullName);
-		this.rx30=new SimpleStringProperty(rx30);
 		this.rx45=new SimpleStringProperty(rx45);
 		this.rx60=new SimpleStringProperty(rx60);
-		this.ma10=new SimpleStringProperty(ma10);
-		this.ma12=new SimpleStringProperty(ma12);
-		this.ma15=new SimpleStringProperty(ma15);
-		this.ma17=new SimpleStringProperty(ma17);
-		this.ma20=new SimpleStringProperty(ma20);
-		this.setMa25(new SimpleStringProperty(ma25));
+		this.m130=new SimpleStringProperty(m130);
+		this.m230=new SimpleStringProperty(m230);
+		this.m330=new SimpleStringProperty(m330);
+		this.m145=new SimpleStringProperty(m145);
+		this.m245=new SimpleStringProperty(m245);
+		this.m345=new SimpleStringProperty(m345);
+		this.m160=new SimpleStringProperty(m160);
+		this.m260=new SimpleStringProperty(m260);
+		this.m360=new SimpleStringProperty(m360);
 		this.customers=new SimpleStringProperty(customers);
 		this.commission=new SimpleStringProperty(commission);
 		this.fixedSalary=new SimpleStringProperty(fixedSalary);
@@ -60,13 +64,7 @@ public String getFullName() {
 		this.fullName = fullName;
 	}
 
-	public String getRx30() {
-		return rx30.get();
-	}
-
-	public void setRx30(SimpleStringProperty rx30) {
-		this.rx30 = rx30;
-	}
+	
 
 	public String getRx45() {
 		return rx45.get();
@@ -84,44 +82,76 @@ public String getFullName() {
 		this.rx60 = rx60;
 	}
 
-	public String getMa10() {
-		return ma10.get();
+	public String getM130() {
+		return m130.get();
 	}
 
-	public void setMa10(SimpleStringProperty ma10) {
-		this.ma10 = ma10;
+	public void setM130(SimpleStringProperty m130) {
+		this.m130 = m130;
 	}
 
-	public String getMa12() {
-		return ma12.get();
+	public String getM230() {
+		return m230.get();
 	}
 
-	public void setMa12(SimpleStringProperty ma12) {
-		this.ma12 = ma12;
+	public void setM230(SimpleStringProperty m230) {
+		this.m230 = m230;
 	}
 
-	public String getMa15() {
-		return ma15.get();
+	public String getM330() {
+		return m330.get();
 	}
 
-	public void setMa15(SimpleStringProperty ma15) {
-		this.ma15 = ma15;
+	public void setM330(SimpleStringProperty m330) {
+		this.m330 = m330;
 	}
 
-	public String getMa17() {
-		return ma17.get();
+	public String getM145() {
+		return m145.get();
 	}
 
-	public void setMa17(SimpleStringProperty ma17) {
-		this.ma17 = ma17;
+	public void setM145(SimpleStringProperty m145) {
+		this.m145 = m145;
 	}
 
-	public String getMa20() {
-		return ma20.get();
+	public String getM245() {
+		return m245.get();
 	}
 
-	public void setMa20(SimpleStringProperty ma20) {
-		this.ma20 = ma20;
+	public void setM245(SimpleStringProperty m245) {
+		this.m245 = m245;
+	}
+
+	public String getM345() {
+		return m345.get();
+	}
+
+	public void setM345(SimpleStringProperty m345) {
+		this.m345 = m345;
+	}
+
+	public String getM160() {
+		return m160.get();
+	}
+
+	public void setM160(SimpleStringProperty m160) {
+		this.m160 = m160;
+	}
+
+	public String getM260() {
+		return m260.get();
+	}
+
+	public void setM260(SimpleStringProperty m260) {
+		this.m260 = m260;
+	}
+
+	public String getM360() {
+		return m360.get();
+	}
+
+	public void setM360(SimpleStringProperty m360) {
+		this.m360 = m360;
 	}
 
 	public String getCustomers() {
@@ -156,14 +186,7 @@ public String getFullName() {
 		this.totalSalary = totalSalary;
 	}
 
-	public String getMa25() {
-		return ma25.get();
-	}
-
-	public void setMa25(SimpleStringProperty ma25) {
-		this.ma25 = ma25;
-	}
-
+	
 	
 	
 	
