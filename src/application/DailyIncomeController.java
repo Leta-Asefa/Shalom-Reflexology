@@ -169,50 +169,50 @@ public class DailyIncomeController implements Initializable {
 	@FXML public void clicked() {
 		
 		
-		if(!(datePicker.getValue()==null)) {
-			
-		try {
-			
-			
-		
-		int from30=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "30 MIN");
-		int from45=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "45 MIN");
-		int from60=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "60 MIN");
-
-		int fromMa10=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma10");
-		int fromMa12=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma12");
-		int fromMa15=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma15");
-		int fromMa17=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma17");
-		int fromMa20=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma20");
-		int fromMa25=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma25");
-
-		
-	
-		alert.setHeaderText("From 30 MIN "+from30+" customer(s)\n"+
-				"From 45 MIN "+from45+" customer(s)\n" +
-				"From 60 MIN "+from60+" customer(s)\n"+
-				"From Ma10   "+fromMa10+" customer(s)\n" +
-				"From Ma12   "+fromMa12+" customer(s)\n" +
-				"From Ma15   "+fromMa15+" customer(s)\n" +
-				"From Ma17   "+fromMa17+" customer(s)\n" +
-				"From Ma20   "+fromMa20+" customer(s)\n" +
-				"From Ma25   "+fromMa25+" customer(s)\n"
-				);
-		
-
-		alert.show();
-		
-		
-		
-		}
-		catch (Exception ex) {
-
-			new CallAlert(AlertType.WARNING,"DailyIncomeController","enteredMethod",ex.getClass().getName());
-
-
-			}
-		
-		}
+//		if(!(datePicker.getValue()==null)) {
+//			
+//		try {
+//			
+//			
+//		
+//		int from30=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "30 MIN");
+//		int from45=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "45 MIN");
+//		int from60=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "60 MIN");
+//
+//		int fromMa10=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma10");
+//		int fromMa12=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma12");
+//		int fromMa15=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma15");
+//		int fromMa17=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma17");
+//		int fromMa20=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma20");
+//		int fromMa25=dao.getDailyReflexologyCount(datePicker.getValue().toString(), "Ma25");
+//
+//		
+//	
+//		alert.setHeaderText("From 30 MIN "+from30+" customer(s)\n"+
+//				"From 45 MIN "+from45+" customer(s)\n" +
+//				"From 60 MIN "+from60+" customer(s)\n"+
+//				"From Ma10   "+fromMa10+" customer(s)\n" +
+//				"From Ma12   "+fromMa12+" customer(s)\n" +
+//				"From Ma15   "+fromMa15+" customer(s)\n" +
+//				"From Ma17   "+fromMa17+" customer(s)\n" +
+//				"From Ma20   "+fromMa20+" customer(s)\n" +
+//				"From Ma25   "+fromMa25+" customer(s)\n"
+//				);
+//		
+//
+//	//	alert.show();
+//		
+//		
+//		
+//		}
+//		catch (Exception ex) {
+//
+//			new CallAlert(AlertType.WARNING,"DailyIncomeController","enteredMethod",ex.getClass().getName());
+//
+//
+//			}
+//		
+//		}
 		
 	}
 
