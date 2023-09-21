@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -20,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.CheckBox;
 
 public class FulfilNewPatientsInfoController implements Initializable {
 
@@ -175,6 +177,8 @@ public class FulfilNewPatientsInfoController implements Initializable {
 	@FXML Button week_6_Reset_Button7;
 
 	@FXML Button week_3_Reset_Button8;
+
+	@FXML CheckBox checkBox;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -188,6 +192,7 @@ public class FulfilNewPatientsInfoController implements Initializable {
 		
 		list.setItems(listItems);
 		setPrescriptionItems();
+		
 		
 		list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
@@ -322,6 +327,37 @@ public class FulfilNewPatientsInfoController implements Initializable {
 		p29.setItems(prescriptionItems);
 		p30.setItems(prescriptionItems);
 		
+		
+		p1.setVisibleRowCount(20);
+		p2.setVisibleRowCount(20);
+		p3.setVisibleRowCount(20);
+		p4.setVisibleRowCount(20);
+		p5.setVisibleRowCount(20);
+		p6.setVisibleRowCount(20);
+		p7.setVisibleRowCount(20);
+		p8.setVisibleRowCount(20);
+		p9.setVisibleRowCount(20);
+		p10.setVisibleRowCount(20);
+		p11.setVisibleRowCount(20);
+		p12.setVisibleRowCount(20);
+		p13.setVisibleRowCount(20);
+		p14.setVisibleRowCount(20);
+		p15.setVisibleRowCount(20);
+		p16.setVisibleRowCount(20);
+		p17.setVisibleRowCount(20);
+		p18.setVisibleRowCount(20);
+		p19.setVisibleRowCount(20);
+		p20.setVisibleRowCount(20);
+		p21.setVisibleRowCount(20);
+		p22.setVisibleRowCount(20);
+		p23.setVisibleRowCount(20);
+		p24.setVisibleRowCount(20);
+		p25.setVisibleRowCount(20);
+		p26.setVisibleRowCount(20);
+		p27.setVisibleRowCount(20);
+		p28.setVisibleRowCount(20);
+		p29.setVisibleRowCount(20);
+		p30.setVisibleRowCount(20);
 		
 		
 		
@@ -775,6 +811,8 @@ ex.printStackTrace();
 
 
 
+
+	
 
 	
 	
