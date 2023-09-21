@@ -92,21 +92,21 @@
             <Font name="Cambria Bold Italic" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="831.0" layoutY="98.0" prefHeight="574.0" prefWidth="296.0" visible="false">
+      <TableView fx:id="table" layoutX="831.0" layoutY="98.0" prefHeight="574.0" prefWidth="296.0">
         <columns>
           <TableColumn fx:id="name" prefWidth="177.0" text="Name" />
           <TableColumn fx:id="type" prefWidth="118.0" text="Type" />
         </columns>
       </TableView>
-      <DatePicker fx:id="listDatePicker" layoutX="947.0" layoutY="63.0" onAction="#searchList" visible="false" />
-      <Label fx:id="dateLabel" alignment="CENTER" layoutX="854.0" layoutY="60.0" prefHeight="17.0" prefWidth="61.0" styleClass="Labels" stylesheets="@../application.css" text="DATE" textFill="#eeff00" visible="false">
+      <DatePicker fx:id="listDatePicker" layoutX="947.0" layoutY="63.0" onAction="#searchList" />
+      <Label fx:id="dateLabel" alignment="CENTER" layoutX="854.0" layoutY="60.0" prefHeight="17.0" prefWidth="61.0" styleClass="Labels" stylesheets="@../application.css" text="DATE" textFill="#eeff00">
          <font>
             <Font name="Cambria Bold Italic" size="24.0" />
          </font>
       </Label>
-      <CheckBox fx:id="getCheckBox" layoutX="1024.0" layoutY="15.0" mnemonicParsing="false" onAction="#getList" prefHeight="17.0" prefWidth="78.0" text="Get List" />
-      <Line fx:id="line" endX="28.0" endY="-74.0" layoutX="775.0" layoutY="76.0" startX="28.0" startY="674.0" visible="false" />
-      <Button fx:id="deleteButton" layoutX="1063.0" layoutY="683.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete" visible="false">
+      <CheckBox fx:id="getCheckBox" layoutX="1024.0" layoutY="15.0" mnemonicParsing="false" onAction="#getList" prefHeight="17.0" prefWidth="78.0" selected="true" text="Get List" />
+      <Line fx:id="line" endX="28.0" endY="-74.0" layoutX="775.0" layoutY="76.0" startX="28.0" startY="674.0" />
+      <Button fx:id="deleteButton" layoutX="1063.0" layoutY="683.0" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
