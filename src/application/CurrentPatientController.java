@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -330,10 +331,18 @@ public class CurrentPatientController implements Initializable {
 			
 		
 		if(p!=null) {
+			ObservableList<Prescriptions> prescription= dao.searchPrescriptionsByPhoneExact( Integer.parseInt( table1.getSelectionModel().getSelectedItem().getPhone()));	
+			
+			String credit=String.valueOf(dao.getCredit(phoneNumber));
+			String pre=dao.getTemporaryPrescription(Integer.parseInt (p.getPhone()));
 		dao.deletePrescriptionAndAttendance(phoneNumber);
 		dao.deleteTemporaryPrescription(phoneNumber);
 		dao.addInactivePatient(Integer.parseInt (p.getPhone()), p.getFullName(),Integer.parseInt (p.getAge()), p.getSex().charAt(0), p.getAssesment(), p.getTreatment(), p.getFocusingArea(),p.getHistory());
-		dao.insertIntoInactiveTemporaryPrescription(Integer.parseInt (p.getPhone()), dao.getTemporaryPrescription(Integer.parseInt (p.getPhone())), " ");
+		dao.insertIntoInactivePrescriptions(Integer.parseInt (p.getPhone()), prescription.get(0) );
+		dao.insertIntoInactiveTemporaryPrescription(Integer.parseInt (p.getPhone()), pre, credit);
+		
+		
+		
 		
 Alert alert1=new  Alert(AlertType.INFORMATION);
 		alert1.setContentText("Inactivated Successfully");
