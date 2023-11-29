@@ -2,7 +2,7 @@
 Real World Project ( Written in JavaFX ) <br> <br>
 <pre> 
   Patient Managment System which
-      -Stores patients data
+      -Stores patients data 
       -Gives an appointment
       -Takes attendance
       -Performs financial related issues
